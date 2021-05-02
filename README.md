@@ -16,8 +16,9 @@
 <面白い映画に出会った時、誰かにそれを伝えたい時、自分用のメモとして、面白そうな映画を見つけたい時>
 
 ## 設計書
-<テーブル定義書=> https://docs.google.com/spreadsheets/d/1UsjkKhIVXtB9PnCAEK7Vd1-GZrmUWdXkW_lXzY0Bxuo/edit#gid=0
-	アプリケーション詳細設計=> https://docs.google.com/spreadsheets/d/14Rikx16Nuci44hd96XxTP6Z8oM6dCLXFhRET6CUoZDY/edit#gid=0　ER図=> https://app.diagrams.net/#G1I006FXINbQOdTCJ8BpH3_jH6-LXL1cpQ　>
+-テーブル定義書=> https://docs.google.com/spreadsheets/d/1UsjkKhIVXtB9PnCAEK7Vd1-GZrmUWdXkW_lXzY0Bxuo/edit#gid=0
+-アプリケーション詳細設計=> https://docs.google.com/spreadsheets/d/14Rikx16Nuci44hd96XxTP6Z8oM6dCLXFhRET6CUoZDY/edit#gid=0　 
+-ER図=> https://app.diagrams.net/#G1I006FXINbQOdTCJ8BpH3_jH6-LXL1cpQ
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1EvaT_Lskz77sVSPdANoSPh19_rkRdEzevJ_vdld5fxI/edit#gid=0>
