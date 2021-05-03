@@ -1,3 +1,30 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top {
+  text-align: center;
+  padding: 30px 0px;
+}
+
+.image {
+  height: 360px;
+  width: 270px;
+  // padding-bottom: 20px;
+}
+.images {
+  height: 1000px;
+}
+.movie_image {
+  height: 300px;
+  width: 300px;
+}
+
+.movie-title {
+ 
+}
+
+.release_date {
+  font-size: 5px;
+   padding-bottom: 20px;
+}

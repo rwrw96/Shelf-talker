@@ -1,0 +1,139 @@
+<%#= link_to "マイページ" , user_path(current_user) %>
+  <%= form_tag(root_path, method: :get) do %>
+    <%= search_field_tag :looking_for,nil, placeholder: 'Movie Title...',value: params[:looking_for] %>
+    <% search_field_tag :page, nil, value: params[:page] %>
+    <%= submit_tag '検索' %>
+  <% end %>
+
+  <%= form_tag(root_path, method: :get) do %>
+    <% search_field_tag :genre,nil,value: params[:genre] %>
+    <% search_field_tag :page_for, nil,value: params[:page_for] %>
+    <% submit_tag '検索' %>
+  <% end %>
+ 
+  <div class="container">
+    <div class="row">
+      <div class="offset-3 col-6">
+        <div class="border">
+          <%= link_to "#アクション", "/?utf8=%E2%9C%93&genre=28&commit=%E6%A4%9C%E7%B4%A2" %>
+          <%= link_to "#アドベンチャー", "/?utf8=%E2%9C%93&genre=12&commit=%E6%A4%9C%E7%B4%A2" %>
+          <%= link_to "#アニメ", "/?utf8=%E2%9C%93&genre=16&commit=%E6%A4%9C%E7%B4%A2" %>
+          <%= link_to "#ファミリー", "/?utf8=%E2%9C%93&genre=10751&commit=%E6%A4%9C%E7%B4%A2" %>
+          <%= link_to "#ホラー", "/?utf8=%E2%9C%93&genre=27&commit=%E6%A4%9C%E7%B4%A2" %>
+          <%= link_to "#ロマンス", "/?utf8=%E2%9C%93&genre=10749&commit=%E6%A4%9C%E7%B4%A2" %>
+          <%= link_to "#サスペンス", "/?utf8=%E2%9C%93&genre=53&commit=%E6%A4%9C%E7%B4%A2" %>
+          <%= link_to "#戦争", "/?utf8=%E2%9C%93&genre=10752&commit=%E6%A4%9C%E7%B4%A2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<h2 class="top">Movies</h2>
+
+<%if params[:genre].present? %>
+
+ <% movieinfo = JSON.parse(Tmdb::Genre.movies(params[:genre], page: 1).to_json) %>
+ 
+  <div class="container">
+    <div class="row">
+        <% i = 0 %>
+        <% while i < movieinfo['table']['results'].count %>
+          <div class="col-3">
+            
+            <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
+              <%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "image" %>
+            <%end%>
+            <div class="movie-title">
+            <%if movieinfo['table']['results'][i]['table']['title'].present?%>
+              <%= link_to movieinfo['table']['results'][i]['table']['title'],detail_path(movieinfo['table']['results'][i]['table']['id']) %>
+            <%end%>
+            </div>
+            <div class="release_date">
+            <%if movieinfo['table']['results'][i]['table']['release_date'].present?%>
+              <%= movieinfo['table']['results'][i]['table']['release_date'] %>
+            <%end%>
+            </div>
+           </div>
+        <% i += 1%>
+        <%end%>
+    </div>
+  </div>
+  
+<% elsif params[:looking_for].present? %>
+
+  
+  <% movie = JSON.parse(Tmdb::Search.movie(params[:looking_for]).to_json) %>
+  <% movie["table"]["total_pages"] %>
+  
+  <% n = 1 %>
+  <% while n <  movie["table"]["total_pages"] %>
+  <% movieinfo = JSON.parse(Tmdb::Search.movie(params[:looking_for],page: n).to_json) %>
+  
+    <div class="container">
+      <div class="row">
+        <% i = 0 %>
+        <% while i < movieinfo['table']['results'].count %>
+         
+          <div class="col-3">
+           
+            <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
+              <%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "image" %>
+            <%end%>
+             <div class="movie-title">
+            <%if movieinfo['table']['results'][i]['table']['title'].present?%>
+              <%= link_to movieinfo['table']['results'][i]['table']['title'],detail_path(movieinfo['table']['results'][i]['table']['id']) %>
+            <%end%>
+            </div>
+            <div class="release_date">
+            <%if movieinfo['table']['results'][i]['table']['release_date'].present?%>
+              <%= movieinfo['table']['results'][i]['table']['release_date'] %>
+            <%end%>
+            </div>
+          </div> 
+        <% i += 1%>
+        <%end%>
+      </div>
+    </div>
+     <% n += 1 %>
+    <% end %>
+<% else %>
+  
+  
+  
+  
+  
+  <% @popular_movie = JSON.parse((Tmdb::Movie.popular).to_json) %>
+  
+  <% n = 1 %>
+  <% while n < 3 %>
+  <% @popular_movie = JSON.parse((Tmdb::Movie.popular(page: n)).to_json) %>
+    <div class="container">
+      <div class="row">
+        
+        <% i = 0%>
+        <% while i < @popular_movie['table']['results'].count %>
+          <div class="col-3">
+            
+            <% if @popular_movie['table']['results'][i]['table']['poster_path'].present? %>
+              <%= image_tag 'https://image.tmdb.org/t/p/w1280' + @popular_movie['table']['results'][i]['table']['poster_path'],class: "image" %>
+            <%end%>
+            <div class="movie-title">
+            <%if @popular_movie['table']['results'][i]['table']['title'].present?%>
+              <%= link_to @popular_movie['table']['results'][i]['table']['title'], detail_path(@popular_movie['table']['results'][i]['table']['id']) %>
+            <% end %>  
+            </div>
+            <div class="release_date">
+            <%if @popular_movie['table']['results'][i]['table']['release_date'].present?%>
+              <%= @popular_movie['table']['results'][i]['table']['release_date'] %>
+            <%end%>
+            </div>
+          </div>
+        <% i += 1%>
+        <%end%>
+      </div>
+    </div>
+    <% n += 1 %>
+    <% end %>
+<% end %>
+    
+  Copyright（c）2015 18Months Srl
