@@ -13,7 +13,7 @@
         
         <% array = [] %>
         <% @reviews.each do |r| %>
-          <% if r.movie.tmdb == @movieinfo["table"]["id"] %>
+          <% if r.tmdb == @movieinfo["table"]["id"] %>
             <% array << r.rate %>
           <% end %>
         <% end %>
@@ -42,8 +42,12 @@
               scoreName: 'review[rate]' 
             }); 
           </script>
-
-
+                
+          <%= f.hidden_field :movie_title, :value => detail["table"]["title"] %>
+          <%= f.hidden_field :release_date, :value => detail["table"]["release_date"] %>
+          <%= f.hidden_field :overview, :value => detail["table"]["overview"] %>
+          <%= f.hidden_field :poster_path, :value => detail["table"]["poster_path"] %>
+          <%= f.hidden_field :tmdb, :value => detail["table"]["id"] %>
           <%= f.text_field :title %>
           <%= f.text_area :body %>
           <%= f.submit %>
