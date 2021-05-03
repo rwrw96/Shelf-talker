@@ -5,7 +5,7 @@
     <%= submit_tag '検索' %>
   <% end %>
 
-  <%= form_tag(root_path, method: :get) do %>
+  <% form_tag(root_path, method: :get) do %>
     <% search_field_tag :genre,nil,value: params[:genre] %>
     <% search_field_tag :page_for, nil,value: params[:page_for] %>
     <% submit_tag '検索' %>
@@ -66,7 +66,7 @@
   <% movie["table"]["total_pages"] %>
   
   <% n = 1 %>
-  <% while n <  movie["table"]["total_pages"] %>
+  <% while n <  movie["table"]["total_pages"] + 1 %>
   <% movieinfo = JSON.parse(Tmdb::Search.movie(params[:looking_for],page: n).to_json) %>
   
     <div class="container">
