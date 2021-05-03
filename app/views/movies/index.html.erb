@@ -5,7 +5,8 @@
     <%= submit_tag '検索' %>
   <% end %>
 
-  <%= form_tag(root_path, method: :get) do %>
+<!--ジャンル検索用-->
+  <% form_tag(root_path, method: :get) do %>
     <% search_field_tag :genre,nil,value: params[:genre] %>
     <% search_field_tag :page_for, nil,value: params[:page_for] %>
     <% submit_tag '検索' %>
@@ -29,7 +30,7 @@
   </div>
   
 <h2 class="top">Movies</h2>
-
+<!--ジャンル検索結果-->
 <%if params[:genre].present? %>
 
  <% movieinfo = JSON.parse(Tmdb::Genre.movies(params[:genre], page: 1).to_json) %>
@@ -60,13 +61,13 @@
   </div>
   
 <% elsif params[:looking_for].present? %>
-
+<!--検索結果-->
   
   <% movie = JSON.parse(Tmdb::Search.movie(params[:looking_for]).to_json) %>
   <% movie["table"]["total_pages"] %>
-  
+  <!--結果全てを表示するように繰り返し-->
   <% n = 1 %>
-  <% while n <  movie["table"]["total_pages"] %>
+  <% while n <  movie["table"]["total_pages"] + 1 %>
   <% movieinfo = JSON.parse(Tmdb::Search.movie(params[:looking_for],page: n).to_json) %>
   
     <div class="container">
