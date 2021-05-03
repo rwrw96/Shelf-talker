@@ -1,2 +1,84 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= link_to "sign_out" ,  destroy_user_session_path, method: :delete %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <table class="table">
+        <thead>
+          <th>Name</th>
+          <th>Introduction</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <td><%= @user.name %></td>
+          <td><%= @user.introduction %></td>
+          <tr>
+            <td><%=link_to "フォロー", follows_user_path(@user.id) %>:<%= @user.followings.count %></td>
+          <td><%=link_to "フォロワー", followers_user_path(@user.id) %>:<%= @user.followers.count %></td>
+          </tr>
+          
+          <% if current_user != @user %>
+        <% if @user.followed_by?(current_user) %>
+            <td><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></td>
+        <% else %>
+            <td><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></td>
+        <% end %>
+    <% end %>
+        </tbody>
+      </table>
+    </div>
+  
+  <div class="col-8">
+    <table class="table">
+      <thead>
+        <th>レビュー一覧！！</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        
+        <% @user.reviews.each do |r| %>
+        <tr>
+        <td><<%= r.movie_title %>></td>
+        <td><%= image_tag 'https://image.tmdb.org/t/p/w1280' + r.poster_path , class: "review_image" %></td>
+        <td><%= r.title %></td>
+        <td><%= r.body %></td>
+        </tr>
+        <% end %>
+        
+      </tbody>
+    </table>
+    
+    
+  </div>
+  </div>
+
+
+
+
+
+<table class="table">
+  <thead>
+    <th>保存したもの</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @user.likes.each do |l| %>
+    <tr>
+      <td><%= image_tag 'https://image.tmdb.org/t/p/w1280' + l.review.poster_path, class: "review_image" %></td>
+      <td><<%= l.review.movie_title %>></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<%= link_to "edit", edit_user_path(@user) %>
+<%= link_to "/", root_path %>
+
+</div>
