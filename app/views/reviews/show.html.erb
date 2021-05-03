@@ -1,0 +1,19 @@
+<div class="movie-evaluation" data-score="<%= @review.rate %>"></div>
+
+<script>
+  $('.movie-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<%= @review.movie_title %>
+<%= @review.release_date %>
+<%= @review.overview %>
+<%= image_tag 'https://image.tmdb.org/t/p/w1280' + @review.poster_path, class: "image" %>
+
+<%= @review.title %>
+<%= @review.body %>
