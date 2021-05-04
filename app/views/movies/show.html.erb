@@ -38,12 +38,13 @@
           <%= f.text_field :title, class: "form-control border border-dark" %>
           </div>
         <div class="col-6">
+           <label>評価</label></br>
           <div id="evaluate_stars">
             <%= f.hidden_field :rate, id: :evaluate_stars %>
-            
-            <label>評価</label></br>
           </div>
+         
             <script>
+             $("#evaluate_stars").empty();
              $('#evaluate_stars').raty({
               half: true,
               starOn: "<%= asset_path('star-on.png') %>",
@@ -87,17 +88,19 @@
           <%= link_to review.title, review_path(review.id) %>
           </div>
           <div class="review_rate">
-          <div class="movie-evaluation" data-score="<%= review.rate %>"></div>
-                    <script>
-                      $('.movie-evaluation').raty({
-                        readOnly: true,
-                        score: function() {
-                          return $(this).attr('data-score');
-                        },
-                        path: '/assets/'
-                      });
-                    </script>
-                  </div>
+            <div class="movie-evaluation-<%= review.id %>"></div>
+              <script>
+              $(".movie-evaluation-<%= review.id %>").empty();
+              $('.movie-evaluation-<%= review.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                readOnly: true,
+                score: <%= review.rate %>,
+              });
+              </script>
+            </div>
                   <div class="review_body">
                     <%= review.body %>
                   </div>
