@@ -7,7 +7,7 @@
           <%= image_tag 'https://image.tmdb.org/t/p/w1280' + detail['table']['poster_path'], class: "image" %>
         <%end%>
         <%if detail['table']['title'].present?%>
-          <h4><%= detail['table']['title'] %></h4>
+          <div class="movie-title"><%= detail['table']['title'] %></div>
         <%end%>
         
         
@@ -18,20 +18,30 @@
           <% end %>
         <% end %>
         <% unless array.empty? %>
-        <h2>平均<%= (array.sum / array.count).round(2).to_f %>点</h2>
+        <h3>平均<%= (array.sum / array.count).round(2).to_f %>点</h3>
       <% end %>
       
       </div>
       
       <div class="col-8">
         <%if detail['table']['overview'].present?%>
+        <lable>あらすじ</lable>
+        <div class= "overview border rounded">
           <%= detail['table']['overview'] %>
+          </div>
         <%end%>
-    
+      
         <%= form_with model: @review, local: true do |f| %>
+        <div class="row">
+        <div class="col-6">
+          <label>レビュータイトル</label>
+          <%= f.text_field :title, class: "form-control border border-dark" %>
+          </div>
+        <div class="col-6">
           <div id="evaluate_stars">
             <%= f.hidden_field :rate, id: :evaluate_stars %>
-            <label>評価</label>
+            
+            <label>評価</label></br>
           </div>
             <script>
              $('#evaluate_stars').raty({
@@ -48,28 +58,57 @@
           <%= f.hidden_field :overview, :value => detail["table"]["overview"] %>
           <%= f.hidden_field :poster_path, :value => detail["table"]["poster_path"] %>
           <%= f.hidden_field :tmdb, :value => detail["table"]["id"] %>
-          <%= f.text_field :title %>
-          <%= f.text_area :body %>
-          <%= f.submit %>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-10">
+          <label>本文</label>
+          <%= f.text_area :body, class: "form-control border border-dark", rows: "5" %>
+          </div>
+          <div class="col-6">
+          <%= f.submit "レビュー", class: "btn btn-primary" %>
+          </div>
+          </div>
           <% end %>
       </div>
     </div>
 
 
-
+<div class="review_list">
+  <h2 class="top">Reviews</h2>
   <div class="row">
-    <div class="offset-3 col-6">
-      <% Review.all.each do |r| %>
-        <% if r.tmdb == @movieinfo["table"]["id"] %>
-          <%= r.user.name %>
-          <%= link_to r.title, review_path(r.id) %>
-          <%= r.body %>
+    <div class="col-10">
+      
+      <% Review.all.each do |review| %>
+        <% if review.tmdb == @movieinfo["table"]["id"] %>
+        <div class="review_container border">
+          <%= review.user.name %>
+          <div class="review_title">
+          <%= link_to review.title, review_path(review.id) %>
+          </div>
+          <div class="review_rate">
+          <div class="movie-evaluation" data-score="<%= review.rate %>"></div>
+                    <script>
+                      $('.movie-evaluation').raty({
+                        readOnly: true,
+                        score: function() {
+                          return $(this).attr('data-score');
+                        },
+                        path: '/assets/'
+                      });
+                    </script>
+                  </div>
+                  <div class="review_body">
+                    <%= review.body %>
+                  </div>
+          
+        </div>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
-
+</div>
 
 
 
