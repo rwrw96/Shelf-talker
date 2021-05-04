@@ -7,6 +7,18 @@
   padding: 30px 0px;
 }
 
+.genre_wrapper {
+  text-align: center;
+  font-size: 15px;
+  background-color: red;
+  padding: 15px 0px;
+  margin-top: 50px;
+.editlink {
+   color: white;
+   margin: 0px 10px;
+}
+}
+
 .image {
   height: 360px;
   width: 270px;
@@ -21,10 +33,72 @@
 }
 
 .movie-title {
- 
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 .release_date {
   font-size: 5px;
    padding-bottom: 20px;
+}
+
+.btn {
+  margin-top: 30px;
+}
+
+.top_review_wrapper {
+  margin-bottom: 50px;
+}
+
+.top_review_image {
+  height: 170px;
+  width: 150px;
+}
+
+.top_review_font {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.top_review_title {
+  font-size: 30px;
+}
+
+.top_review_body {
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.top_review_body:first-letter {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.review_body {
+  margin-top: 10px;
+}
+
+.review_body:first-letter {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.review_title {
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.review_rate {
+  display: inline-block;
+}
+
+.review_container {
+  margin: 30px 0px;
+  padding: 10px;
+}
+
+.overview {
+  padding: 10px;
 }
