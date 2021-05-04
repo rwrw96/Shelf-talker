@@ -5,3 +5,59 @@
   height: 150px;
   width: 150px;
 }
+
+.top_review_wrapper {
+  margin-bottom: 50px;
+}
+
+.top_review_image {
+  height: 170px;
+  width: 150px;
+}
+
+.top_review_font {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.top_review_title {
+  font-size: 30px;
+}
+
+.top_review_body {
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.top_review_body:first-letter {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.review_body {
+  margin-top: 10px;
+}
+
+.review_body:first-letter {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.review_title {
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.review_rate {
+  display: inline-block;
+}
+
+.review_container {
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.review_save {
+  display: inline-block;
+}

@@ -117,15 +117,17 @@
                   【<%= review.title %>】
                 </div>
                 <div class="col-4">
-                  <div class="movie-evaluation" data-score="<%= review.rate %>"></div>
+                  <div class="movie-evaluation-<%= review.id %>"></div>
                     <script>
-                      $('.movie-evaluation').raty({
-                        readOnly: true,
-                        score: function() {
-                          return $(this).attr('data-score');
-                        },
-                        path: '/assets/'
-                      });
+                    $(".movie-evaluation-<%= review.id %>").empty();
+                    $('.movie-evaluation-<%= review.id %>').raty({
+                      size: 36,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      readOnly: true,
+                      score: <%= review.rate %>,
+                    });
                     </script>
                   </div>
                 </div>
