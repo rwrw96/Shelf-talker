@@ -1,84 +1,101 @@
 <%= link_to "sign_out" ,  destroy_user_session_path, method: :delete %>
 
-<div class="container">
+
   <div class="row">
     <div class="col-4">
-      <table class="table">
-        <thead>
-          <th>Name</th>
-          <th>Introduction</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </thead>
-        <tbody>
-          <td><%= @user.name %></td>
-          <td><%= @user.introduction %></td>
-          <tr>
-            <td><%=link_to "フォロー", follows_user_path(@user.id) %>:<%= @user.followings.count %></td>
-          <td><%=link_to "フォロワー", followers_user_path(@user.id) %>:<%= @user.followers.count %></td>
-          </tr>
-          
-          <% if current_user != @user %>
+      <h2 class="top">Profile</h2>
+      <div class="row">
+        <div class="offset-1 col-3">
+          <%= @user.name %>
+        </div>
+        <div class="col-8">
+          <%= @user.introduction %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="offset-1">
+          <%= link_to "フォロー", follows_user_path(@user.id) %>:<%= @user.followings.count %></br>
+          <%= link_to "フォロワー", followers_user_path(@user.id) %>:<%= @user.followers.count %>
+        </div>
+      <div class="offset-1">
+    <% if current_user != @user %>
         <% if @user.followed_by?(current_user) %>
-            <td><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></td>
+            <%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %>
         <% else %>
-            <td><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></td>
+            <%=link_to "フォローする", user_relationships_path(@user.id), method: :post %>
         <% end %>
     <% end %>
-        </tbody>
-      </table>
     </div>
+    <div class="offset-1">
+      <%= link_to "更新", edit_user_path(@user) %>
+    </div>
+    </div>
+     </div>
+    
+<% if @user.image_name? %>                                                              
+<%#= image_tag @user.image_name.url %>
+<% end %>
   
-  <div class="col-8">
-    <table class="table">
-      <thead>
-        <th>レビュー一覧！！</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </thead>
-      <tbody>
-        
-        <% @user.reviews.each do |r| %>
-        <tr>
-        <td><<%= r.movie_title %>></td>
-        <td><%= image_tag 'https://image.tmdb.org/t/p/w1280' + r.poster_path , class: "review_image" %></td>
-        <td><%= r.title %></td>
-        <td><%= r.body %></td>
-        </tr>
-        <% end %>
-        
-      </tbody>
-    </table>
-    
-    
+  <div class="border-left border-dark col-8">
+     <h2 class="top">Reviews</h2>
+    <div class="row">
+      
+      
+     <% @user.reviews.each do |review| %>
+         
+            <div class="my_movie-title col-3">
+              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "review_image border border-dark"), detail_path(review.tmdb) %></br>
+                <%= review.movie_title %> 
+            </div>
+            <div class="col-8">
+              <div class="review_title">
+                <%= link_to review.title, review_path(review.id) %>
+              </div>
+              
+              <div class="review_rate">
+              <div class="movie-evaluation-<%= review.id %>"></div>
+                    <script>
+                    $(".movie-evaluation-<%= review.id %>").empty();
+                    $('.movie-evaluation-<%= review.id %>').raty({
+                      size: 36,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      readOnly: true,
+                      score: <%= review.rate %>,
+                    });
+                    </script>
+                  </div>
+              <div class="review_body">
+                <%= review.body %>
+              </div>
+            </div>
+            <div class="col-1"></div>
+           
+      <% end %>
+       
+      </div>
+    </div>
   </div>
-  </div>
+</div>
 
 
 
 
 
-<table class="table">
-  <thead>
-    <th>保存したもの</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <% @user.likes.each do |l| %>
-    <tr>
-      <td><%= image_tag 'https://image.tmdb.org/t/p/w1280' + l.review.poster_path, class: "review_image" %></td>
-      <td><<%= l.review.movie_title %>></td>
-    </tr>
+
+<h2 class="bookmark_top">Bookmark</h2>
+
+<div class="container">
+  
+ 
+    <% @user.likes.each do |like| %>
+      <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "review_image border border-dark"),detail_path(like.review.tmdb) %>
     <% end %>
-  </tbody>
-</table>
 
-
-
-
-<%= link_to "edit", edit_user_path(@user) %>
-<%= link_to "/", root_path %>
 
 </div>
+
+
+<%= link_to "/", root_path %>
+
