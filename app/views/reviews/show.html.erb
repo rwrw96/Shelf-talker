@@ -1,25 +1,62 @@
-<div class="movie-evaluation" data-score="<%= @review.rate %>"></div>
-
-<script>
-  $('.movie-evaluation').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>
-
-<%= @review.movie_title %>
-<%= @review.release_date %>
-<%= @review.overview %>
-<%= image_tag 'https://image.tmdb.org/t/p/w1280' + @review.poster_path, class: "image" %>
-
-<%= @review.title %>
-<%= @review.body %>
-
- <h2><% if current_user.already_liked?(@review) %>
-  <%= link_to "取り消し", destroy_like_path(@review), method: :DELETE%>
-<% else %>
-  <%= link_to '保存', create_like_path(@review), method: :POST %>
-<% end %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= image_tag 'https://image.tmdb.org/t/p/w1280' + @review.poster_path, class: "image" %>
+       <div class="movie-title">
+       <%= @review.movie_title %>
+    </div>
+    </div>
+    <div class="col-8">
+      
+        <%= @review.overview %>
+        
+    </div>
+    
+   
+   
+    
+    
+    
+    <div class="container">
+    <div class="row">
+      <div class="offset-8 col-4">
+        <div class="review_save">
+            <% if current_user.already_liked?(@review) %>
+              <%= link_to "保存済", destroy_like_path(@review), method: :DELETE ,class: "btn btn-success" %>
+            <% else %>
+              <%= link_to '保存しますか？', create_like_path(@review), method: :POST, class: "btn btn-success" %>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+    
+    
+   <div class="row">
+    <div class="col-10">
+      <div class="review_container border">
+        <%= @review.user.name %>
+          <div class="review_title">
+            <%= @review.title %>
+          </div>
+          <div class="review_rate">
+           <div class="movie-evaluation-<%= @review.id %>"></div>
+            <script>
+            $(".movie-evaluation-<%= @review.id %>").empty();
+            $('.movie-evaluation-<%= @review.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              readOnly: true,
+              score: <%= @review.rate %>,
+            });
+            </script>
+          </div>
+          
+          <div class="review_body">
+            <%= @review.body %>
+          </div>
+      </div>
+    </div>
+  </div>

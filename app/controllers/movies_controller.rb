@@ -1,9 +1,11 @@
 class MoviesController < ApplicationController
   require "themoviedb-api"
   Tmdb::Api.language("ja")
-  Tmdb::Api.key("")
+  Tmdb::Api.key(ENV['API_KEY'])
   
   def index
+    top_review = Review.where(rate: 5)
+    @top_reviews = top_review.order("RANDOM()").limit(1)
   end
   
   def show 

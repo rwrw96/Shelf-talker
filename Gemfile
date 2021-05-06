@@ -65,3 +65,11 @@ gem 'devise'
 gem 'bootstrap', '~> 4.1.1'
 gem 'themoviedb-api'
 gem 'jquery-rails'
+gem 'pry-byebug'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+gem 'carrierwave'
+
