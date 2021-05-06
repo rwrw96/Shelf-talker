@@ -98,50 +98,7 @@
     <% end %>
 <% else %>
   <!--評価が5のレビューをランダムにひとつ取得して表示させる-->
-  <% if Review.find_by(rate: 5) %>        
-    <div class="container">
-      <h2 class="top">Top Review</h2>
-       <div class="top_review_wrapper">
-        <div class="row">
-          <% @top_reviews.each do |review| %>
-            <div class="col-1">
-              <%= link_to review.user.name, user_path(review.user.id) %>
-            </div>
-            <div class="top_review_font col-3">
-              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path, class: "top_review_image border border-dark"),detail_path(review.tmdb) %></br>
-              <%= review.movie_title %>
-            </div>
-            <div class="col-8">
-              <div class="row">
-                <div class="top_review_title col-5">
-                  【<%= review.title %>】
-                </div>
-                <div class="col-4">
-                  <div class="movie-evaluation-<%= review.id %>"></div>
-                    <script>
-                    $(".movie-evaluation-<%= review.id %>").empty();
-                    $('.movie-evaluation-<%= review.id %>').raty({
-                      size: 36,
-                      starOff:  '<%= asset_path('star-off.png') %>',
-                      starOn : '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      readOnly: true,
-                      score: <%= review.rate %>,
-                    });
-                    </script>
-                  </div>
-                </div>
-              <div class="top_review_body border">
-                <%= review.body %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="container border-bottom border-dark"></div>
-  <% end %>   
-
+  
   <% @popular_movie = JSON.parse((Tmdb::Movie.popular).to_json) %>
   <h2 class="top">Movies</h2>
     <div class="container">
