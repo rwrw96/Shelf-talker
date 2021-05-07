@@ -63,13 +63,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rename'
 gem 'devise'
 gem 'bootstrap', '~> 4.1.1'
-gem 'themoviedb-api'
 gem 'jquery-rails'
 gem 'pry-byebug'
 
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
+  gem 'themoviedb-api'
 end
 gem 'carrierwave'
 
