@@ -1,9 +1,17 @@
-<%= link_to "マイページ" , user_path(current_user) %>
-  <%= form_tag(root_path, method: :get) do %>
-    <%= search_field_tag :looking_for,nil, placeholder: 'Movie Title...',value: params[:looking_for] %>
-    <% search_field_tag :page, nil, value: params[:page] %>
-    <%= submit_tag '検索' %>
-  <% end %>
+<header>
+  <div class="header_item">
+  <%= link_to "HOME", class: "editlink" %>
+  <%= link_to "Reviews" , reviews_path, class: "editlink" %>
+  <%= link_to "MyPage" , user_path(current_user.id), class: "editlink" %>
+  <%= link_to "Logout" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
+  </div>
+  
+  <div class="logo">
+    ShelfTalker
+  </div>
+</header>
+
+
 
 <!--ジャンル検索用-->
   <% form_tag(root_path, method: :get) do %>
@@ -25,7 +33,11 @@
         </div>
         
  
-        
+        <%= form_tag(root_path, method: :get) do %>
+    <%= search_field_tag :looking_for,nil, placeholder: 'Movie Title...',value: params[:looking_for] %>
+      <% search_field_tag :page, nil, value: params[:page] %>
+    <%= submit_tag '検索' %>
+  <% end %>
   
 
 <!--ジャンル検索結果-->
