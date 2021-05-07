@@ -66,10 +66,11 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'pry-byebug'
 
-gem 'dotenv-rails'
+
 group :production do
   gem 'mysql2'
   gem 'themoviedb-api'
+  gem 'dotenv-rails'
 end
 gem 'carrierwave'
 
