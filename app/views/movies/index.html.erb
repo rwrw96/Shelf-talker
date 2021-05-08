@@ -1,6 +1,6 @@
 <header>
   <div class="header_item">
-  <%= link_to "HOME", class: "editlink" %>
+  <%= link_to "HOME", root_path, class: "editlink" %>
   <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
   <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
   <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
@@ -117,12 +117,14 @@
     <%end%>
   </div>
 </div>
-
-        <%= form_tag(root_path, method: :get) do %>
-    <%= search_field_tag :looking_for,nil, placeholder: 'Movie Title...',value: params[:looking_for] %>
-      <% search_field_tag :page, nil, value: params[:page] %>
-    <%= submit_tag '検索' %>
+<div class="movie_search">
+  <h2 class="top">Search</h2>
+  <%= form_tag(root_path, method: :get) do %>
+    <%= search_field_tag :looking_for,nil, placeholder: 'Movie Title',value: params[:looking_for], size: "80" %>
+    <% search_field_tag :page, nil, value: params[:page] %>
+    <% submit_tag '検索' %>
   <% end %>
+</div>
   <!--評価が5のレビューをランダムにひとつ取得して表示させる-->
   <% if Review.find_by(rate: 5) %>        
     <div class="container">
