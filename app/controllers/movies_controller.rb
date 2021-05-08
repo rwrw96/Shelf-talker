@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
   def index
     if Review.find_by(rate: 5)
       top_review = Review.where(rate: 5)
-      @top_reviews = top_review.limit(1)
+      @top_reviews = top_review.order("RANDOM()").limit(1)
     end
   end
   
