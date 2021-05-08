@@ -35,6 +35,10 @@ header {
 .editlink {
    color: white;
    margin: 0px 10px;
+   transition: all 0.3s;
+   &:hover {
+     letter-spacing: 1px;
+   }
 }
 }
 
@@ -68,4 +72,8 @@ header {
 
 .overview {
   padding: 10px;
+}
+
+.slider img {
+  height: 660px;
 }
