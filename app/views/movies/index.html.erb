@@ -126,7 +126,7 @@
   <% end %>
 </div>
   <!--評価が5のレビューをランダムにひとつ取得して表示させる-->
-  <% if Review.find_by(rate: 5) %>        
+  <% if Review.find_by(rate: 5).exists? %>        
     <div class="container">
       <h2 class="top">Top Review</h2>
        <div class="top_review_wrapper">
