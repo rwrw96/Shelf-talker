@@ -6,7 +6,8 @@ class MoviesController < ApplicationController
   def index
     if Review.find_by(rate: 5)
       top_review = Review.where(rate: 5)
-      @top_reviews = top_review.order("RANDOM()").limit(1)
+      rand = Rails.env.production? ? "RANDOM()" : "rand()"
+      @top_reviews = top_review.order(rand).limit(1)
     end
   end
   
