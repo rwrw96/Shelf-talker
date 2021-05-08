@@ -1,0 +1,38 @@
+<div class="review_list">
+  <h2 class="top">Reviews</h2>
+  <div class="container">
+      
+
+  <div class="row">
+    
+      
+      <% Review.all.each do |review| %>
+        <div class="review_container border">
+          <%= review.user.name %>
+          <div class="review_title">
+          <%= link_to review.title, review_path(review.id) %>
+          </div>
+          <div class="review_rate">
+            <div class="movie-evaluation-<%= review.id %>"></div>
+              <script>
+              $(".movie-evaluation-<%= review.id %>").empty();
+              $('.movie-evaluation-<%= review.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                readOnly: true,
+                score: <%= review.rate %>,
+              });
+              </script>
+            </div>
+                  <div class="review_body">
+                    <%= review.body %>
+                  </div>
+          
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+  

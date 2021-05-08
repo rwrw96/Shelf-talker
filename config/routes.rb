@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   
   root "movies#index"
   
- 
   resources :reviews
   resources :users do
     resource :relationships, only: [:create, :destroy]
