@@ -1,4 +1,21 @@
 class ReviewsController < ApplicationController
+  
+    def edit
+      @review = Review.find(params[:id])
+      if @review.user != current_user
+        redirect_to review_path(@review)
+      end
+    end
+  
+    def update
+      @review = Review.find(params[:id])
+      if @review.update(review_params)
+      redirect_to review_path(@review)
+      else
+        flash[:notice] = "全て入力してください"
+        render :edit
+      end
+    end
     
     def show
       @review = Review.find(params[:id])
@@ -7,8 +24,12 @@ class ReviewsController < ApplicationController
     def create
       @review = Review.new(review_params)
       @review.user_id = current_user.id
-      @review.save!
-      redirect_to review_path(@review)
+      if @review.save
+        redirect_to review_path(@review)
+      else
+        flash[:notice] = "全て入力してください"
+        redirect_to detail_path(@review.tmdb)
+      end
     end
 
   private

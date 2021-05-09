@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-    
+   
     
    <div class="row">
     <div class="col-10">
@@ -53,6 +53,11 @@
             });
             </script>
           </div>
+          <% if @review.user == current_user %>
+          <div class="review_edit">
+          <%= link_to "EDIT", edit_review_path(@review),class: "editlink" %>
+          </div>
+          <% end %>
           
           <div class="review_body">
             <%= @review.body %>

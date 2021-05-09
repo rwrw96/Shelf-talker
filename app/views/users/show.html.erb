@@ -26,10 +26,12 @@
         <% end %>
     <% end %>
     </div>
+    <% if @user == current_user %>
     <div class="offset-1">
       <%= link_to "更新", edit_user_path(@user) %>
     </div>
     </div>
+    <% end %>
      </div>
     
 <% if @user.image_name? %>                                                              
