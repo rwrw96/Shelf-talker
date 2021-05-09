@@ -1,0 +1,48 @@
+ <div class="container">
+<div class="review_error">
+  <%= flash[:notice] %>
+</div>
+
+     
+ <%= form_with model: @review, local: true do |f| %>
+        <div class="row">
+        <div class="col-6">
+          <label>レビュータイトル</label>
+          <%= f.text_field :title, class: "form-control border border-dark" %>
+          </div>
+        <div class="col-6">
+           <label>評価</label></br>
+          <div id="evaluate_stars">
+            <%= f.hidden_field :rate, id: :evaluate_stars %>
+          </div>
+         
+            <script>
+             $("#evaluate_stars").empty();
+             $('#evaluate_stars').raty({
+              half: true,
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'review[rate]' 
+            }); 
+          </script>
+                
+          <%= f.hidden_field :movie_title, :value => @review.movie_title %>
+          <%= f.hidden_field :release_date, :value => @review.release_date %>
+          <%= f.hidden_field :overview, :value => @review.overview %>
+          <%= f.hidden_field :poster_path, :value => @review.poster_path %>
+          <%= f.hidden_field :tmdb, :value => @review.tmdb %>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-10">
+          <label>本文</label>
+          <%= f.text_area :body, class: "form-control border border-dark", rows: "5" %>
+          </div>
+          <div class="col-6">
+          <%= f.submit "レビュー", class: "btn btn-primary" %>
+          </div>
+          </div>
+          <% end %>
+      </div>
+    </div></div>
