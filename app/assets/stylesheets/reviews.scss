@@ -107,39 +107,14 @@
   }
 }
 .reviews_title {
-  font-size: 30px;
-  position: relative;
-  overflow: hidden;
-  & span {
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
-    transition: 0.3s;
-    color: black;
-  }
-  }
-.reviews_wrapper{
-  .editlink{
-    color: black;
-  }
-&:hover span{
-  transform: none;
-  text-align: center;
-  z-index: -1;
+  font-size: 20px;
   font-weight: bold;
-}
-&:hover .click-before {
-  transition: all 0.2s;
-  opacity: 0;
-}
- .review_body {
+  }
+
+ .reviews_body {
    margin-bottom: 100px;
  }
-}
+
 
 .review_font {
   font-size: 15px;

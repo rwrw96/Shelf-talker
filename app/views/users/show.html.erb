@@ -1,4 +1,15 @@
-<%= link_to "sign_out" ,  destroy_user_session_path, method: :delete %>
+<header>
+  <div class="header_item">
+  <%= link_to "HOME", root_path, class: "editlink" %>
+  <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
+  <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
+  <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
+  </div>
+  
+  <div class="logo">
+    ShelfTalker
+  </div>
+</header>
 
 
   <div class="row">
@@ -30,13 +41,10 @@
     <div class="offset-1">
       <%= link_to "更新", edit_user_path(@user) %>
     </div>
+      <% end %>
     </div>
-    <% end %>
      </div>
     
-<% if @user.image_name? %>                                                              
-<%#= image_tag @user.image_name.url %>
-<% end %>
   
   <div class="border-left border-dark col-8">
      <h2 class="top">Reviews</h2>
@@ -99,5 +107,5 @@
 </div>
 
 
-<%= link_to "/", root_path %>
+
 
