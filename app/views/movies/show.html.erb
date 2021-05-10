@@ -1,4 +1,16 @@
 <% detail = JSON.parse((Tmdb::Movie.detail(params[:id])).to_json) %>
+<header>
+  <div class="header_item">
+  <%= link_to "HOME", root_path, class: "editlink" %>
+  <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
+  <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
+  <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
+  </div>
+  
+  <div class="logo">
+    ShelfTalker
+  </div>
+</header>
 <div class="review_error">
  <%= flash[:notice] %>
  </div>

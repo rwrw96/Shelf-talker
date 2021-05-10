@@ -1,4 +1,15 @@
-<%= link_to "sign_out" ,  destroy_user_session_path, method: :delete %>
+<header>
+  <div class="header_item">
+  <%= link_to "HOME", root_path, class: "editlink" %>
+  <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
+  <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
+  <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
+  </div>
+  
+  <div class="logo">
+    ShelfTalker
+  </div>
+</header>
 
 
   <div class="row">
@@ -30,13 +41,10 @@
     <div class="offset-1">
       <%= link_to "更新", edit_user_path(@user) %>
     </div>
+      <% end %>
     </div>
-    <% end %>
      </div>
     
-<% if @user.image_name? %>                                                              
-<%#= image_tag @user.image_name.url %>
-<% end %>
   
   <div class="border-left border-dark col-8">
      <h2 class="top">Reviews</h2>
@@ -45,8 +53,8 @@
       
      <% @user.reviews.each do |review| %>
          
-            <div class="my_movie-title col-3">
-              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "review_image border border-dark"), detail_path(review.tmdb) %></br>
+            <div class="my_hover-darken my_movie-title col-3">
+              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
                 <%= review.movie_title %> 
             </div>
             <div class="col-8">
@@ -89,15 +97,17 @@
 <h2 class="bookmark_top">Bookmark</h2>
 
 <div class="container">
-  
+  <div class="row">
  
     <% @user.likes.each do |like| %>
-      <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "review_image border border-dark"),detail_path(like.review.tmdb) %>
+      <div class="bookmark_hover-darken">
+      <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "bookmark_review_image border border-dark"),detail_path(like.review.tmdb) %>
+      </div>
     <% end %>
-
+</div>
 
 </div>
 
 
-<%= link_to "/", root_path %>
+
 
