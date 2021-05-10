@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
   require "themoviedb-api"
   Tmdb::Api.language("ja")
   Tmdb::Api.key(ENV['API_KEY'])

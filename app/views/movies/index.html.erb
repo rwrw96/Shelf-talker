@@ -1,11 +1,19 @@
 <header>
+  <% if user_signed_in? %>
   <div class="header_item">
   <%= link_to "HOME", root_path, class: "editlink" %>
   <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
   <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
   <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
   </div>
-  
+  <% else %>
+  <div class="header_item">
+  <%= link_to "HOME", root_path, class: "editlink" %>
+  <%= link_to "ABOUT" , class: "editlink" %>
+  <%= link_to "SIGNIN" , new_user_session_path, class: "editlink" %>
+  <%= link_to "SIGNUP" ,  new_user_registration_path, class: "editlink" %>
+  </div>
+  <% end %>
   <div class="logo">
     ShelfTalker
   </div>
