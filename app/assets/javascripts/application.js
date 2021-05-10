@@ -16,4 +16,3 @@
 //= require activestorage
 //= require_tree .
 //= require jquery.raty.js
-
