@@ -41,11 +41,35 @@ header {
    }
 }
 }
-
 .image {
   height: 360px;
   width: 270px;
-  // padding-bottom: 20px;
+}
+.hover-darken {
+.image {
+  height: 360px;
+  width: 270px;
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+}
+.hover-darken {
+  &::before {
+    content: "";
+    position: absolute;
+    top: -4%;
+    left: 0;
+    height: 396px;
+    width: 297px;
+    z-index: 1;
+    transition: background-color 0.8s;
+    pointer-events: none;
+  }
+  &:hover::before {
+    background-color: rgba(0,0,0,0.5);
+  }
 }
 .images {
   height: 1000px;

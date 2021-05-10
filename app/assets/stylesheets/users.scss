@@ -28,3 +28,55 @@ ul {
 .user_introduction {
   margin-bottom: 40px;
 }
+
+.my_review_image {
+  height: 170px;
+  width: 150px;
+}
+
+.my_hover-darken {
+   &:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 19%;
+    height: 170px;
+    width: 150px;
+    z-index: 1;
+    transition: background-color 0.8s;
+    pointer-events: none;
+  }
+  &:hover::before {
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+
+.bookmark_review_image {
+  height: 170px;
+  width: 150px;
+}
+
+.bookmark_hover-darken {
+   &:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    height: 170px;
+    width: 150px;
+    z-index: 1;
+    transition: background-color 0.8s;
+    pointer-events: none;
+  }
+  &:hover::before {
+    background-color: rgba(0,0,0,0.5);
+  }
+}

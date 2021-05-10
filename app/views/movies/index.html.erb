@@ -54,10 +54,11 @@
         <% i = 0 %>
         <% while i < movieinfo['table']['results'].count %>
           <div class="col-3">
-            
+            <div class="hover-darken">
             <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "image"),detail_path(movieinfo['table']['results'][i]['table']['id']) %>
             <%end%>
+            </div>
             <div class="movie-title">
             <%if movieinfo['table']['results'][i]['table']['title'].present?%>
               <%= movieinfo['table']['results'][i]['table']['title'] %>
@@ -91,10 +92,11 @@
         <% while i < movieinfo['table']['results'].count %>
          
           <div class="col-3">
-           
+           <div class="hover-darken">
             <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "image"),detail_path(movieinfo['table']['results'][i]['table']['id']) %>
             <%end%>
+            </div>
              <div class="movie-title">
             <%if movieinfo['table']['results'][i]['table']['title'].present?%>
               <%= movieinfo['table']['results'][i]['table']['title'] %>
@@ -186,10 +188,11 @@
         <% i = 0 %>
         <% while i < @popular_movie['table']['results'].count %>
           <div class="col-3">
-            
+            <div class="hover-darken">
             <% if @popular_movie['table']['results'][i]['table']['poster_path'].present? %>
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + @popular_movie['table']['results'][i]['table']['poster_path'], class: "image"), detail_path(@popular_movie['table']['results'][i]['table']['id']) %>
             <%end%>
+            </div>
             <div class="movie-title">
             <%if @popular_movie['table']['results'][i]['table']['title'].present?%>
               <%= @popular_movie['table']['results'][i]['table']['title'] %>
