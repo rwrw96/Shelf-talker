@@ -53,8 +53,8 @@
       
      <% @user.reviews.each do |review| %>
          
-            <div class="my_movie-title col-3">
-              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "review_image border border-dark"), detail_path(review.tmdb) %></br>
+            <div class="my_hover-darken my_movie-title col-3">
+              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
                 <%= review.movie_title %> 
             </div>
             <div class="col-8">
@@ -97,12 +97,14 @@
 <h2 class="bookmark_top">Bookmark</h2>
 
 <div class="container">
-  
+  <div class="row">
  
     <% @user.likes.each do |like| %>
-      <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "review_image border border-dark"),detail_path(like.review.tmdb) %>
+      <div class="bookmark_hover-darken">
+      <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "bookmark_review_image border border-dark"),detail_path(like.review.tmdb) %>
+      </div>
     <% end %>
-
+</div>
 
 </div>
 

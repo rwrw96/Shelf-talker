@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:show, :edit, :index]
     def edit
       @review = Review.find(params[:id])
       if @review.user != current_user

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:index, :show, :edit]
   def edit
     @user = User.find(params[:id])
     if @user != current_user
