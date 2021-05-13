@@ -9,8 +9,12 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+       redirect_to user_path(@user.id)
+    else
+       flash[:alert] = "Nameが未入力です"
+       render :edit
+    end
   end
   
   def follows

@@ -195,7 +195,7 @@
             </div>
             <div class="movie-title">
             <%if @popular_movie['table']['results'][i]['table']['title'].present?%>
-              <%= @popular_movie['table']['results'][i]['table']['title'] %>
+              <%= link_to @popular_movie['table']['results'][i]['table']['title'], detail_path(@popular_movie['table']['results'][i]['table']['id']), class: "editlink" %>
             <% end %>  
             </div>
             <div class="release_date">

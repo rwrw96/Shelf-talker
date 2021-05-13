@@ -16,7 +16,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def create
     super
-    WelcomeMailer.with(user: @user).welcome_email.deliver_now
+    if @user.save
+      WelcomeMailer.with(user: @user).welcome_email.deliver_now
+    end
   end
 
   # GET /resource/edit
