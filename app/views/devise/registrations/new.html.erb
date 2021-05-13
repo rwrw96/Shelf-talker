@@ -8,12 +8,12 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, class: "form-control", id: 'registration_name' %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: 'registration_email' %>
   </div>
 
   <div class="field">
@@ -21,12 +21,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 桁)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "registration_password" %>
   </div>
 
   <div class="field">
     <%= f.label :password %>(確認用)<br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "registration_password_confirmation" %>
   </div>
 
   <div class="actions">

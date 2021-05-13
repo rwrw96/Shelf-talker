@@ -83,6 +83,10 @@ header {
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  .editlink {
+    color: black;
+    text-decoration: none;
+  }
 }
 
 .release_date {
