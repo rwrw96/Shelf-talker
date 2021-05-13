@@ -1,5 +1,12 @@
 <header>
-  <% if user_signed_in? %>
+  <% if current_user.admin? %>
+  <div class="header_item">
+  <%= link_to "ADMIN USERS", admin_users_path, class: "editlink" %>
+  <%= link_to "ADMIN REVIEWS" , admin_reviews_path, class: "editlink" %>
+  <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
+  <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
+  </div>
+  <% elsif user_signed_in? %>
   <div class="header_item">
   <%= link_to "HOME", root_path, class: "editlink" %>
   <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
