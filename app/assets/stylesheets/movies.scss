@@ -138,3 +138,65 @@ header {
   margin-top: 10px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .movie_index {
+    overflow: hidden;
+  }
+  .genre_wrapper {
+  font-size: 5px;
+  }
+  .slider img {
+    height: 360px;
+  }
+   .hover-darken {
+    .image {
+      height: 100px;
+      width: 75px;
+      transition: transform 0.3s;
+    }
+  }
+  .hover-darken {
+  &::before {
+    display: none;
+  }
+}
+.movie-title {
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 3px;
+  }
+  .movie_show {
+    .image {
+      height: 180px;
+      width: 120px;
+    }
+    .overview {
+      font-size: 10px;
+    }
+    label {
+      font-size: 10px;
+    }
+    img {
+      height: 10px;
+      width: 6px;
+    }
+    #review_title {
+      height: 20px;
+    }
+    #review_body {
+      height: 50px;
+    }
+    .btn {
+      font-size: 10px;
+      height: 25px;
+      width: 55px;
+      margin-top: 15px;
+      padding: 0px;
+    }
+    .col-10 {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+}

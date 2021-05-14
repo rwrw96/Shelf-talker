@@ -6,6 +6,13 @@
   padding: 120px 0px;
 }
 
+// .my_reviews_wrapper {
+//     display: inline-block;
+//   }
+// .border-left {
+//     display: inline-block;
+//   }
+
 .my_movie-title {
   font-size: 15px;
   font-weight: bold;
@@ -43,7 +50,7 @@ ul {
     content: "";
     position: absolute;
     top: 0;
-    left: 19%;
+    left: 15%;
     height: 170px;
     width: 150px;
     z-index: 1;
@@ -88,4 +95,48 @@ ul {
 
 .user_introduction {
   margin-bottom: 30px;
+}
+
+@media screen and (max-width: 320px) {
+  h2 {
+    font-size: 20px;
+  }
+  .border-left {
+    display: none;
+  }
+  .my_profile_wrapper {
+    .col-4 {
+      flex: 100%;
+      max-width: 100%;
+    }
+    .offset-1 {
+      margin: 10%;
+    }
+    .col-7 {
+      flex: 100%;
+      max-width: 100%;
+    }
+    .my_hover-darken {
+      img {
+        height: 170px;
+        width: 150px;
+      }
+    }
+    .col-3 {
+      flex: 100%;
+      max-width: 100%;
+    }
+    .review_body {
+      font-size: 12px;
+      margin: 0px;
+    }
+  }
+  .bookmark_review_image {
+       height: 120px;
+        width: 90px;
+  }
+  .bookmark_top {
+  text-align: center;
+  padding: 50px 0px;
+}
 }
