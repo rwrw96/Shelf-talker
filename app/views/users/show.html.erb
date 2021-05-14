@@ -16,12 +16,15 @@
     <div class="col-4">
       <h2 class="top">Profile</h2>
       <div class="row">
-        <div class="offset-1 col-3">
-          <%= @user.name %>
-        </div>
-        <div class="col-8">
-          <%= @user.introduction %>
-        </div>
+         <div class="offset-1">
+           <div class="user_name">
+             <%= @user.name %>
+           </div>
+            <div class="border my_page_border"></div>
+            <div class="user_introduction">
+              <%= @user.introduction %>
+            </div>
+          </div>
       </div>
       <div class="row">
         <div class="offset-1">
@@ -57,7 +60,7 @@
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
                 <%= review.movie_title %> 
             </div>
-            <div class="col-8">
+            <div class="offset-1 col-7">
               <div class="review_title">
                 <%= link_to review.title, review_path(review.id) %>
               </div>

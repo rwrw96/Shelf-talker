@@ -154,7 +154,7 @@
                 <div class="top_review_title col-5">
                   <span>Click here!</span><div class="click-before"><%= link_to review.title, review_path(review.id), class: "editlink" %></div>
                 </div>
-                <div class="col-4">
+                <div class="top_review_rate col-5">
                   <div class="movie-evaluation-<%= review.id %>"></div>
                     <script>
                     $(".movie-evaluation-<%= review.id %>").empty();
