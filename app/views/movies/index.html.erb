@@ -1,3 +1,4 @@
+<div class="movie_index">
 <header>
   <% if user_signed_in? %>
   <div class="header_item">
@@ -142,14 +143,14 @@
        <div class="top_review_wrapper">
         <div class="row">
           <% @top_reviews.each do |review| %>
-            <div class="col-1">
+            <div class="top_review_user col-1">
               <%= link_to review.user.name, user_path(review.user.id),class: "editlink" %>
             </div>
-            <div class="top_review_font col-3">
+            <div class="top_review_font col-4">
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path, class: "top_review_image border border-dark"),detail_path(review.tmdb) %></br>
               <%= review.movie_title %>
             </div>
-            <div class="col-8">
+            <div class="col-7">
               <div class="row">
                 <div class="top_review_title col-5">
                   <span>Click here!</span><div class="click-before"><%= link_to review.title, review_path(review.id), class: "editlink" %></div>
@@ -211,5 +212,5 @@
     <% end %>
 
 
-    
+    </div>
   Copyright（c）2015 18Months Srl
