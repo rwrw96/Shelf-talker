@@ -37,7 +37,7 @@ h4 {
   font-family: 'Anton', sans-serif;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 425px) {
   header {
     .editlink {
         color: black;

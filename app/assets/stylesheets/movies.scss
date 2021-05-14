@@ -139,7 +139,7 @@ header {
   }
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 425px) {
   .movie_index {
     overflow: hidden;
   }
