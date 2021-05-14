@@ -139,7 +139,7 @@ header {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) {
   .movie_index {
     overflow: hidden;
   }
@@ -147,7 +147,7 @@ header {
   font-size: 5px;
   }
   .slider img {
-    height: 360px;
+    height: 520px;
   }
    .hover-darken {
     .image {
