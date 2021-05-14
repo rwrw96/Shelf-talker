@@ -41,10 +41,12 @@ header {
    }
 }
 }
+
 .image {
   height: 360px;
   width: 270px;
 }
+
 .hover-darken {
 .image {
   height: 360px;
@@ -106,11 +108,33 @@ header {
   height: 660px;
 }
 
-.movie_search{
+.movie_search {
   text-align: center;
   margin: 100px 0px;
-  .top {
-    // margin-bottom: 50px;
-  }
 }
 
+@media screen and (max-width: 768px) {
+  .slider img {
+    height: 325px;
+  }
+  
+  .hover-darken {
+    .image {
+      height: 250px;
+      width: 150px;
+      transition: transform 0.3s;
+    }
+  }
+  
+  .hover-darken {
+  &::before {
+    display: none;
+  }
+}
+  
+  .movie-title {
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+  }
+}

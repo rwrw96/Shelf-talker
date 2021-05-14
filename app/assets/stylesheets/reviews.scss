@@ -29,11 +29,6 @@
 }
 
 
-
-
-
-
-
 .top_review_wrapper {
   margin-bottom: 50px;
 }
@@ -147,4 +142,10 @@
 .review_font {
   font-size: 15px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+ .top_review_title {
+  font-size: 25px;
+ }
 }
