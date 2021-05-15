@@ -14,12 +14,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
   
-  def create
-    super
-    if @user.save
-      WelcomeMailer.with(user: @user).welcome_email.deliver_now
-    end
-  end
+  # def create
+  #   super
+  #   # if @user.save
+  #   #   WelcomeMailer.with(user: @user).welcome_email.deliver_now
+  #   # end
+  # end
 
   # GET /resource/edit
   # def edit
