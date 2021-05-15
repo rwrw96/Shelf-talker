@@ -103,7 +103,7 @@ Rails.application.configure do
   authentication:       'plain',
   enable_starttls_auto: true }
 
-  # config.action_mailer.default_url_options = { protocol: 'http' , host: '52.194.83.6' }
+  config.action_mailer.default_url_options = { protocol: 'http' , host: '52.194.83.6' }
   # config.action_mailer.raise_delivery_errors = true
 
   # config.action_mailer.smtp_settings = {
