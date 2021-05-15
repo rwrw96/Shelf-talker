@@ -102,9 +102,8 @@ Rails.application.configure do
   # password:             'jybqjxsgpwmultlq',
   # authentication:       'plain',
   # enable_starttls_auto: true }
-  
+
   config.action_mailer.default_url_options = { protocol: 'http' , host: '52.194.83.6' }
-  # mail setting
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.smtp_settings = {
@@ -112,8 +111,8 @@ Rails.application.configure do
     address: "smtp.gmail.com",
     port: 587,
     domain: 'smtp.gmail.com',
-    user_name: ENV['user_name'],
-    password: ENV['password'], 
+    user_name: 'watabetesuto@gmail.com',
+    password: 'jybqjxsgpwmultlq',
     authentication: 'login'
   }
   

@@ -1,6 +1,9 @@
-<p>Welcome <%= @email %>!</p>
+<h2>Welcome <%= @user.name %>!</h2>
 
-<p>You can confirm your account email through the link below:</p>
+<h4>新規登録はまだ完了しておりません</h4>
+<h5>以下のリンクから登録完了してください</h5>
 
-<%#= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+
+
+<p>please login</p>
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
