@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def withdraw
     @user = User.find(params[:id])
     @guest_user = User.find_by(email: "guest@example.com")
-    unless @guest_user
+    unless current_user == @guest_user
       @user.update(is_valid: false)
       reset_session
       redirect_to root_path
