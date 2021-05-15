@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   end
   
   patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
-  put '/withdraw' => 'users#withdraw'
   
     namespace :admin do
     resources :users, only: [:index,:destroy]
