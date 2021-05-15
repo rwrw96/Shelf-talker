@@ -113,7 +113,7 @@ Rails.application.configure do
     domain: 'smtp.gmail.com',
     user_name: ENV['user_name'],
     password: ENV['password'], 
-    authentication: 'login'
+    authentication: 'plain'
   }
   
 end
