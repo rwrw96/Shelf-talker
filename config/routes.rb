@@ -25,9 +25,12 @@ Rails.application.routes.draw do
     namespace :admin do
     resources :users, only: [:index,:destroy]
   end
+  
+  resource :homes, only: [:about, :welcome]
+  
+  
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
   get "movies/:id" => "movies#show", as: "detail"
-  get "homes/about" => "homes#about"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
