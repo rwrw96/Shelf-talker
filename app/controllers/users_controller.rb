@@ -35,6 +35,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
   
+  def withdraw
+    @user = User.find(params[:id])
+    @user.update(is_valid: false)
+    reset_session
+    redirect_to root_path
+  end
+  
   private
   def user_params
     params.require(:user).permit(:name,:introduction,:image_name)
