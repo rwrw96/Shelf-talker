@@ -1,3 +1,4 @@
+<!--ユーザーと管理人とログアウトしているかで表示を変える-->
 <div class="movie_index">
 <header>
   <% if user_signed_in? %>
@@ -29,7 +30,7 @@
     <% submit_tag '検索' %>
   <% end %>
  
-
+<!--ジャンル一覧-->
       <div class="genre_wrapper">
           <%= link_to "#Action", "/?utf8=%E2%9C%93&genre=28&commit=%E6%A4%9C%E7%B4%A2"      ,class: "editlink" %>
           <%= link_to "#Adventure", "/?utf8=%E2%9C%93&genre=12&commit=%E6%A4%9C%E7%B4%A2"  ,class: "editlink" %>
@@ -56,16 +57,19 @@
         <% while i < movieinfo['table']['results'].count %>
           <div class="col-3">
             <div class="hover-darken">
+            <!--ポスターがあるなら表示-->
             <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "image"),detail_path(movieinfo['table']['results'][i]['table']['id']) %>
             <%end%>
             </div>
             <div class="movie-title">
+            <!--タイトルがあるなら表示-->
             <%if movieinfo['table']['results'][i]['table']['title'].present?%>
               <%= movieinfo['table']['results'][i]['table']['title'] %>
             <%end%>
             </div>
             <div class="release_date">
+            <!--リリース日があるなら表示-->
             <%if movieinfo['table']['results'][i]['table']['release_date'].present?%>
               <%= movieinfo['table']['results'][i]['table']['release_date'] %>
             <%end%>
@@ -75,9 +79,10 @@
         <%end%>
     </div>
   </div>
-  
-<% elsif params[:looking_for].present? %>
+
 <!--検索結果-->
+<% elsif params[:looking_for].present? %>
+
   
   <% movie = JSON.parse(Tmdb::Search.movie(params[:looking_for]).to_json) %>
   <% movie["table"]["total_pages"] %>
@@ -128,6 +133,7 @@
     <%end%>
   </div>
 </div>
+<!--映画検索フォーム-->
 <div class="movie_search">
   <h2 class="top">Search</h2>
   <%= form_tag(root_path, method: :get) do %>
@@ -153,9 +159,12 @@
             <div class="col-7">
               <div class="row">
                 <div class="top_review_title col-5">
+                  <!--レビューのタイトルを表示-->
+                  <!--マウスホバー時<span>を表示-->
                   <span>Click here!</span><div class="click-before"><%= link_to review.title, review_path(review.id), class: "editlink" %></div>
                 </div>
                 <div class="top_review_rate col-5">
+                  <!--評価(rate)をraty.jsを使って表示-->
                   <div class="movie-evaluation-<%= review.id %>"></div>
                     <script>
                     $(".movie-evaluation-<%= review.id %>").empty();
@@ -171,6 +180,7 @@
                   </div>
                 </div>
               <div class="top_review_body">
+                <!--レビューの内容表示-->
                 <%= review.body %>
               </div>
             </div>
@@ -179,7 +189,7 @@
       </div>
     </div>
     <div class="container border-bottom border-dark"></div>
-  <% end %>   
+  <% end %> 
 
   
   <h2 class="top">Movies</h2>
