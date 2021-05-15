@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @guest_user = User.find_by(email: "guest@example.com")
   end
   
   def index
@@ -37,9 +38,14 @@ class UsersController < ApplicationController
   
   def withdraw
     @user = User.find(params[:id])
-    @user.update(is_valid: false)
-    reset_session
-    redirect_to root_path
+    @guest_user = User.find_by(email: "guest@example.com")
+    unless @guest_user
+      @user.update(is_valid: false)
+      reset_session
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
   
   private
