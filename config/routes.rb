@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     get :follows, on: :member 
     get :followers, on: :member 
   end
+  
+  patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
+  put '/withdraw' => 'users#withdraw'
+  
     namespace :admin do
     resources :users, only: [:index,:destroy]
   end
