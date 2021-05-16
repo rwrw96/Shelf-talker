@@ -78,3 +78,5 @@ group :production do
 end
 gem 'carrierwave'
 gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'data-confirm-modal'
+gem 'jquery-rails'

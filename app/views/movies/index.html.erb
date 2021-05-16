@@ -95,7 +95,7 @@
 <% else %>
 <!--人気映画20件取得-->
 <!--15ページの中からランダムで表示-->
-<% @popular_movie = JSON.parse((Tmdb::Movie.popular(page: rand(15))).to_json) %>
+<% @popular_movie = JSON.parse((Tmdb::Movie.popular(page: rand(1..15))).to_json) %>
 <!--人気映画をslickで表示-->
 <div class="sec_inner">
   <div class="slider">

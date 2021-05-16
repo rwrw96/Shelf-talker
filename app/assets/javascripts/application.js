@@ -16,3 +16,5 @@
 //= require activestorage
 //= require_tree .
 //= require jquery.raty.js
+//= require bootstrap-sprockets
+//= require data-confirm-modal
