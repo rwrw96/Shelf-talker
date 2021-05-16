@@ -1,0 +1,7 @@
+ <div class="review_save">
+  <% if current_user.already_liked?(@review) %>
+    <%= link_to "保存済", destroy_like_path(@review), method: :DELETE, remote: true ,class: "btn btn-success" %>
+  <% else %>
+    <%= link_to '保存しますか？', create_like_path(@review), method: :POST, remote: true, class: "btn btn-success" %>
+  <% end %>
+</div>

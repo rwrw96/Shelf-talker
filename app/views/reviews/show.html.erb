@@ -13,25 +13,7 @@
         
     </div>
     
-   
-   
-    
-    
-    
-    <div class="container">
-    <div class="row">
-      <div class="offset-9 col-3">
-        <div class="review_save">
-            <% if current_user.already_liked?(@review) %>
-              <%= link_to "保存済", destroy_like_path(@review), method: :DELETE ,class: "btn btn-success" %>
-            <% else %>
-              <%= link_to '保存しますか？', create_like_path(@review), method: :POST, class: "btn btn-success" %>
-            <% end %>
-          </div>
-      </div>
-    </div>
-  </div>
-   
+    <%= render "likes/like", review: @review %>
     
    <div class="row">
     <div class="col-12">
