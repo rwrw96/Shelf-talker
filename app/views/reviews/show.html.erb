@@ -56,7 +56,10 @@
           </div>
           <% if @review.user == current_user %>
           <div class="review_edit">
-          <%= link_to "EDIT", edit_review_path(@review),class: "editlink" %>
+          <%= link_to "編集", edit_review_path(@review),class: "editlink" %>
+          <%= link_to "削除", review_path(@review), method: :delete, data: {  confirm: "削除すると保存されていた映画も削除されます",
+                                                                              cancel: "やめる",
+                                                                              commit: "削除"}, title: "削除しますか？", class: "editlink" %>
           </div>
           <% end %>
           
