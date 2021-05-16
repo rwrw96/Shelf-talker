@@ -124,7 +124,7 @@
   
 .review_edit {
   display: inline-block;
-  margin-left: 500px;
+  margin-left: 600px;
   .editlink {
     color: black;
   }
@@ -235,5 +235,11 @@
   .review_container {
   font-size: 10px;
   margin: 10px;
+}
+.review_title_form {
+  padding: 0px;
+}
+.review_body_form {
+  padding: 0px;
 }
 }
