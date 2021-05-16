@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @admin_user = User.find_by(admin: true)
   end
 
   def withdraw

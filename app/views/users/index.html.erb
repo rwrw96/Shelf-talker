@@ -9,12 +9,13 @@
             <th class="th3">introduction</th>
           </div>
         <% @users.each do |user| %>
+        <% if user != @admin_user %>
         <tbody>
         <td><%= link_to user.name, user_path(user.id) %></td>
-         
           <td><%= "レビュー数: #{user.reviews.count}" %></td>
           <td><%= user.introduction %></td>
           </tbody>
+          <% end %>
         <% end %>
         </table>
        
