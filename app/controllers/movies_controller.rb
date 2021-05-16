@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
       rand = Rails.env.production? ? "RAND()" : "RANDOM()"
       @top_reviews = top_review.order(rand).limit(1)
     end
+    # @random_num = rand(10)
   end
   
   def show 
