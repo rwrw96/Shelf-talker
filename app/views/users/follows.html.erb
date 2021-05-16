@@ -1,7 +1,7 @@
 <div class="container">
-    
       <div class="users">
         <h2 class="top">Follow</h2>
+        <% if @user.followings.exists? %>
         <table class="table table-hover">
           <div class="thead">
             <th class="th1">follow</th>
@@ -16,6 +16,10 @@
           </tbody>
         <% end %>
         </table>
-       
+         <% else %>
+        <div class="followings_empty offset-3 col-6">
+          <h5>現在フォローしているユーザーはいません</h5>
+        </div>
+        <% end %>
     </div>
 </div>
