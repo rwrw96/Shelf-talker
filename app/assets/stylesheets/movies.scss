@@ -3,8 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 header {
   height: 200px;
-  padding: 25px 0px;
-  // background-color: blue;
+  padding: 25px 0px; // background-color: blue;
 }
 
 .header_item {
@@ -32,14 +31,14 @@ header {
   font-size: 15px;
   background-color: red;
   padding: 15px 0px;
-.editlink {
-   color: white;
-   margin: 0px 10px;
-   transition: all 0.3s;
-   &:hover {
-     letter-spacing: 1px;
-   }
-}
+  .editlink {
+    color: white;
+    margin: 0px 10px;
+    transition: all 0.3s;
+    &:hover {
+      letter-spacing: 1px;
+    }
+  }
 }
 
 .image {
@@ -48,15 +47,16 @@ header {
 }
 
 .hover-darken {
-.image {
-  height: 360px;
-  width: 270px;
-  transition: transform 0.3s;
-  &:hover {
-    transform: scale(1.1);
+  .image {
+    height: 360px;
+    width: 270px;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
-}
+
 .hover-darken {
   &::before {
     content: "";
@@ -70,12 +70,14 @@ header {
     pointer-events: none;
   }
   &:hover::before {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
+
 .images {
   height: 1000px;
 }
+
 .movie_image {
   height: 300px;
   width: 300px;
@@ -93,7 +95,7 @@ header {
 
 .release_date {
   font-size: 5px;
-   padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .btn {
@@ -117,7 +119,7 @@ header {
   .slider img {
     height: 325px;
   }
-  
+
   .hover-darken {
     .image {
       height: 250px;
@@ -125,17 +127,17 @@ header {
       transition: transform 0.3s;
     }
   }
-  
+
   .hover-darken {
-  &::before {
-    display: none;
+    &::before {
+      display: none;
+    }
   }
-}
-  
+
   .movie-title {
-  font-size: 10px;
-  font-weight: bold;
-  margin-top: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 10px;
   }
 }
 
@@ -144,15 +146,15 @@ header {
     overflow: hidden;
   }
   .genre_wrapper {
-  font-size: 5px;
-   .editlink {
-     margin: 0px 10px;
-   }
+    font-size: 5px;
+    .editlink {
+      margin: 0px 10px;
+    }
   }
   .slider img {
     height: 520px;
   }
-   .hover-darken {
+  .hover-darken {
     .image {
       height: 100px;
       width: 75px;
@@ -160,14 +162,14 @@ header {
     }
   }
   .hover-darken {
-  &::before {
-    display: none;
+    &::before {
+      display: none;
+    }
   }
-}
-.movie-title {
-  font-size: 10px;
-  font-weight: bold;
-  margin-top: 3px;
+  .movie-title {
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 3px;
   }
   .movie_show {
     .image {
