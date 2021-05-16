@@ -97,6 +97,23 @@ ul {
   margin-bottom: 30px;
 }
 
+.users {
+  .border {
+    margin: 50px 0px;
+  }
+  .th1 {
+    width: 15%;
+  }
+  .th2 {
+    width: 15%;
+  }
+}
+
+table {
+border: 2px #000000 solid;
+}
+
+
 @media screen and (max-width: 425px) {
   h2 {
     font-size: 20px;
