@@ -19,7 +19,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -58,14 +58,29 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  
+
   config.action_mailer.delivery_method = :smtp
+
+  # config.action_mailer.smtp_settings = {
+  # address:              'smtp.gmail.com',
+  # port:                 587,
+  # domain:               'gmail.com',
+  # user_name:            'watabetesuto@gmail.com',
+  # password:             'jybqjxsgpwmultlq',
+  # authentication:       'plain',
+  # enable_starttls_auto: true }
+
+  config.action_mailer.default_url_options = { protocol: 'https', host: '991b06fff09343aba3d4f5ef1aec7751.vfs.cloud9.ap-northeast-1.amazonaws.com/' }
+  # mail setting
+  config.action_mailer.raise_delivery_errors = true
+
   config.action_mailer.smtp_settings = {
-  address:              'smtp.gmail.com',
-  port:                 587,
-  domain:               'gmail.com',
-  user_name:            'watabetesuto@gmail.com',
-  password:             'jybqjxsgpwmultlq',
-  authentication:       'plain',
-  enable_starttls_auto: true }
+    enable_starttls_auto: true,
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: 'smtp.gmail.com',
+    user_name: ENV['user_name'],
+    password: ENV['google_password'],
+    authentication: 'login',
+  }
 end

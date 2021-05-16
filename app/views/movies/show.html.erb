@@ -1,4 +1,10 @@
 <% detail = JSON.parse((Tmdb::Movie.detail(params[:id])).to_json) %>
+
+<div class="review_error">
+ <%= flash[:notice] %>
+ </div>
+ 
+ <div class="movie_show">
   <div class="container">
     <div class="row">
       <div class="col-4">
@@ -23,7 +29,7 @@
       
       </div>
       
-      <div class="col-8">
+      <div class="offset-1 col-7">
         <%if detail['table']['overview'].present?%>
         <lable>あらすじ</lable>
         <div class= "overview border rounded">
@@ -35,12 +41,12 @@
         <div class="row">
         <div class="col-6">
           <label>レビュータイトル</label>
-          <%= f.text_field :title, class: "form-control border border-dark" %>
+          <%= f.text_field :title, class: "review_title_form form-control border border-dark", id: "review_title" %>
           </div>
         <div class="col-6">
            <label>評価</label></br>
           <div id="evaluate_stars">
-            <%= f.hidden_field :rate, id: :evaluate_stars %>
+            <%= f.hidden_field :rate, id: :evaluate_star %>
           </div>
          
             <script>
@@ -54,17 +60,17 @@
             }); 
           </script>
                 
-          <%= f.hidden_field :movie_title, :value => detail["table"]["title"] %>
-          <%= f.hidden_field :release_date, :value => detail["table"]["release_date"] %>
-          <%= f.hidden_field :overview, :value => detail["table"]["overview"] %>
-          <%= f.hidden_field :poster_path, :value => detail["table"]["poster_path"] %>
-          <%= f.hidden_field :tmdb, :value => detail["table"]["id"] %>
+          <%= f.hidden_field :movie_title, :value => detail["table"]["title"], id: "movie_title" %>
+          <%= f.hidden_field :release_date, :value => detail["table"]["release_date"], id: "release_date" %>
+          <%= f.hidden_field :overview, :value => detail["table"]["overview"], id: "overview" %>
+          <%= f.hidden_field :poster_path, :value => detail["table"]["poster_path"], id: "poster_path" %>
+          <%= f.hidden_field :tmdb, :value => detail["table"]["id"], id: "tmdb" %>
           </div>
           </div>
           <div class="row">
           <div class="col-10">
           <label>本文</label>
-          <%= f.text_area :body, class: "form-control border border-dark", rows: "5" %>
+          <%= f.text_area :body, class: "review_body_form form-control border border-dark",id: "review_body", rows: "5" %>
           </div>
           <div class="col-6">
           <%= f.submit "レビュー", class: "btn btn-primary" %>
@@ -73,13 +79,13 @@
           <% end %>
       </div>
     </div>
-
-
+</div>
 <div class="review_list">
-  <h2 class="top">Reviews</h2>
+  <div class="container">
   <div class="row">
     <div class="col-10">
       
+      <h2 class="top">Reviews</h2>
       <% Review.all.each do |review| %>
         <% if review.tmdb == @movieinfo["table"]["id"] %>
         <div class="review_container border">
@@ -112,9 +118,4 @@
   </div>
 </div>
 </div>
-
-
-
-
-
-Copyright（c）2015 18Months Srl
+</div>

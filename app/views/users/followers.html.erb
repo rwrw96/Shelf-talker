@@ -1,11 +1,26 @@
-<% @users.each do |user| %>
-  <hr>
-  <p><span>email: </span><%= link_to user.email, user_path(user.id) %></p>
-    <% if current_user != user %>
-        <% if user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
+<div class="container">
+    <div class="users">
+      <h2 class="top">Followers</h2>
+      <% if @user.followers.exists? %>
+        <table class="table table-hover">
+          <div class="thead">
+            <th class="th1">follower</th>
+            <th class="th2">review</th>
+            <th class="th3">introduction</th>
+          </div>
+        <% @user.followers.each do |follower| %>
+        <tbody>
+          <td><%= link_to follower.name, user_path(follower.id) %></td>
+          <td><%= "レビュー数: #{follower.reviews.count}" %></td>
+          <td><%= follower.introduction %></td>
+          </tbody>
         <% end %>
-    <% end %>
-<% end %>
+        </table>
+        <% else %>
+        <div class="followers_empty offset-3 col-6">
+          <h5>現在フォローされているユーザーはいません</h5>
+        </div>
+        <% end %>
+       
+    </div>
+</div>

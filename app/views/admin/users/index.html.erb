@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+      <div class="users">
+        <% @users.each do |user| %>
+        <div class="offset-8 col-2">
+          <%= link_to "削除", admin_user_path(user), method: :delete, data: { confirm: '削除しますか？' },class: "btn btn-danger" %>
+        </div>
+        <div class="user_name">
+          <%= link_to user.name, user_path(user.id)%>
+        </div>
+        <div class="user_introduction col-7">
+          <%= user.introduction %>
+        </div>
+        <% end %>
+        </div>
+    </div>
+</div>
+
+

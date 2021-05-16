@@ -13,11 +13,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def create
   #   super
   # end
-  
-  def create
-    super
-    WelcomeMailer.with(user: @user).welcome_email.deliver_now
-  end
+
+  # def create
+  #   super
+  #   # if @user.save
+  #   #   WelcomeMailer.with(user: @user).welcome_email.deliver_now
+  #   # end
+  # end
 
   # GET /resource/edit
   # def edit
@@ -64,4 +66,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def after_inactive_sign_up_path_for(resource)
+    homes_welcome_path
+  end
 end

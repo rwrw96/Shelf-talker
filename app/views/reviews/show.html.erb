@@ -1,39 +1,22 @@
+<div class="review_show_wrapper">
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="review_show_image col-4">
       <%= image_tag 'https://image.tmdb.org/t/p/w1280' + @review.poster_path, class: "image" %>
        <div class="movie-title">
        <%= @review.movie_title %>
     </div>
     </div>
-    <div class="col-8">
+    <div class="review_overview offset-1 col-7">
       
         <%= @review.overview %>
         
     </div>
     
-   
-   
-    
-    
-    
-    <div class="container">
-    <div class="row">
-      <div class="offset-8 col-4">
-        <div class="review_save">
-            <% if current_user.already_liked?(@review) %>
-              <%= link_to "保存済", destroy_like_path(@review), method: :DELETE ,class: "btn btn-success" %>
-            <% else %>
-              <%= link_to '保存しますか？', create_like_path(@review), method: :POST, class: "btn btn-success" %>
-            <% end %>
-          </div>
-      </div>
-    </div>
-  </div>
-    
+    <%= render "likes/like", review: @review %>
     
    <div class="row">
-    <div class="col-10">
+    <div class="col-12">
       <div class="review_container border">
         <%= @review.user.name %>
           <div class="review_title">
@@ -53,10 +36,19 @@
             });
             </script>
           </div>
+          <% if @review.user == current_user %>
+          <div class="review_edit">
+          <%= link_to "編集", edit_review_path(@review),class: "editlink" %>
+          <%= link_to "削除", review_path(@review), method: :delete, data: {  confirm: "削除すると保存されていた映画も削除されます",
+                                                                              cancel: "やめる",
+                                                                              commit: "削除"}, title: "削除しますか？", class: "editlink" %>
+          </div>
+          <% end %>
           
           <div class="review_body">
             <%= @review.body %>
           </div>
       </div>
     </div>
+  </div>
   </div>
