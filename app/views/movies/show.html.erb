@@ -85,9 +85,9 @@
   <div class="row">
     <div class="col-10">
       
+      <h2 class="top">Reviews</h2>
       <% Review.all.each do |review| %>
         <% if review.tmdb == @movieinfo["table"]["id"] %>
-        <h2 class="top">Reviews</h2>
         <div class="review_container border">
           <%= review.user.name %>
           <div class="review_title">
