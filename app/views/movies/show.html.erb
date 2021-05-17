@@ -86,6 +86,11 @@
     <div class="col-10">
       
       <h2 class="top">Reviews</h2>
+      <div class="reviews_empty">
+        <% unless Review.find_by(tmdb: @movieinfo["table"]["id"]) %>
+          <h5>現在この映画のレビューは存在しません</h5>
+        <% end %>
+      </div>
       <% Review.all.each do |review| %>
         <% if review.tmdb == @movieinfo["table"]["id"] %>
         <div class="review_container border">
@@ -107,10 +112,9 @@
               });
               </script>
             </div>
-                  <div class="review_body">
-                    <%= review.body %>
-                  </div>
-          
+            <div class="review_body">
+              <%= review.body %>
+            </div>
         </div>
         <% end %>
       <% end %>
