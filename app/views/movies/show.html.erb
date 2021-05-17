@@ -96,20 +96,12 @@
                   <!--レビューのタイトルを表示-->
                   <%= link_to review.title, review_path(review.id) %>
                 </div>
-                <!--レビューの評価をraty.jsを使って表示-->
-                <div class="review_rate">
-                  <div class="movie-evaluation-<%= review.id %>"></div>
-                    <script>
-                      $(".movie-evaluation-<%= review.id %>").empty();
-                      $('.movie-evaluation-<%= review.id %>').raty({
-                        size: 36,
-                        starOff:  '<%= asset_path('star-off.png') %>',
-                        starOn : '<%= asset_path('star-on.png') %>',
-                        starHalf: '<%= asset_path('star-half.png') %>',
-                        readOnly: true,
-                        score: <%= review.rate %>,
-                      });
-                    </script>
+                
+                  <!--レビューをraty.jsで表示-->
+                  <div class="review_rate">
+                    <%= render "reviews/raty", review: review %>
+                  </div>
+                  
                 </div>
                 <div class="review_body">
                   <!--レビューの内容を表示-->
