@@ -79,52 +79,19 @@
         </div>
       <% end %>
     </div>
-<<<<<<< HEAD
-</div>
-<div class="review_list">
-  <div class="container">
-  <div class="row">
-    <div class="col-10">
-      
-      <h2 class="top">Reviews</h2>
-      <div class="reviews_empty">
-        <% unless Review.find_by(tmdb: @movieinfo["table"]["id"]) %>
-          <h5>現在この映画のレビューは存在しません</h5>
-        <% end %>
-      </div>
-      <% Review.all.each do |review| %>
-        <% if review.tmdb == @movieinfo["table"]["id"] %>
-        <div class="review_container border">
-          <%= review.user.name %>
-          <div class="review_title">
-          <%= link_to review.title, review_path(review.id) %>
-          </div>
-          <div class="review_rate">
-            <div class="movie-evaluation-<%= review.id %>"></div>
-              <script>
-              $(".movie-evaluation-<%= review.id %>").empty();
-              $('.movie-evaluation-<%= review.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                readOnly: true,
-                score: <%= review.rate %>,
-              });
-              </script>
-            </div>
-            <div class="review_body">
-              <%= review.body %>
-            </div>
-=======
   </div>
 
 
   <div class="review_list">
     <div class="container">
       <div class="row">
-        <div class="col-10">
+        <div class="offset-3 col-6">
           <h2 class="top">Reviews</h2>
+          <div class="my_reviews_empty">
+            <% unless Review.find_by(tmdb: @movieinfo["table"]["id"]) %>
+              <h5>現在この映画のレビューは存在しません</h5>
+            <% end %>
+          </div>
           <% Review.all.each do |review| %>
             <% if review.tmdb == @movieinfo["table"]["id"] %>
               <div class="review_container border">
@@ -140,7 +107,6 @@
                     <%= render "reviews/raty", review: review %>
                   </div>
                   
-                </div>
                 <div class="review_body">
                   <!--レビューの内容を表示-->
                   <%= review.body %>
@@ -148,7 +114,6 @@
               </div>
             <% end %>
           <% end %>
->>>>>>> 1c896116f360fc9da294499e3920a5e759d97bd1
         </div>
       </div>
     </div>
