@@ -113,6 +113,8 @@
 
 .review_save {
   display: inline-block;
+  width: 100%;
+  text-align: right;
 }
 
 .review_error {
@@ -198,6 +200,15 @@
       margin-left: 25px;
       padding: 0px;
     }
+    .col-3 {
+      padding-right: 0%;
+      max-width: 30%;
+    }
+    .col-7 {
+      flex: 100%;
+      max-width: 70%;
+      padding-left: 0px;
+    }
     .reviews_body {
       font-size: 10px;
       margin-bottom: 30px;
@@ -214,13 +225,6 @@
     .review_overview {
       font-size: 10px;
     }
-    .offset-9 {
-      margin-left: 50%;
-    }
-    .col-3 {
-      flex: 100%;
-      max-width: 100%;
-    }
   }
   .review_show_image {
     .image {
@@ -236,6 +240,18 @@
   .review_container {
     font-size: 10px;
     margin: 10px;
+    .review_edit {
+    width: 100%;
+    text-align: right;
+    padding-right: 10px;
+    margin-left: 0px;
+    }
+    .review_rate {
+      img {
+        height: 10px;
+        width: 6px;
+      }
+    }
   }
   .review_title_form {
     padding: 0px;

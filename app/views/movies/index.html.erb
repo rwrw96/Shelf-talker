@@ -1,3 +1,4 @@
+<!--ユーザーと管理人とログアウトしているかで表示を変える-->
 <div class="movie_index">
   <!--ジャンル検索用-->
   <% form_tag(root_path, method: :get) do %>
@@ -16,15 +17,15 @@
     <%= link_to "#Thriller", "/?utf8=%E2%9C%93&genre=53&commit=%E6%A4%9C%E7%B4%A2"      ,class: "editlink" %>
     <%= link_to "#War", "/?utf8=%E2%9C%93&genre=10752&commit=%E6%A4%9C%E7%B4%A2"         ,class: "editlink" %>
   </div>
-        
-  <!--ジャンル検索結果-->
+  
   <%if params[:genre].present? %>
+    <!--ジャンル検索結果-->
     <%= render "genre_movie" %>
-  <!--検索結果-->
   <% elsif params[:looking_for].present? %>
+    <!--検索結果-->
     <%= render "looking_for_movie" %>
-  <!--人気映画20件取得-->
   <% else %>
+    <!--人気映画20件取得-->
     <%= render "popular_movie" %>
   <% end %>
 </div>

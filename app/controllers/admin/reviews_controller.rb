@@ -14,7 +14,7 @@ class Admin::ReviewsController < ApplicationController
   end
 
   private
-
+  # 管理者ではない時リダイレクトされる
   def if_not_admin
     redirect_to root_path unless current_user.admin?
   end
