@@ -20,20 +20,12 @@
           <div class="review_title">
             <%= @review.title %>
           </div>
+          
+          <!--レビューをraty.jsで表示-->
           <div class="review_rate">
-            <div class="movie-evaluation-<%= @review.id %>"></div>
-            <script>
-              $(".movie-evaluation-<%= @review.id %>").empty();
-              $('.movie-evaluation-<%= @review.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                readOnly: true,
-                score: <%= @review.rate %>,
-              });
-            </script>
+            <%= render "reviews/raty", review: @review %>
           </div>
+          
           <% if @review.user == current_user %>
             <div class="review_edit">
               <%= link_to "編集", edit_review_path(@review),class: "editlink" %>

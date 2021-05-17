@@ -37,21 +37,13 @@
               <div class="top_review_title col-5">
                 <span>Click here!</span><div class="click-before"><%= link_to review.title, review_path(review.id), class: "editlink" %></div>
               </div>
+              
+              <!--レビューをraty.jsで表示-->
               <div class="top_review_rate col-5">
-                <div class="movie-evaluation-<%= review.id %>"></div>
-                <script>
-                  $(".movie-evaluation-<%= review.id %>").empty();
-                  $('.movie-evaluation-<%= review.id %>').raty({
-                    size: 36,
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    readOnly: true,
-                    score: <%= review.rate %>,
-                  });
-                </script>
-                </div>
-              </div>
+                <%= render "reviews/raty", review: review %>
+              </div>  
+                
+            </div>
             <div class="top_review_body">
               <%= review.body %>
             </div>
