@@ -1,7 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit, :index]
+  
+  def show
+    @review = Review.find(params[:id])
+  end
+  
   def edit
     @review = Review.find(params[:id])
+    # 本人でなければ編集ページにはいれない
     if @review.user != current_user
       redirect_to review_path(@review)
     end
@@ -15,10 +21,6 @@ class ReviewsController < ApplicationController
       flash[:notice] = "全て入力してください"
       render :edit
     end
-  end
-
-  def show
-    @review = Review.find(params[:id])
   end
 
   def create
@@ -39,7 +41,6 @@ class ReviewsController < ApplicationController
   end
 
   private
-
   def review_params
     params.require(:review).permit(:title,
                                    :body,
