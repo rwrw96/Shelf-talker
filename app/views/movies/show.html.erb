@@ -85,8 +85,13 @@
   <div class="review_list">
     <div class="container">
       <div class="row">
-        <div class="col-10">
+        <div class="offset-3 col-6">
           <h2 class="top">Reviews</h2>
+          <div class="my_reviews_empty">
+            <% unless Review.find_by(tmdb: @movieinfo["table"]["id"]) %>
+              <h5>現在この映画のレビューは存在しません</h5>
+            <% end %>
+          </div>
           <% Review.all.each do |review| %>
             <% if review.tmdb == @movieinfo["table"]["id"] %>
               <div class="review_container border">
@@ -102,7 +107,6 @@
                     <%= render "reviews/raty", review: review %>
                   </div>
                   
-                </div>
                 <div class="review_body">
                   <!--レビューの内容を表示-->
                   <%= review.body %>
