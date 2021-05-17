@@ -1,9 +1,20 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.review_image {
+
+// reviews/index↓
+.reviews_image {
   height: 170px;
   width: 150px;
+}
+
+.reviews_title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.reviews_body {
+  margin-bottom: 100px;
 }
 
 .review_hover_darken {
@@ -26,8 +37,9 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
 }
+// ここまで
 
-
+// movies/index↓
 .top_review_wrapper {
   margin-bottom: 50px;
 }
@@ -41,7 +53,6 @@
   font-size: 15px;
   font-weight: bold;
 }
-
 
 .top_review_title {
   font-size: 30px;
@@ -60,6 +71,7 @@
   }
 }
 
+// hover時、spanを表示させる
 .top_review_wrapper {
   .editlink {
     color: black;
@@ -76,7 +88,6 @@
   }
 }
 
-
 .top_review_body {
   margin-top: 30px;
   padding: 10px;
@@ -86,7 +97,9 @@
   font-size: 35px;
   font-weight: bold;
 }
+// ここまで
 
+// reviews/show
 .review_body {
   margin-bottom: 30px;
 }
@@ -131,16 +144,6 @@
     color: black;
   }
 }
-
-.reviews_title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.reviews_body {
-  margin-bottom: 100px;
-}
-
 
 .review_font {
   font-size: 15px;

@@ -7,7 +7,7 @@
           <%= link_to review.user.name, user_path(review.user.id),class: "editlink" %>
         </div>
         <div class="review_hover_darken review_font col-3">
-          <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path, class: "review_image border border-dark"),detail_path(review.tmdb) %></br>
+          <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path, class: "reviews_image border border-dark"),detail_path(review.tmdb) %></br>
           <%= review.movie_title %>
         </div>
         <div class="col-7">
