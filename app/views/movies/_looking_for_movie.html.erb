@@ -1,37 +1,38 @@
-
-  <% movie = JSON.parse(Tmdb::Search.movie(params[:looking_for]).to_json) %>
-  <% movie["table"]["total_pages"] %>
-  <!--結果全てを表示するように繰り返し-->
+<!--検索結果をjson形式で取得-1ページ20件-->
+<% movie = JSON.parse(Tmdb::Search.movie(params[:looking_for]).to_json) %>
   <h2 class="top">Movies</h2>
   <% n = 1 %>
+  <!--ページ数の数だけ繰り返し取得-->
   <% while n <  movie["table"]["total_pages"] + 1 %>
   <% movieinfo = JSON.parse(Tmdb::Search.movie(params[:looking_for],page: n).to_json) %>
-  
     <div class="container">
       <div class="row">
         <% i = 0 %>
+        <!--映画の数だけ繰り返し取得-->
         <% while i < movieinfo['table']['results'].count %>
-         
           <div class="col-3">
-           <div class="hover-darken">
-            <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
-              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "image"),detail_path(movieinfo['table']['results'][i]['table']['id']) %>
-            <%end%>
+            <div class="hover_darken">
+              <!--ポスターがあるなら表示-->
+              <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
+                <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "movie_image"),detail_path(movieinfo['table']['results'][i]['table']['id']) %>
+              <%end%>
             </div>
-             <div class="movie-title">
-            <%if movieinfo['table']['results'][i]['table']['title'].present?%>
-              <%= movieinfo['table']['results'][i]['table']['title'] %>
-            <%end%>
+            <div class="movie_title">
+              <!--タイトルがあるなら表示-->
+              <%if movieinfo['table']['results'][i]['table']['title'].present?%>
+                <%= movieinfo['table']['results'][i]['table']['title'] %>
+              <%end%>
             </div>
             <div class="release_date">
-            <%if movieinfo['table']['results'][i]['table']['release_date'].present?%>
-              <%= movieinfo['table']['results'][i]['table']['release_date'] %>
-            <%end%>
+              <!--リリース日があるなら表示-->
+              <%if movieinfo['table']['results'][i]['table']['release_date'].present?%>
+                <%= movieinfo['table']['results'][i]['table']['release_date'] %>
+              <%end%>
             </div>
           </div> 
         <% i += 1%>
         <%end%>
       </div>
     </div>
-     <% n += 1 %>
-    <% end %>
+  <% n += 1 %>
+  <% end %>

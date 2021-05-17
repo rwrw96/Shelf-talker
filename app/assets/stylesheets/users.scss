@@ -1,16 +1,9 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.bookmark_top {
-  text-align: center;
-  padding: 120px 0px;
-}
 
-.bookmark_empty {
-  text-align: center;
-  margin-bottom: 100px;
-}
 
+// users/show↓
 .my_profile_wrapper {
   margin-left: 30px;
   .td1 {
@@ -30,31 +23,27 @@
   }
 }
 
+<<<<<<< HEAD
 .my_movie-title {
+=======
+table {
+  border: 3px solid;
+}
+
+.my_movie_title {
+>>>>>>> 1c896116f360fc9da294499e3920a5e759d97bd1
   font-size: 15px;
   font-weight: bold;
   margin-top: 10px;
   text-align: center;
 }
 
-ul {
-  list-style: none;
-}
-
-#error_explanation {
-  text-align: center;
-}
-
 .error_title {
   color: red;
-  font-size: 60px;
+  font-size: 30px;
 }
 
-.user_introduction {
-  margin-bottom: 40px;
-}
-
-.reviews_empty {
+.my_reviews_empty {
   text-align: center;
   margin-top: 30px;
 }
@@ -64,7 +53,7 @@ ul {
   width: 150px;
 }
 
-.my_hover-darken {
+.my_hover_darken {
   &:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
@@ -90,7 +79,7 @@ ul {
   width: 150px;
 }
 
-.bookmark_hover-darken {
+.bookmark_hover_darken {
   &:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
@@ -116,10 +105,18 @@ ul {
   width: 60%;
 }
 
-.user_introduction {
-  margin-bottom: 30px;
+.bookmark_top {
+  text-align: center;
+  padding: 120px 0px;
 }
 
+.my_bookmark_empty {
+  text-align: center;
+  margin-bottom: 100px;
+}
+// ここまで
+
+// users/index↓
 .users {
   .border {
     margin: 50px 0px;
@@ -131,11 +128,6 @@ ul {
     width: 15%;
   }
 }
-
-table {
-  border: 2px #000000 solid;
-}
-
 
 @media screen and (max-width: 425px) {
   h2 {
@@ -157,7 +149,7 @@ table {
       flex: 100%;
       max-width: 100%;
     }
-    .my_hover-darken {
+    .my_hover_darken {
       img {
         height: 170px;
         width: 150px;
@@ -179,5 +171,11 @@ table {
   .bookmark_top {
     text-align: center;
     padding: 50px 0px;
+  }
+  #edit_name {
+    padding: 0px;
+  }
+  #edit_introduction {
+    padding: 0px;
   }
 }

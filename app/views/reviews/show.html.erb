@@ -1,54 +1,43 @@
 <div class="review_show_wrapper">
-<div class="container">
-  <div class="row">
-    <div class="review_show_image col-4">
-      <%= image_tag 'https://image.tmdb.org/t/p/w1280' + @review.poster_path, class: "image" %>
-       <div class="movie-title">
-       <%= @review.movie_title %>
-    </div>
-    </div>
-    <div class="review_overview offset-1 col-7">
+  <div class="container">
+    <div class="row">
+      <div class="review_show_image col-4">
+        <%= image_tag 'https://image.tmdb.org/t/p/w1280' + @review.poster_path, class: "image" %>
+        <div class="movie-title">
+         <%= @review.movie_title %>
+        </div>
+      </div>
+      <div class="review_overview offset-1 col-7">
+          <%= @review.overview %>
+      </div>
+      <!--like機能を非同期通信-->
+      <%= render "likes/like", review: @review %>
       
-        <%= @review.overview %>
-        
-    </div>
-    
-    <%= render "likes/like", review: @review %>
-    
-   <div class="row">
-    <div class="col-12">
-      <div class="review_container border">
-        <%= @review.user.name %>
+    <div class="row">
+      <div class="col-12">
+        <div class="review_container border">
+          <%= @review.user.name %>
           <div class="review_title">
             <%= @review.title %>
           </div>
-          <div class="review_rate">
-           <div class="movie-evaluation-<%= @review.id %>"></div>
-            <script>
-            $(".movie-evaluation-<%= @review.id %>").empty();
-            $('.movie-evaluation-<%= @review.id %>').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              readOnly: true,
-              score: <%= @review.rate %>,
-            });
-            </script>
-          </div>
-          <% if @review.user == current_user %>
-          <div class="review_edit">
-          <%= link_to "編集", edit_review_path(@review),class: "editlink" %>
-          <%= link_to "削除", review_path(@review), method: :delete, data: {  confirm: "削除すると保存されていた映画も削除されます",
-                                                                              cancel: "やめる",
-                                                                              commit: "削除"}, title: "削除しますか？", class: "editlink" %>
-          </div>
-          <% end %>
           
-          <div class="review_body">
-            <%= @review.body %>
+          <!--レビューをraty.jsで表示-->
+          <div class="review_rate">
+            <%= render "reviews/raty", review: @review %>
           </div>
+          
+          <% if @review.user == current_user %>
+            <div class="review_edit">
+              <%= link_to "編集", edit_review_path(@review),class: "editlink" %>
+              <%= link_to "削除", review_path(@review), method: :delete, data: {  confirm: "削除すると保存されていた映画も削除されます",
+                                                                                  cancel: "やめる",
+                                                                                  commit: "削除"}, title: "削除しますか？", class: "editlink" %>
+            </div>
+          <% end %>
+            <div class="review_body">
+              <%= @review.body %>
+            </div>
+        </div>
       </div>
     </div>
-  </div>
   </div>

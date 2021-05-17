@@ -4,13 +4,13 @@
       <div class="error_title">
         <%= flash[:alert] %>
       </div>
-    <%= form_with model:@user, local:true do |f| %>
-    <label>名前</label>
-    <%= f.text_field :name ,class: "form-control", id: "edit_name" %>
-    <label>自己紹介文</label>
-    <%= f.text_area :introduction,class: "form-control", id: "edit_introduction", rows: "4" %>
-    <%= f.submit "更新", class: "btn btn-primary" %>
-    <% end %>
+      <%= form_with model:@user, local:true do |f| %>
+        <%= f.label :名前 %>
+        <%= f.text_field :name ,class: "form-control", id: "edit_name" %>
+        <%= f.label :自己紹介文 %>
+        <%= f.text_area :introduction,class: "form-control", id: "edit_introduction", rows: "4" %>
+        <%= f.submit "更新", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
