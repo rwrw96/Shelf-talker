@@ -48,7 +48,7 @@
         <% if @user.reviews.exists? %>
           <!--ユーザーが投稿したレビュー一覧を表示-->
           <% @user.reviews.each do |review| %>
-            <div class="my_hover-darken my_movie-title col-3">
+            <div class="my_hover_darken my_movie_title col-3">
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
               <%= review.movie_title %> 
             </div>
@@ -68,7 +68,7 @@
             </div>
           <% end %>
         <% else %>
-          <div class="reviews_empty offset-3 col-6">
+          <div class="my_reviews_empty offset-3 col-6">
             <h5>現在レビューはありません</h5>
           </div>
         <% end %>
@@ -82,12 +82,12 @@
   <div class="row">
     <% if @user.likes.exists? %>
       <% @user.likes.each do |like| %>
-        <div class="bookmark_hover-darken">
+        <div class="bookmark_hover_darken">
           <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "bookmark_review_image border border-dark"),detail_path(like.review.tmdb) %>
         </div>
       <% end %>
     <% else %>
-      <div class="bookmark_empty offset-3 col-6">
+      <div class="my_bookmark_empty offset-3 col-6">
         <h5>現在保存済みの映画はありません</h5>
         <p><レビューの詳細画面から保存することができます></p>
       </div>

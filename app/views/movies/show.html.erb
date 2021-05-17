@@ -7,11 +7,11 @@
       <div class="col-4">
         <!--ポスターがあれば表示-->
         <%if detail['table']['poster_path'].present?%>
-          <%= image_tag 'https://image.tmdb.org/t/p/w1280' + detail['table']['poster_path'], class: "image" %>
+          <%= image_tag 'https://image.tmdb.org/t/p/w1280' + detail['table']['poster_path'], class: "movie_image" %>
         <%end%>
         <!--タイトルがあれば表示-->
         <%if detail['table']['title'].present?%>
-          <div class="movie-title"><%= detail['table']['title'] %></div>
+          <div class="movie_title"><%= detail['table']['title'] %></div>
         <%end%>
         <!--空の配列を用意-->
         <!--@review.tmdbと@movieinfo["table"]["id"]が同じ、レビューの評価(rate)を空の配列に代入-->
