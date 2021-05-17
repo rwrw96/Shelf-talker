@@ -62,13 +62,13 @@
     <% i = 0 %>
     <% while i < popular_movie['table']['results'].count %>
       <div class="col-3">
-        <div class="hover-darken">
+        <div class="hover_darken">
           <!--ポスターがあるなら表示-->
           <% if popular_movie['table']['results'][i]['table']['poster_path'].present? %>
-            <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + popular_movie['table']['results'][i]['table']['poster_path'], class: "image"), detail_path(popular_movie['table']['results'][i]['table']['id']) %>
+            <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + popular_movie['table']['results'][i]['table']['poster_path'], class: "movie_image"), detail_path(popular_movie['table']['results'][i]['table']['id']) %>
           <%end%>
         </div>
-        <div class="movie-title">
+        <div class="movie_title">
           <!--タイトルがあるなら表示-->
           <%if popular_movie['table']['results'][i]['table']['title'].present?%>
             <%= link_to popular_movie['table']['results'][i]['table']['title'], detail_path(popular_movie['table']['results'][i]['table']['id']), class: "editlink" %>

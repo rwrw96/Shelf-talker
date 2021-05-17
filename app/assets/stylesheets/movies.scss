@@ -1,25 +1,6 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-header {
-  height: 200px;
-  padding: 25px 0px; // background-color: blue;
-}
-
-.header_item {
-  font-size: 20px;
-  text-align: right;
-  .editlink {
-    color: black;
-    margin: 0px 10px;
-  }
-}
-
-.logo {
-  font-size: 60px;
-  text-align: center;
-  font-family: 'Anton', sans-serif;
-}
 
 .top {
   text-align: center;
@@ -27,9 +8,9 @@ header {
 }
 
 .genre_wrapper {
+  background-color: red;
   text-align: center;
   font-size: 15px;
-  background-color: red;
   padding: 15px 0px;
   .editlink {
     color: white;
@@ -41,13 +22,20 @@ header {
   }
 }
 
-.image {
+.movie_search {
+  text-align: center;
+  margin: 100px 0px;
+}
+
+// movie/indexでの画像サイズ
+.movie_image {
   height: 360px;
   width: 270px;
 }
 
-.hover-darken {
-  .image {
+// hover時、画像を拡大
+.hover_darken {
+  .movie_image {
     height: 360px;
     width: 270px;
     transition: transform 0.3s;
@@ -57,7 +45,8 @@ header {
   }
 }
 
-.hover-darken {
+// hover時、不透明な画像を表示
+.hover_darken {
   &::before {
     content: "";
     position: absolute;
@@ -74,16 +63,7 @@ header {
   }
 }
 
-.images {
-  height: 1000px;
-}
-
-.movie_image {
-  height: 300px;
-  width: 300px;
-}
-
-.movie-title {
+.movie_title {
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
@@ -106,13 +86,10 @@ header {
   padding: 10px;
 }
 
-.slider img {
-  height: 660px;
-}
-
-.movie_search {
-  text-align: center;
-  margin: 100px 0px;
+.slider {
+  img {
+    height: 660px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -120,21 +97,21 @@ header {
     height: 325px;
   }
 
-  .hover-darken {
-    .image {
+  .hover_darken {
+    .movie_image {
       height: 250px;
       width: 150px;
       transition: transform 0.3s;
     }
   }
 
-  .hover-darken {
+  .hover_darken {
     &::before {
       display: none;
     }
   }
 
-  .movie-title {
+  .movie_title {
     font-size: 10px;
     font-weight: bold;
     margin-top: 10px;
@@ -145,34 +122,40 @@ header {
   .movie_index {
     overflow: hidden;
   }
+  
   .genre_wrapper {
     font-size: 5px;
     .editlink {
       margin: 0px 10px;
     }
   }
+  
   .slider img {
     height: 520px;
   }
-  .hover-darken {
-    .image {
+  
+  .hover_darken {
+    .movie_image {
       height: 100px;
       width: 75px;
       transition: transform 0.3s;
     }
   }
-  .hover-darken {
+  
+  .hover_darken {
     &::before {
       display: none;
     }
   }
-  .movie-title {
+  
+  .movie_title {
     font-size: 10px;
     font-weight: bold;
     margin-top: 3px;
   }
+  
   .movie_show {
-    .image {
+    .movie_image {
       height: 180px;
       width: 120px;
     }

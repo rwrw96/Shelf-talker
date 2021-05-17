@@ -67,7 +67,7 @@ ul {
   width: 150px;
 }
 
-.my_hover-darken {
+.my_hover_darken {
   &:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
@@ -93,7 +93,7 @@ ul {
   width: 150px;
 }
 
-.bookmark_hover-darken {
+.bookmark_hover_darken {
   &:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
@@ -160,7 +160,7 @@ table {
       flex: 100%;
       max-width: 100%;
     }
-    .my_hover-darken {
+    .my_hover_darken {
       img {
         height: 170px;
         width: 150px;
