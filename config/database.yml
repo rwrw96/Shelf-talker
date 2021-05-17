@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  database: /var/lib/mysql/mysql.sock
+  database: db/production.sqlite3
 
 production:
   <<: *default
@@ -34,4 +34,3 @@ production:
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
