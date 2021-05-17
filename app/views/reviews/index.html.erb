@@ -1,26 +1,12 @@
- <header>
-  <div class="header_item">
-  <%= link_to "HOME", root_path, class: "editlink" %>
-  <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
-  <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
-  <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
-  </div>
-  
-  <div class="logo">
-    ShelfTalker
-  </div>
-</header>
- 
- 
  <div class="container">
       <h2 class="top">Reviews</h2>
        <div class="reviews_wrapper">
         <div class="row">
           <% Review.all.each do |review| %>
-            <div class="reviews_user col-1">
+            <div class="reviews_user col-2">
               <%= link_to review.user.name, user_path(review.user.id),class: "editlink" %>
             </div>
-            <div class="review_hover-darken review_font col-4">
+            <div class="review_hover-darken review_font col-3">
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path, class: "review_image border border-dark"),detail_path(review.tmdb) %></br>
               <%= review.movie_title %>
             </div>

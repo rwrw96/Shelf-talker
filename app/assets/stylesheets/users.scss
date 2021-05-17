@@ -6,19 +6,40 @@
   padding: 120px 0px;
 }
 
-// .my_reviews_wrapper {
-//     display: inline-block;
-//   }
+.bookmark_empty {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.my_profile_wrapper {
+  margin-left: 30px;
+  .td1 {
+    width: 150px;
+  }
+  .td2 {
+    width: 250px;
+  }
+  .review_rate {
+    img {
+      height: 15px;
+      width: 10px;
+    }
+  }
+  .review_title {
+    font-size: 15px;
+  }
+}
+
 // .border-left {
 //     display: inline-block;
 //   }
-
 .my_movie-title {
   font-size: 15px;
   font-weight: bold;
   margin-top: 10px;
   text-align: center;
 }
+
 ul {
   list-style: none;
 }
@@ -36,13 +57,18 @@ ul {
   margin-bottom: 40px;
 }
 
+.reviews_empty {
+  text-align: center;
+  margin-top: 30px;
+}
+
 .my_review_image {
   height: 170px;
   width: 150px;
 }
 
 .my_hover-darken {
-   &:hover {
+  &:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
   }
@@ -58,7 +84,7 @@ ul {
     pointer-events: none;
   }
   &:hover::before {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -68,7 +94,7 @@ ul {
 }
 
 .bookmark_hover-darken {
-   &:hover {
+  &:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
   }
@@ -84,7 +110,7 @@ ul {
     pointer-events: none;
   }
   &:hover::before {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -97,6 +123,23 @@ ul {
   margin-bottom: 30px;
 }
 
+.users {
+  .border {
+    margin: 50px 0px;
+  }
+  .th1 {
+    width: 15%;
+  }
+  .th2 {
+    width: 15%;
+  }
+}
+
+table {
+  border: 2px #000000 solid;
+}
+
+
 @media screen and (max-width: 425px) {
   h2 {
     font-size: 20px;
@@ -105,6 +148,7 @@ ul {
     display: none;
   }
   .my_profile_wrapper {
+    margin: 0px 10px;
     .col-4 {
       flex: 100%;
       max-width: 100%;
@@ -132,11 +176,11 @@ ul {
     }
   }
   .bookmark_review_image {
-       height: 120px;
-        width: 90px;
+    height: 120px;
+    width: 90px;
   }
   .bookmark_top {
-  text-align: center;
-  padding: 50px 0px;
-}
+    text-align: center;
+    padding: 50px 0px;
+  }
 }

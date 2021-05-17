@@ -4,10 +4,15 @@
 @import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
 
 header {
-    .editlink {
-        color: black;
-        text-decoration: none;
-    }
+  .editlink {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+footer .copyright {
+  text-align: center;
+  font-size: 15px;
 }
 
 .about_image {
@@ -45,9 +50,19 @@ h4 {
 @media screen and (max-width: 425px) {
   header {
     .editlink {
-        color: black;
-        text-decoration: none;
-        font-size: 10px;
+      color: black;
+      text-decoration: none;
+      font-size: 10px;
     }
-}
+    .header_item {
+      .editlink {
+        margin: 0px 4px;
+      }
+    }
+    .logo {
+      .editlink {
+        font-size: 35px;
+      }
+    }
+  }
 }

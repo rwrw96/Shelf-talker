@@ -1,14 +1,13 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 .review_image {
   height: 170px;
   width: 150px;
 }
 
 .review_hover-darken {
-   &:hover {
+  &:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
   }
@@ -24,7 +23,7 @@
     pointer-events: none;
   }
   &:hover::before {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -44,7 +43,7 @@
 }
 
 
-  .top_review_title {
+.top_review_title {
   font-size: 30px;
   position: relative;
   overflow: hidden;
@@ -59,21 +58,22 @@
     transition: 0.3s;
     color: black;
   }
-  }
-.top_review_wrapper{
-  .editlink{
+}
+
+.top_review_wrapper {
+  .editlink {
     color: black;
   }
-&:hover span{
-  transform: none;
-  text-align: center;
-  z-index: -1;
-  font-weight: bold;
-}
-&:hover .click-before {
-  transition: all 0.2s;
-  opacity: 0;
-}
+  &:hover span {
+    transform: none;
+    text-align: center;
+    z-index: -1;
+    font-weight: bold;
+  }
+  &:hover .click-before {
+    transition: all 0.2s;
+    opacity: 0;
+  }
 }
 
 
@@ -113,30 +113,33 @@
 
 .review_save {
   display: inline-block;
+  width: 100%;
+  text-align: right;
 }
 
 .review_error {
-    text-align: center;
-    font-size: 20px;
-    color: red;
-    margin: 30px 0px;
-  }
-  
+  text-align: center;
+  font-size: 20px;
+  color: red;
+  margin: 30px 0px;
+}
+
 .review_edit {
   display: inline-block;
-  margin-left: 500px;
+  margin-left: 600px;
   .editlink {
     color: black;
   }
 }
+
 .reviews_title {
   font-size: 20px;
   font-weight: bold;
-  }
+}
 
- .reviews_body {
-   margin-bottom: 100px;
- }
+.reviews_body {
+  margin-bottom: 100px;
+}
 
 
 .review_font {
@@ -145,9 +148,9 @@
 }
 
 @media screen and (max-width: 768px) {
- .top_review_title {
-  font-size: 25px;
- }
+  .top_review_title {
+    font-size: 25px;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -155,31 +158,31 @@
     display: none;
   }
   .top_review_image {
-  height: 120px;
-  width: 80px;
-}
+    height: 120px;
+    width: 80px;
+  }
   .top_review_font {
     font-size: 10px;
   }
 
-.top_review_wrapper {
-  .top_review_title {
-    font-size: 10px;
-    margin-left: 25px;
-    padding: 0px;
-  }
-  .top_review_body {
-    font-size: 10px;
-    margin: 0px;
-    padding: 0px 0px 0px 20px;
-  }
-  .top_review_rate {
-    img {
-     height: 10px;
-     width: 6px;
+  .top_review_wrapper {
+    .top_review_title {
+      font-size: 10px;
+      margin-left: 25px;
+      padding: 0px;
+    }
+    .top_review_body {
+      font-size: 10px;
+      margin: 0px;
+      padding: 0px 0px 0px 20px;
+    }
+    .top_review_rate {
+      img {
+        height: 10px;
+        width: 6px;
+      }
     }
   }
-}
   .reviews_user {
     display: none;
   }
@@ -188,14 +191,23 @@
     width: 80px;
   }
   .review_font {
-      font-size: 10px;
+    font-size: 10px;
   }
-  
+
   .reviews_wrapper {
     .reviews_title {
       font-size: 10px;
       margin-left: 25px;
       padding: 0px;
+    }
+    .col-3 {
+      padding-right: 0%;
+      max-width: 30%;
+    }
+    .col-7 {
+      flex: 100%;
+      max-width: 70%;
+      padding-left: 0px;
     }
     .reviews_body {
       font-size: 10px;
@@ -204,36 +216,47 @@
     }
     .review_rate {
       img {
-       height: 10px;
-       width: 6px;
+        height: 10px;
+        width: 6px;
       }
     }
   }
   .review_show_wrapper {
-  .review_overview {
-    font-size: 10px;
-  }
-  .offset-9 {
-    margin-left: 50%;
-  }
-  .col-3 {
-    flex: 100%;
-    max-width: 100%;
-  }
+    .review_overview {
+      font-size: 10px;
+    }
   }
   .review_show_image {
-  .image {
+    .image {
       height: 180px;
       width: 120px;
     }
   }
   .review_save {
     .btn {
-   font-size: 10px; 
+      font-size: 10px;
     }
   }
   .review_container {
-  font-size: 10px;
-  margin: 10px;
-}
+    font-size: 10px;
+    margin: 10px;
+    .review_edit {
+    width: 100%;
+    text-align: right;
+    padding-right: 10px;
+    margin-left: 0px;
+    }
+    .review_rate {
+      img {
+        height: 10px;
+        width: 6px;
+      }
+    }
+  }
+  .review_title_form {
+    padding: 0px;
+  }
+  .review_body_form {
+    padding: 0px;
+  }
 }

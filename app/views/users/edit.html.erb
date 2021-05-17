@@ -5,12 +5,11 @@
         <%= flash[:alert] %>
       </div>
     <%= form_with model:@user, local:true do |f| %>
-    <label>User Name</label>
+    <label>名前</label>
     <%= f.text_field :name ,class: "form-control", id: "edit_name" %>
-    <label>User Introduction</label>
+    <label>自己紹介文</label>
     <%= f.text_area :introduction,class: "form-control", id: "edit_introduction", rows: "4" %>
-    <%#= f.file_field :image_name %>
-    <%= f.submit "Update", class: "btn btn-primary" %>
+    <%= f.submit "更新", class: "btn btn-primary" %>
     <% end %>
     </div>
   </div>

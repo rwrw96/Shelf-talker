@@ -2,8 +2,9 @@ $(function() {
     $('.slider').slick({
       autoplay: true,
       autoplaySpeed: 1500,
-      speed: 2000,
-    //   dots: true,
+      // speed: 2000,
+      swipeToSlide: true,
+      // dots: false,
       arrows: false,          
       centerMode: true,
       centerPadding: '60px',
