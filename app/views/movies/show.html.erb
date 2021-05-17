@@ -40,7 +40,7 @@
       <%= form_with model: @review, local: true do |f| %>
         <div class="row">
           <div class="col-6">
-            <label>レビュータイトル</label>
+            <%= f.label :レビュータイトル %>
             <%= f.text_field :title, class: "review_title_form form-control border border-dark", id: "review_title" %>
           </div>
           <div class="col-6">
@@ -70,7 +70,7 @@
         
         <div class="row">
           <div class="col-10">
-            <label>本文</label>
+            <%= f.label :本文 %>
             <%= f.text_area :body, class: "review_body_form form-control border border-dark",id: "review_body", rows: "5" %>
           </div>
           <div class="col-6">

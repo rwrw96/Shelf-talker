@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  # ログインユーザーのみ許可する
   before_action :authenticate_user!, only: [:show]
   # tmdb APIを取得
   require "themoviedb-api"

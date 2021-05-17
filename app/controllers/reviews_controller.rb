@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  # ログインユーザーのみ許可する
   before_action :authenticate_user!, only: [:show, :edit, :index]
   
   def show

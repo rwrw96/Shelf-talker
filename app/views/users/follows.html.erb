@@ -1,25 +1,26 @@
 <div class="container">
-      <div class="users">
-        <h2 class="top">Follow</h2>
-        <% if @user.followings.exists? %>
-        <table class="table table-hover">
-          <div class="thead">
-            <th class="th1">follow</th>
-            <th class="th2">review</th>
-            <th class="th3">introduction</th>
-          </div>
-        <% @user.followings.each do |follow| %>
-        <tbody>
-          <td><%= link_to follow.name, user_path(follow.id) %></td>
-          <td><%= "レビュー数: #{follow.reviews.count}" %></td>
-          <td><%= follow.introduction %></td>
+  <div class="users">
+    <h2 class="top">Follow</h2>
+    <% if @user.followings.exists? %>
+      <table class="table table-hover">
+        <thead>
+          <th class="th1">follow</th>
+          <th class="th2">review</th>
+          <th class="th3">introduction</th>
+        </thead>
+      <!--フォローしているユーザーを全て表示-->
+      <% @user.followings.each do |follow| %>
+          <tbody>
+            <td><%= link_to follow.name, user_path(follow.id) %></td>
+            <td><%= "レビュー数: #{follow.reviews.count}" %></td>
+            <td><%= follow.introduction %></td>
           </tbody>
-        <% end %>
-        </table>
-         <% else %>
-        <div class="followings_empty offset-3 col-6">
-          <h5>現在フォローしているユーザーはいません</h5>
-        </div>
-        <% end %>
-    </div>
+      <% end %>
+      </table>
+    <% else %>
+      <div class="followings_empty offset-3 col-6">
+        <h5>現在フォローしているユーザーはいません</h5>
+      </div>
+    <% end %>
+  </div>
 </div>
