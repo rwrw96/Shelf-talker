@@ -1,119 +1,104 @@
+<!--my_profile-->
 <div class="my_profile_wrapper">
   <div class="row">
     <div class="col-4">
       <h2 class="top">Profile</h2>
       <table class="table table-hover">
-        <thead>
-        </thead>
         <tbody>
           <tr>
-          <td><%= @user.name %></td>
-          <td><%= @user.introduction %></td>
+            <td><%= @user.name %></td>
+            <td><%= @user.introduction %></td>
           </tr>
           <tr>
-          <td class="td1"><%= link_to "フォロー", follows_user_path(@user.id) %>:<%= @user.followings.count %></td>
-          <td class="td2"><%= link_to "フォロワー", followers_user_path(@user.id) %>:<%= @user.followers.count %></td>
+            <td class="td1"><%= link_to "フォロー", follows_user_path(@user.id) %>:<%= @user.followings.count %></td>
+            <td class="td2"><%= link_to "フォロワー", followers_user_path(@user.id) %>:<%= @user.followers.count %></td>
           </tr>
-              <% if current_user != @user %>
-                <% if @user.followed_by?(current_user) %>
-               <tr>
-                <td>
-                  <%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %>
-                </td>
-                  <td></td>
-                <% else %>
-                  <td><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %>
-                </td>
+          <% if current_user != @user %>
+            <% if @user.followed_by?(current_user) %>
+              <tr>
+                <td><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></td>
+                <td></td>
+            <% else %>
+                <td><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></td>
                 <td></td>
               </tr>
-              <% end %>
-              <% end %>
-              <% if @user == current_user && current_user != @guest_user %>
-              <tr>
-                <td><%= link_to "更新", edit_user_path(@user) %></td>
-                <td>
-                  <%= link_to "退会する", withdraw_user_path(@user), method: :patch, data: {  confirm: "一度退会すると同じメールアドレスで再登録できなくなります",
-                                                                                    cancel: "やめる",
-                                                                                    commit: "退会"}, title: "本当に退会しますか？" %>
-                                                                                     
-                </td>
-              </tr>
-               <% end %>
+            <% end %>
+          <% end %>
+          <!--ログインユーザー且つゲストユーザーではない時、更新ボタンと退会ボタンを表示させる-->
+          <% if @user == current_user && current_user != @guest_user %>
+            <tr>
+              <td><%= link_to "更新", edit_user_path(@user) %></td>
+              <td>
+                <%= link_to "退会する", withdraw_user_path(@user), method: :patch, data: {  confirm: "一度退会すると同じメールアドレスで再登録できなくなります",
+                                                                                  cancel: "やめる",
+                                                                                  commit: "退会"}, title: "本当に退会しますか？" %>
+                                                                                   
+              </td>
+            </tr>
+          <% end %>
         </tbody>
-       
       </table>
     </div> 
     
   <div class="border-left border-dark"></div> 
-  
-  <!--<div class="my_reviews_wrapper"></div>-->
-  <div class="col-7">
-     <h2 class="top">Reviews</h2>
-    <div class="row">
-      
-    <% if @user.reviews.exists? %>
-     <% @user.reviews.each do |review| %>
-         
+    <!--my_reviews-->
+    <div class="col-7">
+      <h2 class="top">Reviews</h2>
+      <div class="row">
+        <% if @user.reviews.exists? %>
+          <!--ユーザーが投稿したレビュー一覧を表示-->
+          <% @user.reviews.each do |review| %>
             <div class="my_hover-darken my_movie-title col-3">
               <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
-                <%= review.movie_title %> 
+              <%= review.movie_title %> 
             </div>
             <div class="offset-1 col-7">
               <div class="review_title">
                 <%= link_to review.title, review_path(review.id) %>
               </div>
-              
               <div class="review_rate">
-              <div class="movie-evaluation-<%= review.id %>"></div>
-                    <script>
-                    $(".movie-evaluation-<%= review.id %>").empty();
-                    $('.movie-evaluation-<%= review.id %>').raty({
-                      size: 36,
-                      starOff:  '<%= asset_path('star-off.png') %>',
-                      starOn : '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      readOnly: true,
-                      score: <%= review.rate %>,
-                    });
-                    </script>
-                  </div>
+                <div class="movie-evaluation-<%= review.id %>"></div>
+                <script>
+                  $(".movie-evaluation-<%= review.id %>").empty();
+                  $('.movie-evaluation-<%= review.id %>').raty({
+                    size: 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    readOnly: true,
+                    score: <%= review.rate %>,
+                  });
+                </script>
+              </div>
               <div class="review_body">
                 <%= review.body %>
               </div>
             </div>
-            <div class="col-1"></div>
-      <% end %>
-      <% else %>
-        <div class="reviews_empty offset-3 col-6">
-          <h5>現在レビューはありません</h5>
-        </div>
-      <% end %>
-       </div>
+          <% end %>
+        <% else %>
+          <div class="reviews_empty offset-3 col-6">
+            <h5>現在レビューはありません</h5>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
+<!--my_bookmark-->
 <h2 class="bookmark_top">Bookmark</h2>
-
 <div class="container">
   <div class="row">
- <% if @user.likes.exists? %>
-    <% @user.likes.each do |like| %>
-      <div class="bookmark_hover-darken">
-      <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "bookmark_review_image border border-dark"),detail_path(like.review.tmdb) %>
+    <% if @user.likes.exists? %>
+      <% @user.likes.each do |like| %>
+        <div class="bookmark_hover-darken">
+          <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "bookmark_review_image border border-dark"),detail_path(like.review.tmdb) %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="bookmark_empty offset-3 col-6">
+        <h5>現在保存済みの映画はありません</h5>
+        <p><レビューの詳細画面から保存することができます></p>
       </div>
     <% end %>
-  <% else %>
-  <div class="bookmark_empty offset-3 col-6">
-    <h5>現在保存済みの映画はありません</h5>
-    <p><レビューの詳細画面から保存することができます></p>
   </div>
-  <% end %>
 </div>
-</div>
-
-
-
-

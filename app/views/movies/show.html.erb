@@ -1,121 +1,125 @@
+<!--idに該当するmovieデータをjson形式で取得-->
 <% detail = JSON.parse((Tmdb::Movie.detail(params[:id])).to_json) %>
-
-<div class="review_error">
- <%= flash[:notice] %>
- </div>
  
- <div class="movie_show">
+<div class="movie_show">
   <div class="container">
     <div class="row">
       <div class="col-4">
-     
+        <!--ポスターがあれば表示-->
         <%if detail['table']['poster_path'].present?%>
           <%= image_tag 'https://image.tmdb.org/t/p/w1280' + detail['table']['poster_path'], class: "image" %>
         <%end%>
+        <!--タイトルがあれば表示-->
         <%if detail['table']['title'].present?%>
           <div class="movie-title"><%= detail['table']['title'] %></div>
         <%end%>
-        
-        
+        <!--空の配列を用意-->
+        <!--@review.tmdbと@movieinfo["table"]["id"]が同じ、レビューの評価(rate)を空の配列に代入-->
         <% array = [] %>
-        <% @reviews.each do |r| %>
-          <% if r.tmdb == @movieinfo["table"]["id"] %>
-            <% array << r.rate %>
+        <% @reviews.each do |review| %>
+          <% if review.tmdb == @movieinfo["table"]["id"] %>
+            <% array << review.rate %>
           <% end %>
         <% end %>
+        <!--配列が空じゃなければ評価(rate)の平均を算出-->
         <% unless array.empty? %>
-        <h3>平均<%= (array.sum / array.count).round(2).to_f %>点</h3>
-      <% end %>
-      
+          <h3>平均<%= (array.sum / array.count).round(2).to_f %>点</h3>
+        <% end %>
       </div>
       
       <div class="offset-1 col-7">
+        <!--あらすじがあれば表示-->
         <%if detail['table']['overview'].present?%>
-        <lable>あらすじ</lable>
-        <div class= "overview border rounded">
-          <%= detail['table']['overview'] %>
+          <lable>あらすじ</lable>
+          <div class= "overview border rounded">
+            <%= detail['table']['overview'] %>
           </div>
         <%end%>
       
-        <%= form_with model: @review, local: true do |f| %>
+      <!--レビュー投稿表示-->
+      <%= form_with model: @review, local: true do |f| %>
         <div class="row">
-        <div class="col-6">
-          <label>レビュータイトル</label>
-          <%= f.text_field :title, class: "review_title_form form-control border border-dark", id: "review_title" %>
-          </div>
-        <div class="col-6">
-           <label>評価</label></br>
-          <div id="evaluate_stars">
-            <%= f.hidden_field :rate, id: :evaluate_star %>
-          </div>
-         
-            <script>
-             $("#evaluate_stars").empty();
-             $('#evaluate_stars').raty({
-              half: true,
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              scoreName: 'review[rate]' 
-            }); 
-          </script>
-                
-          <%= f.hidden_field :movie_title, :value => detail["table"]["title"], id: "movie_title" %>
-          <%= f.hidden_field :release_date, :value => detail["table"]["release_date"], id: "release_date" %>
-          <%= f.hidden_field :overview, :value => detail["table"]["overview"], id: "overview" %>
-          <%= f.hidden_field :poster_path, :value => detail["table"]["poster_path"], id: "poster_path" %>
-          <%= f.hidden_field :tmdb, :value => detail["table"]["id"], id: "tmdb" %>
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-10">
-          <label>本文</label>
-          <%= f.text_area :body, class: "review_body_form form-control border border-dark",id: "review_body", rows: "5" %>
+          <div class="col-6">
+            <%= f.label :レビュータイトル %>
+            <%= f.text_field :title, class: "review_title_form form-control border border-dark", id: "review_title" %>
           </div>
           <div class="col-6">
-          <%= f.submit "レビュー", class: "btn btn-primary" %>
-          </div>
-          </div>
-          <% end %>
-      </div>
-    </div>
-</div>
-<div class="review_list">
-  <div class="container">
-  <div class="row">
-    <div class="col-10">
-      
-      <h2 class="top">Reviews</h2>
-      <% Review.all.each do |review| %>
-        <% if review.tmdb == @movieinfo["table"]["id"] %>
-        <div class="review_container border">
-          <%= review.user.name %>
-          <div class="review_title">
-          <%= link_to review.title, review_path(review.id) %>
-          </div>
-          <div class="review_rate">
-            <div class="movie-evaluation-<%= review.id %>"></div>
-              <script>
-              $(".movie-evaluation-<%= review.id %>").empty();
-              $('.movie-evaluation-<%= review.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                readOnly: true,
-                score: <%= review.rate %>,
-              });
-              </script>
+            <label>評価</label></br>
+            <!--評価を5段階表示(raty.js)-->
+            <div id="evaluate_stars">
+              <%= f.hidden_field :rate, id: :evaluate_star %>
             </div>
-                  <div class="review_body">
-                    <%= review.body %>
-                  </div>
-          
+            <script>
+              $("#evaluate_stars").empty();
+              $('#evaluate_stars').raty({
+                half: true,
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                scoreName: 'review[rate]' 
+              }); 
+            </script>
+            <!--映画のタイトル、リリース日、あらすじ、ポスター、id(tmdb)のデータを送信      -->
+            <%= f.hidden_field :movie_title, :value => detail["table"]["title"], id: "movie_title" %>
+            <%= f.hidden_field :release_date, :value => detail["table"]["release_date"], id: "release_date" %>
+            <%= f.hidden_field :overview, :value => detail["table"]["overview"], id: "overview" %>
+            <%= f.hidden_field :poster_path, :value => detail["table"]["poster_path"], id: "poster_path" %>
+            <%= f.hidden_field :tmdb, :value => detail["table"]["id"], id: "tmdb" %>
+          </div>
         </div>
-        <% end %>
+        
+        <div class="row">
+          <div class="col-10">
+            <%= f.label :本文 %>
+            <%= f.text_area :body, class: "review_body_form form-control border border-dark",id: "review_body", rows: "5" %>
+          </div>
+          <div class="col-6">
+            <%= f.submit "レビュー", class: "btn btn-primary" %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
-</div>
-</div>
+
+
+  <div class="review_list">
+    <div class="container">
+      <div class="row">
+        <div class="col-10">
+          <h2 class="top">Reviews</h2>
+          <% Review.all.each do |review| %>
+            <% if review.tmdb == @movieinfo["table"]["id"] %>
+              <div class="review_container border">
+                <!--レビューした人の名前を表示-->
+                <%= review.user.name %>
+                <div class="review_title">
+                  <!--レビューのタイトルを表示-->
+                  <%= link_to review.title, review_path(review.id) %>
+                </div>
+                <!--レビューの評価をraty.jsを使って表示-->
+                <div class="review_rate">
+                  <div class="movie-evaluation-<%= review.id %>"></div>
+                    <script>
+                      $(".movie-evaluation-<%= review.id %>").empty();
+                      $('.movie-evaluation-<%= review.id %>').raty({
+                        size: 36,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        readOnly: true,
+                        score: <%= review.rate %>,
+                      });
+                    </script>
+                </div>
+                <div class="review_body">
+                  <!--レビューの内容を表示-->
+                  <%= review.body %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

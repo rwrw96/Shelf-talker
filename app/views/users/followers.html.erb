@@ -1,26 +1,26 @@
 <div class="container">
-    <div class="users">
-      <h2 class="top">Followers</h2>
-      <% if @user.followers.exists? %>
-        <table class="table table-hover">
-          <div class="thead">
-            <th class="th1">follower</th>
-            <th class="th2">review</th>
-            <th class="th3">introduction</th>
-          </div>
-        <% @user.followers.each do |follower| %>
+  <div class="users">
+    <h2 class="top">Followers</h2>
+    <% if @user.followers.exists? %>
+      <table class="table table-hover">
+        <thead>
+          <th class="th1">follower</th>
+          <th class="th2">review</th>
+          <th class="th3">introduction</th>
+        </thead>
+      <!--フォローされているユーザーを全て表示-->
+      <% @user.followers.each do |follower| %>
         <tbody>
           <td><%= link_to follower.name, user_path(follower.id) %></td>
           <td><%= "レビュー数: #{follower.reviews.count}" %></td>
           <td><%= follower.introduction %></td>
-          </tbody>
-        <% end %>
-        </table>
-        <% else %>
-        <div class="followers_empty offset-3 col-6">
-          <h5>現在フォローされているユーザーはいません</h5>
-        </div>
-        <% end %>
-       
-    </div>
+        </tbody>
+      <% end %>
+      </table>
+    <% else %>
+      <div class="followers_empty offset-3 col-6">
+        <h5>現在フォローされているユーザーはいません</h5>
+      </div>
+    <% end %>
+  </div>
 </div>

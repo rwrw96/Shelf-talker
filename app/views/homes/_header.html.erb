@@ -1,26 +1,29 @@
 <header>
+  <!--ログアウト時-->
   <% if !user_signed_in? %>
-  <div class="header_item">
-  <%= link_to "HOME", root_path, class: "editlink" %>
-  <%= link_to "ABOUT" , homes_about_path, class: "editlink" %>
-  <%= link_to "SIGNIN" , new_user_session_path, class: "editlink" %>
-  <%= link_to "SIGNUP" ,  new_user_registration_path, class: "editlink" %>
-  </div>
+    <div class="header_item">
+      <%= link_to "HOME", root_path, class: "editlink" %>
+      <%= link_to "ABOUT" , homes_about_path, class: "editlink" %>
+      <%= link_to "SIGNIN" , new_user_session_path, class: "editlink" %>
+      <%= link_to "SIGNUP" ,  new_user_registration_path, class: "editlink" %>
+    </div>
+  <!--管理者としてログイン時  -->
   <% elsif current_user.admin? %>
-  <div class="header_item">
-  <%= link_to "ADMIN USERS", admin_users_path, class: "editlink" %>
-  <%= link_to "ADMIN REVIEWS" , admin_reviews_path, class: "editlink" %>
-  <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
-  <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
-  </div>
+    <div class="header_item">
+      <%= link_to "ADMIN USERS", admin_users_path, class: "editlink" %>
+      <%= link_to "ADMIN REVIEWS" , admin_reviews_path, class: "editlink" %>
+      <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
+      <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
+    </div>
+  <!--ユーザーとしてログイン時  -->
   <% else %>
-  <div class="header_item">
-  <%= link_to "HOME", root_path, class: "editlink" %>
-  <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
-  <%= link_to "USERS", users_path, class: "editlink" %>
-  <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
-  <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
-  </div>
+    <div class="header_item">
+      <%= link_to "HOME", root_path, class: "editlink" %>
+      <%= link_to "REVIEWS" , reviews_path, class: "editlink" %>
+      <%= link_to "USERS", users_path, class: "editlink" %>
+      <%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %>
+      <%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %>
+    </div>
   <% end %>
   <div class="logo">
     <%= link_to ShelfTalker , root_path, class: "editlink" %>
