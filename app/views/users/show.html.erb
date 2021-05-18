@@ -45,52 +45,72 @@
     <div class="col-7">
       <h2 class="top">Reviews</h2>
       <div class="row">
-        <% if @user.reviews.exists? %>
-          <!--ユーザーが投稿したレビュー一覧を表示-->
-          <% @user.reviews.each do |review| %>
-            <div class="my_hover_darken my_movie_title col-3">
-              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
-              <%= review.movie_title %> 
-            </div>
-            <div class="offset-1 col-7">
-              <div class="review_title">
-                <%= link_to review.title, review_path(review.id) %>
+        <!--相互フォロワー、又は本人のページの場合レビューとブックマークを表示させる-->
+        <% if @user.followings.include?(current_user) && @user.followers.include?(current_user) || @user == current_user %>
+          <% if @user.reviews.exists? %>
+            <!--ユーザーが投稿したレビュー一覧を表示-->
+            <% @user.reviews.each do |review| %>
+              <div class="my_hover_darken my_movie_title col-3">
+                <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
+                <%= review.movie_title %> 
               </div>
-              
-              <!--レビューをraty.jsで表示-->
-              <div class="review_rate">
-                <%= render "reviews/raty", review: review %>
+              <div class="offset-1 col-7">
+                <div class="review_title">
+                  <%= link_to review.title, review_path(review.id) %>
+                </div>
+                
+                <!--レビューをraty.jsで表示-->
+                <div class="review_rate">
+                  <%= render "reviews/raty", review: review %>
+                </div>
+                
+                <div class="review_body">
+                  <%= review.body %>
+                </div>
               </div>
-              
-              <div class="review_body">
-                <%= review.body %>
-              </div>
+            <% end %>
+          <!--相互フォロワーではない場合-->
+          <% else %>
+            <div class="my_reviews_empty offset-3 col-6">
+              <h5>現在レビューはありません</h5>
             </div>
           <% end %>
-        <% else %>
-          <div class="my_reviews_empty offset-3 col-6">
-            <h5>現在レビューはありません</h5>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>
 </div>
-<!--my_bookmark-->
-<h2 class="bookmark_top">Bookmark</h2>
-<div class="container">
-  <div class="row">
-    <% if @user.likes.exists? %>
-      <% @user.likes.each do |like| %>
-        <div class="bookmark_hover_darken">
-          <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "bookmark_review_image border border-dark"),detail_path(like.review.tmdb) %>
+      <h2 class="bookmark_top">Bookmark</h2>
+      <div class="container">
+        <div class="row">
+          <% if @user.likes.exists? %>
+            <% @user.likes.each do |like| %>
+              <div class="bookmark_hover_darken">
+                <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + like.review.poster_path, class: "bookmark_review_image border border-dark"),detail_path(like.review.tmdb) %>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="my_bookmark_empty offset-3 col-6">
+              <h5>現在保存済みの映画はありません</h5>
+              <p><レビューの詳細画面から保存することができます></p>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    <% else %>
-      <div class="my_bookmark_empty offset-3 col-6">
-        <h5>現在保存済みの映画はありません</h5>
-        <p><レビューの詳細画面から保存することができます></p>
       </div>
-    <% end %>
+        <% else %>
+          <div class="my_reviews_empty offset-3 col-6">
+            <h5>相互フォロー関係になると投稿したレビューが表示されます</h5>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+      <h2 class="bookmark_top">Bookmark</h2>
+        <div class="container">
+          <div class="row">
+            <div class="my_bookmark_empty offset-3 col-6">
+              <h5>相互フォロー関係になると保存した映画が表示されます</h5>
+              <p><レビューの詳細画面から保存することができます></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
