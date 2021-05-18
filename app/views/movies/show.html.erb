@@ -1,6 +1,33 @@
 <!--idに該当するmovieデータをjson形式で取得-->
 <% detail = JSON.parse((Tmdb::Movie.detail(params[:id])).to_json) %>
  
+    
+  
+  
+    
+  <h5>----</h5>
+  
+  
+   <% kkk =  JSON.parse((Tmdb::Movie.cast(params[:id])).to_json) %>
+   <% @hhh = kkk.length %>
+   <% i = 0 %>
+   <% while i < 15 %>
+   <% unless kkk[i]["table"]["profile_path"].nil? %>
+   <%= image_tag "http://image.tmdb.org/t/p/w185/" + kkk[i]["table"]["profile_path"] %>
+   <%= kkk[i]["table"]["name"] %>
+   <% end %>
+   <% i += 1 %>
+   <% end %>
+  
+
+  <h5>----</h5>
+  
+  
+ 
+ 
+ 
+ 
+ 
 <div class="movie_show">
   <div class="container">
     <div class="row">
