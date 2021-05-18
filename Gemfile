@@ -79,7 +79,9 @@ group :production do
   gem 'mysql2'
   gem 'themoviedb-api'
 end
-gem 'carrierwave'
+
+
 gem 'data-confirm-modal'
 gem 'jquery-rails'
 gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'kaminari'

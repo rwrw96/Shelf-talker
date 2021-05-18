@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # ゲストユーザーを取得
     @guest_user = User.find_by(email: "guest@example.com")
+    # 1ページで4件ごと取得
+    @my_reviews = @user.reviews.page(params[:page]).per(4)
   end
   
   def edit

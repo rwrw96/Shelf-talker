@@ -1,0 +1,23 @@
+<!--ユーザーが投稿したレビュー一覧を表示-->
+<div class="row">
+  <% @my_reviews.each do |review| %>
+    <div class="my_hover_darken my_movie_title col-3">
+      <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
+      <%= review.movie_title %> 
+    </div>
+    <div class="offset-1 col-7">
+      <div class="review_title">
+        <%= link_to review.title, review_path(review.id) %>
+      </div>
+      
+      <!--レビューをraty.jsで表示-->
+      <div class="review_rate">
+        <%= render "reviews/raty", review: review %>
+      </div>
+      
+      <div class="review_body">
+        <%= review.body %>
+      </div>
+    </div>
+  <% end %>
+</div>
