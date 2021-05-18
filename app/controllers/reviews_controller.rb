@@ -2,6 +2,11 @@ class ReviewsController < ApplicationController
   # ログインユーザーのみ許可する
   before_action :authenticate_user!, only: [:show, :edit, :index]
   
+  def index
+    # 1ページで10件ごと取得
+    @reviews = Review.page(params[:page]).per(10)
+  end
+  
   def show
     @review = Review.find(params[:id])
   end

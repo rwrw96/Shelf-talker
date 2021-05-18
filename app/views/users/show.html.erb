@@ -44,31 +44,19 @@
     <!--my_reviews-->
     <div class="col-7">
       <h2 class="top">Reviews</h2>
-      <div class="row">
         <!--相互フォロワー、又は本人のページの場合レビューとブックマークを表示させる-->
         <% if @user.followings.include?(current_user) && @user.followers.include?(current_user) || @user == current_user %>
           <% if @user.reviews.exists? %>
-            <!--ユーザーが投稿したレビュー一覧を表示-->
-            <% @user.reviews.each do |review| %>
-              <div class="my_hover_darken my_movie_title col-3">
-                <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + review.poster_path , class: "my_review_image border border-dark"), detail_path(review.tmdb) %></br>
-                <%= review.movie_title %> 
-              </div>
-              <div class="offset-1 col-7">
-                <div class="review_title">
-                  <%= link_to review.title, review_path(review.id) %>
-                </div>
-                
-                <!--レビューをraty.jsで表示-->
-                <div class="review_rate">
-                  <%= render "reviews/raty", review: review %>
-                </div>
-                
-                <div class="review_body">
-                  <%= review.body %>
-                </div>
-              </div>
-            <% end %>
+          
+            <!--レビュー一覧を表示-->
+            <div id="my_review_lists">
+              <%= render 'users/my_review_list' %>
+            </div>
+            <div class="more">
+              <!--非同期通信でページネーション-->
+              <%= link_to_next_page @my_reviews, 'show more', remote: true, id: 'view_more' %>
+            </div>
+            
           <!--相互フォロワーではない場合-->
           <% else %>
             <div class="my_reviews_empty offset-3 col-6">
