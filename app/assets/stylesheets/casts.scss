@@ -82,3 +82,46 @@
     color: white;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .cast_info {
+    img {
+      height: 180px;
+      width: 120px;
+    }
+  .box {
+      height: 100px;
+      width: 200px;
+      top: 50px;
+      left: 0px;
+    }
+    .cast_birthday {
+      color: black;
+    }
+    .place_of_birth {
+      color: black;
+    }
+    .offset-4 {
+      margin-left: 15%;
+    }
+    .col-3 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  .cast_movies {
+    .col-3 {
+      max-width: 50%;
+    }
+    .cast_movies_title {
+      font-size: 10px
+    }
+    .cast_movies_character {
+      font-size: 10px;
+    }
+    .cast_movies_release_date {
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -42,36 +42,36 @@
 
 <% cast_info = JSON.parse((Tmdb::Person.movie_credits(params[:id])).to_json) %>
 <% i = 0 %>
-<div class="container">
-  <div class="row">
-    <% while i < cast_info["table"]["cast"].length %>
-    
-      <div class="col-3">
-        <div class="cast_movies">
-          <% if cast_info["table"]["cast"][i]["table"]["poster_path"] %>
-            <%= link_to image_tag("http://image.tmdb.org/t/p/w1280/" + cast_info["table"]["cast"][i]["table"]["poster_path"]), detail_path(cast_info['table']['cast'][i]['table']['id']) %>
-          <% end %>
+<div class="cast_movies">
+  <div class="container">
+    <div class="row">
+      <% while i < cast_info["table"]["cast"].length %>
+      
+        <div class="col-3">
+          <div class="cast_movies">
+            <% if cast_info["table"]["cast"][i]["table"]["poster_path"] %>
+              <%= link_to image_tag("http://image.tmdb.org/t/p/w1280/" + cast_info["table"]["cast"][i]["table"]["poster_path"]), detail_path(cast_info['table']['cast'][i]['table']['id']) %>
+            <% end %>
+          </div>
+          <div class="cast_movies_title">
+            <% if cast_info["table"]["cast"][i]["table"]["title"] %>
+              <%= cast_info["table"]["cast"][i]["table"]["title"] %>
+            <% end %>
+          </div>
+          <div class="cast_movies_character">
+            <% if cast_info["table"]["cast"][i]["table"]["character"] %>
+              <%= cast_info["table"]["cast"][i]["table"]["character"] %>役
+            <% end %>
+          </div>
+          <div class="cast_movies_release_date">
+            <% if cast_info["table"]["cast"][i]["table"]["release_date"] %>
+              <%= cast_info["table"]["cast"][i]["table"]["release_date"] %>
+            <% end %>
+          </div>
         </div>
-        <div class="cast_movies_title">
-          <% if cast_info["table"]["cast"][i]["table"]["title"] %>
-            <%= cast_info["table"]["cast"][i]["table"]["title"] %>
-          <% end %>
-        </div>
-        <div class="cast_movies_character">
-          <% if cast_info["table"]["cast"][i]["table"]["character"] %>
-            <%= cast_info["table"]["cast"][i]["table"]["character"] %>役
-          <% end %>
-        </div>
-        <div class="cast_movies_release_date">
-          <% if cast_info["table"]["cast"][i]["table"]["release_date"] %>
-            <%= cast_info["table"]["cast"][i]["table"]["release_date"] %>
-          <% end %>
-        </div>
-      </div>
-    <% i += 1 %>
-    <% end %>
+      <% i += 1 %>
+      <% end %>
+    </div>
   </div>
 </div>
 </div>
-
-<%= cast_info["table"]["cast"].length %>
