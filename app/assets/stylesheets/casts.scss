@@ -35,6 +35,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  font-family: 'Stick', sans-serif;
 }
 
 .cast_movies_character {
@@ -69,6 +70,9 @@
 
 
 .cast_info {
+  .cast_info_content {
+    font-family: 'Raleway', sans-serif;
+  }
   h4 {
     margin-top: 20px;
   }
