@@ -35,11 +35,22 @@
             <%= detail['table']['overview'] %>
           </div>
         <%end%>
+        
+      <!--レビューボタン-->
+      <div class="row">
+        <div class="review_button offset-7 col-3">
+          レビューをする
+        </div>
+      </div>
       
-      <!--レビュー投稿表示-->
+  <!--レビューモーダルウィンドウ-->
+  <div class="review_modal_wrapper"></div>  
+  <div class="back_review_modal">
+    <div class="review_modal review_modal_content">
+      <span class="fa_wrapper"><%= fa_icon "times" %></span>
       <%= form_with model: @review, local: true do |f| %>
         <div class="row">
-          <div class="col-6">
+          <div class="offset-1 col-4">
             <%= f.label :レビュータイトル %>
             <%= f.text_field :title, class: "review_title_form form-control border border-dark", id: "review_title" %>
           </div>
@@ -67,19 +78,22 @@
             <%= f.hidden_field :tmdb, :value => detail["table"]["id"], id: "tmdb" %>
           </div>
         </div>
-        
+          
         <div class="row">
-          <div class="col-10">
+          <div class="offset-1 col-10">
             <%= f.label :本文 %>
-            <%= f.text_area :body, class: "review_body_form form-control border border-dark",id: "review_body", rows: "5" %>
+            <%= f.text_area :body, class: "review_body_form form-control border border-dark",id: "review_body", rows: "7" %>
           </div>
-          <div class="col-6">
+          <div class="offset-9">
             <%= f.submit "レビュー", class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>
+      </div>
     </div>
   </div>
+</div>
+
 
    
   <!--映画に出演したキャストのデータをjson形式で取得-->
