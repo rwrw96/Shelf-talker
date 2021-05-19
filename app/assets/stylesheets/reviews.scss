@@ -306,6 +306,17 @@
       }
     }
   }
+  
+  .movie_image {
+    height: 180px;
+    width: 120px;
+  }
+  
+  .movie-title {
+    font-size: 10px;
+    width: 120px;
+  }
+  
   .review_title_form {
     padding: 0px;
   }
@@ -313,3 +324,39 @@
     padding: 0px;
   }
 }
+
+.review_button {
+  margin-top: 10px;
+  margin-right: 20px;
+  .offset-7 {
+    margin: 0px;
+  }
+  .col-3 {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.review_modal {
+  background-color: white;
+  width: 300px;
+  height: 200px;
+  top: 0;
+  left: -120px;
+  bottom: 0;
+  right: 0;
+}
+
+.review_list {
+  .offset-3 {
+    margin: 0px;
+  }
+  .col-6 {
+    flex: 100%;
+    max-width: 100%;
+  }
+  .my_reviews_empty {
+    margin: 0px;
+  }
+}
+
