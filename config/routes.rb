@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'casts/show'
   namespace :admin do
     get 'users/index'
     get 'users/destroy'
@@ -29,7 +30,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :destroy]
   end
-
+  
+  resources :casts, only: [:show]
+  
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
   get "movies/:id" => "movies#show", as: "detail"
