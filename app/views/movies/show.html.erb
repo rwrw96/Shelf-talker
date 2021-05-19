@@ -1,18 +1,18 @@
 <!--idに該当するmovieデータをjson形式で取得-->
 <% detail = JSON.parse((Tmdb::Movie.detail(params[:id])).to_json) %>
- 
+
 <div class="movie_show">
   <div class="container">
     <div class="row">
       <div class="col-4">
         <!--ポスターがあれば表示-->
-        <%if detail['table']['poster_path'].present?%>
+        <% if detail['table']['poster_path'].present? %>
           <%= image_tag 'https://image.tmdb.org/t/p/w1280' + detail['table']['poster_path'], class: "movie_image" %>
-        <%end%>
+        <% end %>
         <!--タイトルがあれば表示-->
-        <%if detail['table']['title'].present?%>
+        <% if detail['table']['title'].present? %>
           <div class="movie_title"><%= detail['table']['title'] %></div>
-        <%end%>
+        <% end %>
         <!--空の配列を用意-->
         <!--@review.tmdbと@movieinfo["table"]["id"]が同じ、レビューの評価(rate)を空の配列に代入-->
         <% array = [] %>
@@ -80,6 +80,59 @@
       <% end %>
     </div>
   </div>
+
+   
+  <!--映画に出演したキャストのデータをjson形式で取得-->
+   <% movie_casts =  JSON.parse((Tmdb::Movie.cast(params[:id])).to_json) %>
+   <% i = 0 %>
+   <!--配列の数が15以下なら-->
+   <% if movie_casts.length <= 15 %>
+    <h2 class="top">CAST</h2>
+    <div class="container">
+      <div class="row">
+        <!--配列の数だけ表示する-->
+        <% while i < movie_casts.length %>
+          <% unless movie_casts[i]["table"]["profile_path"].nil? %>
+            <div class="cast_list">
+              <div class="col-1">
+                <div class="casts_image">
+                  <%= link_to image_tag("http://image.tmdb.org/t/p/w1280/" + movie_casts[i]["table"]["profile_path"]), cast_path(movie_casts[i]["table"]["id"]) %>
+                </div>
+                <div class="casts_name">
+                  <%= movie_casts[i]["table"]["name"] %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% i += 1 %>
+        <% end %>
+      </div>
+    </div>
+  <!--配列の数が15以上なら-->
+  <% else %>
+    <h2 class="top">CAST</h2>
+      <div class="container">
+        <div class="row">
+          <!--15個表示する-->
+          <% while i < 15 %>
+            <% unless movie_casts[i]["table"]["profile_path"].nil? %>
+              <div class="cast_list">
+                <div class="col-1">
+                  <div class="casts_image">
+                    <%= link_to image_tag("http://image.tmdb.org/t/p/w1280/" + movie_casts[i]["table"]["profile_path"]), cast_path(movie_casts[i]["table"]["id"]) %>
+                  </div>
+                  <div class="casts_name">
+                    <%= movie_casts[i]["table"]["name"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% i += 1 %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
 
 
   <div class="review_list">
