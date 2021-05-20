@@ -9,14 +9,18 @@
     </div>
     <div class="col-7">
       <div class="row">
-        <div class="reviews_title col-5">
+        <div class="reviews_title col-4">
           <%= link_to review.title, review_path(review.id) %>
         </div>
         
         <!--レビューをraty.jsで表示-->
-        <div class="review_rate col-5">
+        <div class="review_rate col-4">
           <%= render "reviews/raty", review: review %>
         </div>
+          
+        <div class="reviews_created_at col-4">
+          投稿日:<%= review.created_at.to_s(:datetime_jp) %>
+        </div>  
           
           <!--管理者の場合、削除ボタンを表示させる-->
           <% if current_user == User.find_by(admin: true) %>
