@@ -1,7 +1,6 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
 
 header {
   height: 200px;
@@ -15,6 +14,7 @@ header {
   .header_item {
     font-size: 20px;
     text-align: right;
+    font-family: 'Raleway', sans-serif;
     .editlink {
       color: black;
       text-decoration: none;
@@ -53,6 +53,7 @@ footer {
   .copyright {
     text-align: center;
     font-size: 15px;
+    font-family: 'Raleway', sans-serif;
   }
 }
 

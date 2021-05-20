@@ -126,6 +126,7 @@
 .review_container {
   margin-bottom: 30px;
   padding: 10px;
+  width: 1200px;
 }
 
 .review_save {
@@ -143,7 +144,6 @@
 
 .review_edit {
   display: inline-block;
-  margin-left: 600px;
   .editlink {
     color: black;
   }
@@ -293,6 +293,12 @@
   .review_container {
     font-size: 10px;
     margin: 10px;
+    width: 300px;
+    padding-right: 0px;
+    .col-1 {
+      flex: 100%;
+      max-width: 90%;
+    }
     .review_edit {
     width: 100%;
     text-align: right;
@@ -323,11 +329,13 @@
   .review_body_form {
     padding: 0px;
   }
-}
+
 
 .review_button {
   margin-top: 10px;
   margin-right: 20px;
+  margin-left: 30px;
+  font-size: 10px;
   .offset-7 {
     margin: 0px;
   }
@@ -359,4 +367,7 @@
     margin: 0px;
   }
 }
-
+  .reviews_created_at {
+    display: none;
+  }
+}

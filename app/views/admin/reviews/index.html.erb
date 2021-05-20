@@ -1,1 +1,15 @@
-<%= render "reviews/index" %>
+<div class="container">
+  <h2 class="top">Reviews</h2>
+  <div class="reviews_wrapper">
+    <div id="review_lists">
+      <!--レビュー一覧表示-->
+      <%= render 'reviews/review_list' %>
+    </div>
+    <div class="more">
+      <div class="offset-3 col-6">
+        <!--非同期通信でページネーション-->
+        <%= link_to_next_page @reviews, 'show more', remote: true, id: 'view_more' %>
+      </div>
+    </div>
+  </div>
+</div>

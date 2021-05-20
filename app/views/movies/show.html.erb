@@ -37,14 +37,13 @@
         <%end%>
         
       <!--レビューボタン-->
+      <div class="review_button">
       <div class="row">
-        <div class="review_button"> 
-          <div class="offset-7 col-3">
-          レビューをする
-          </div>
+        <div class="col-12">
+            レビューをする
         </div>
       </div>
-      
+    </div>
   <!--レビューモーダルウィンドウ-->
   <div class="review_modal_wrapper"></div>  
   <div class="back_review_modal">
@@ -103,7 +102,7 @@
    <% i = 0 %>
    <!--配列の数が15以下なら-->
    <% if movie_casts.length <= 15 %>
-    <h2 class="top">CAST</h2>
+    <h2 class="top">Cast</h2>
     <div class="container">
       <div class="row">
         <!--配列の数だけ表示する-->
@@ -154,7 +153,7 @@
   <div class="review_list">
     <div class="container">
       <div class="row">
-        <div class="offset-3 col-6">
+        <div class="col-12">
           <h2 class="top">Reviews</h2>
           <div class="my_reviews_empty">
             <% unless Review.find_by(tmdb: @movieinfo["table"]["id"]) %>

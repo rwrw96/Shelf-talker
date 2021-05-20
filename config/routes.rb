@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'casts/show'
+
   namespace :admin do
     get 'users/index'
     get 'users/destroy'
@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   get "homes/about" => "homes#about"
   get "homes/welcome" => "homes#welcome"
   post "homes/welcome" => "homes#welcome"
-
+  
+  # ルーティングエラー時ページ遷移
+  get '*path', to: 'movies#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

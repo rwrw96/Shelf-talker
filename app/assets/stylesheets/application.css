@@ -15,3 +15,14 @@
  *= require_self
  *= require font-awesome
  */
+
+/*全体フォントに適用 */
+@import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
+/*movie_titleに適用*/
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
+/*ロゴ、ジャンル、フッターに適用*/
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+ body {
+    font-family: "Noto Sans Japanese";
+ }
