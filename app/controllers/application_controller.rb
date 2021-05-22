@@ -18,8 +18,12 @@ class ApplicationController < ActionController::Base
 
   def render_404(e = nil)
       Tmdb::Api.key(ENV['API_KEY'])
+      top_review = Review.where(rate: 5)
+      rand = Rails.env.production? ? "RAND()" : "RANDOM()"
+      @top_reviews = top_review.order(rand).limit(1)
+      
       # loggor.info内のe.messageがnilならばレンダリング
       logger.info "Rendering 404 with exception: #{e.message}" if e
-      render "movies/index"
+      redirect_to "/"
   end
 end
