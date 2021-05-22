@@ -18,5 +18,6 @@ FactoryBot.define do
     name { Faker::Lorem.characters(number: 20) }
     email { Faker::Internet.email }
     password { Faker::Lorem.characters(number: 6) }
+    confirmed_at { Faker::Date.in_date_period }
   end
 end

@@ -19,7 +19,11 @@
             <td><%= "レビュー数: #{user.reviews.count}" %></td>
             <td><%= user.introduction %></td>
             <% if current_user == User.find_by(admin: true) %>
-              <td><%= link_to "削除", admin_user_path(user), method: :delete, data: { confirm: '削除しますか？' },class: "btn btn-danger" %></td>
+              <% if user != User.find_by(admin: true) %>
+                <td><%= link_to "削除", admin_user_path(user), method: :delete, data: { confirm: '削除しますか？' },class: "btn btn-danger" %></td>
+              <% else %>
+                <td></td>
+              <% end %>
             <% end %>
           </tbody>
         <% end %>
