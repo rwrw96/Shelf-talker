@@ -27,7 +27,7 @@ jobs:
      uses: ruby/setup-ruby@v1 # 常に最新バージョンを参照
      with:
        ruby-version: ${{ matrix.ruby-version }}
-       bundler-cache: true # runs 'bundle install' and caches installed gems automatically
    - name: Test with Rspec
      run: |
+        bundle install
         bundle exec rspec

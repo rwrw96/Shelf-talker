@@ -12,11 +12,11 @@ RSpec.describe User, "管理者モデルに関するテスト", type: :model do
   describe "管理者権限で任意のユーザー、レビューを削除することができる" do
     context "管理者としてログインする" do
       before do 
-        Tmdb::Api.key(ENV['API_KEY'])
         visit "/users/sign_in"
         fill_in 'user[email]', with: admin.email
         fill_in 'user[password]', with: admin.password
         click_button 'Log in'
+        Tmdb::Api.key(ENV['API_KEY'])
       end
       
       it "ユーザー一覧ページに削除リンクが存在している" do
