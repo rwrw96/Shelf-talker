@@ -4,7 +4,7 @@ require 'spec_helper'
 RSpec.describe User, "モデルに関するテスト", type: :model do
   let(:user) { create(:user) }
   let!(:user2) { FactoryBot.create(:user, id: 2 ,name: "test2", email: "test1@test2") }
-
+  
   describe "新規登録" do
     context "ユーザーの登録成功" do
       it "有効なユーザーのみ保存されるか" do
