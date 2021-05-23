@@ -37,4 +37,5 @@ jobs:
         ruby-version: 2.6.x
     - name: Test with Rspec
       run: |
+        bunlde install
         bundle exec rspec
