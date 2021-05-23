@@ -8,7 +8,6 @@ RSpec.describe Review, "モデルに関するテスト", type: :model do
 
   context "レビュー投稿時" do
     before do
-      Tmdb::Api.key(ENV['API_KEY'])
       visit "/users/sign_in"
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
@@ -52,7 +51,6 @@ RSpec.describe Review, "モデルに関するテスト", type: :model do
 
   describe "レビュー詳細画面の内容" do
     before do
-      Tmdb::Api.key(ENV['API_KEY'])
       visit "/users/sign_in"
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
@@ -92,7 +90,6 @@ RSpec.describe Review, "モデルに関するテスト", type: :model do
   describe "レビューの編集" do
     context "編集画面に遷移するか" do
       before do
-        Tmdb::Api.key(ENV['API_KEY'])
         visit "/users/sign_in"
         fill_in 'user[email]', with: user.email
         fill_in 'user[password]', with: user.password
@@ -112,7 +109,6 @@ RSpec.describe Review, "モデルに関するテスト", type: :model do
   
     context "他ユーザーのレビューは編集できない" do
       before do
-        Tmdb::Api.key(ENV['API_KEY'])
         FactoryBot.create(:user, name: "user_b", email: "b@example.com", password: "bbbbbb")
         visit "/users/sign_in"
         fill_in 'user[email]', with: "b@example.com"
@@ -136,7 +132,6 @@ RSpec.describe Review, "モデルに関するテスト", type: :model do
   describe "レビューの削除" do
     context "自分のレビューを削除する" do
       before do
-        Tmdb::Api.key(ENV['API_KEY'])
         visit "/users/sign_in"
         fill_in 'user[email]', with: user.email
         fill_in 'user[password]', with: user.password
@@ -156,7 +151,6 @@ RSpec.describe Review, "モデルに関するテスト", type: :model do
     
     context "他ユーザーのレビューは削除できない" do
       before do
-        Tmdb::Api.key(ENV['API_KEY'])
         FactoryBot.create(:user, name: "user_b", email: "b@example.com", password: "bbbbbb")
         visit "/users/sign_in"
         fill_in 'user[email]', with: "b@example.com"

@@ -16,7 +16,6 @@ RSpec.describe User, "管理者モデルに関するテスト", type: :model do
         fill_in 'user[email]', with: admin.email
         fill_in 'user[password]', with: admin.password
         click_button 'Log in'
-        Tmdb::Api.key(ENV['API_KEY'])
       end
       
       it "ユーザー一覧ページに削除リンクが存在している" do

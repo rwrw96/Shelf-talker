@@ -8,7 +8,6 @@ RSpec.describe "モデルに関するテスト", type: :model do
   
   describe "トップレビューの表示" do
     before do
-      Tmdb::Api.key(ENV['API_KEY'])
       visit "/users/sign_in"
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password

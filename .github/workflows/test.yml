@@ -28,8 +28,9 @@ jobs:
      with:
        ruby-version: ${{ matrix.ruby-version }}
    - name: Test with Rspec
-     env:
-      API_KEY: ${{ secrets.API_KEY }}
-     run: |
+   
+    run: |
         bundle install
         bundle exec rspec
+    env:
+      API_KEY: ${{ secrets.API_KEY }}
