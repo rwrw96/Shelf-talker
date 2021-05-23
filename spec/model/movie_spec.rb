@@ -17,7 +17,6 @@ RSpec.describe "モデルに関するテスト", type: :model do
       it "評価5.0(rate: 5.0)のレビューを表示する" do
         expect(page).to have_content review.title
         expect(page).to have_content review.body
-        
       end
       it "評価5.0(rate: 5.0)未満のレビューは表示しない" do
         expect(page).to have_no_content review2.title
