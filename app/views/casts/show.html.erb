@@ -22,11 +22,19 @@
           </div>
           <div class="cast_birthday">
           <h4>BIRTHDAY</h4>
+          <% if cast["table"]["birthday"] %>
             <%= cast["table"]["birthday"] %>
+          <% else %>
+            <span>NO DATA</span>
+          <% end %>  
           </div>
           <div class="place_of_birth">
           <h4>BIRTH PLACE</h4>
+          <% if cast["table"]["place_of_birth"] %>
             <%= cast["table"]["place_of_birth"] %>
+          <% else %>
+            <span>NO DATA</span>
+          <% end %>
           </div>
           <h4>出演本数</h4>
           <div class="appearance">
