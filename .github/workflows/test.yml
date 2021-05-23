@@ -1,41 +1,32 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
 name: Ruby
 
-# masterブランチへのPR時の実行
 on:
-  pull_request:
-    branches:
-    - main
-    # ex.
-    # # Trigger the workflow on push or pull request
-    # on: [push, pull_request]
-    # # Trigger the workflow on pull request activity
-    # on:
-    #   release
-    #     # Only use the types keyword to narrow down the activity types that will trigger your workflow.
-    #     types: [published, created, edited]
-
+ push:
+   branches: [ develop ]
+ pull_request:
+   branches: [ main ]
+   
 jobs:
-  run_spec:
-    name: Run spec
+ test:
 
-    # ジョブを実行する仮想マシンを選択（ubuntu/macOS/Windows)
-    runs-on: ubuntu-latest
+   runs-on: ubuntu-latest
+   strategy:
+     matrix:
+       ruby-version: ['2.6.3'] # 2.6.3のみで実行
 
-    steps:
-    # actions/checkoutリポジトリのaction.ymlを利用する
-    - uses: actions/checkout@v1 # https://github.com/actions/checkout/blob/master/action.yml
-        # https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsuses
-        #   @~でバージョンやブランチ、コミットIDを指定できる
-        #   自リポジトリのaction.ymlがあるディレクトリを相対パスで指定することもできる
-        #     ex. uses: ./.github/actions/my-action
-        #   Dockerhubのイメージを利用することもできる
-        #     ex. uses: docker://alpine:3.8
-    - name: Set up Ruby 2.6
-      # actions/checkoutリポジトリのaction.ymlを利用する
-      uses: actions/setup-ruby@v1 # https://github.com/actions/setup-ruby/blob/master/action.yml
-      with:
-        ruby-version: 2.6.x
-    - name: Test with Rspec
-      run: |
-        bunlde install
-        bundle exec rspec
+   steps:
+   - uses: actions/checkout@v2
+   - name: Set up Ruby
+     uses: ruby/setup-ruby@v1 # 常に最新バージョンを参照
+     with:
+       ruby-version: ${{ matrix.ruby-version }}
+       bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+   - name: Test with Rspec
+     run: bundle exec rspec # rakeではなくrspecを実行
