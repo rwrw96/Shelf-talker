@@ -4,18 +4,7 @@ name: RSpec
 on:
   pull_request:
     branches: [main]
-
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Deploy
-      env:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        USER_NAME: ${{ secrets.USER_NAME }}
-        HOST_NAME: ${{ secrets.HOST_NAME }}
-
+    
 jobs:
   run_spec:
     name: Run spec
