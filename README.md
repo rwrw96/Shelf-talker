@@ -2,7 +2,7 @@
 
 ## 概要
 #### ShelfTalkerとは...  本アプリはCRUD処理を基盤とした映画レビューサイト  
-![result](https://github.com/rwrw96/Shelf-talker/blob/readme/app/assets/images/ShelfTalker_gif.gif)
+<img width="80%" alt="ShelfTalker_gif" src="https://github.com/rwrw96/Shelf-talker/blob/readme/app/assets/images/ShelfTalker_gif.gif">  
 TMDbのAPIを使用して映画、キャスト情報を取得。  
 ユーザーは気に入ったレビューを保存することで作品をブックマークすることが可能。  
 マイページにお気に入りの映画を陳列することができます。  
@@ -33,11 +33,6 @@ TMDbのAPIを使用して映画、キャスト情報を取得。
 
 ### 主な利用シーン
 良い映画に出会った時。それを伝えたい時。自分用のメモとして。映画を見つけたい時。
-
-
-### デモプレイ
-
-
 
 
 ## 設計書
