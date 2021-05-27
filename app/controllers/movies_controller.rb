@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
       @top_reviews = top_review.order(rand).limit(1)
     end
   end
-
+  
   def show
     @reviews = Review.all
     @review = Review.new
