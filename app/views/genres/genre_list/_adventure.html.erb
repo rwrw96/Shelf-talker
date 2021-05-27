@@ -1,7 +1,7 @@
 <div class="genre">
 <!--ジャンル検索結果をjson形式で取得-->
-<% movieinfo = JSON.parse(Tmdb::Genre.movies(params[:genre], page: 1).to_json) %>
- <h2 class="top">Movies</h2>
+<% movieinfo = JSON.parse(Tmdb::Genre.movies(12, page: 1).to_json) %>
+ <h2 class="top">Adventure</h2>
   <div class="container">
     <div class="row">
       <% i = 0 %>
