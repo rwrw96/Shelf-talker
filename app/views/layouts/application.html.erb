@@ -15,7 +15,11 @@
     <%= render "homes/header" %>
   </head>
   <body>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+    <!--ページトップ-->
+    <div id="page_top"><a href="#"><i class="fas fa-angle-double-up"></i></a></div>
   </body>
   <footer>
     <%= render "homes/footer" %>
