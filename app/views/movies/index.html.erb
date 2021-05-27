@@ -21,8 +21,7 @@
   <div class="genre">
     <%if params[:genre].present? %>
       <!--ジャンル検索結果-->
-      <%= render "genre_movie" %>
-  </div>
+      
     <% elsif params[:looking_for].present? %>
       <!--検索結果-->
       <%= render "looking_for_movie" %>
@@ -30,4 +29,5 @@
       <!--人気映画20件取得-->
       <%= render "movies/popular_movie" %>
     <% end %>
+  </div>
 </div>
