@@ -20,14 +20,16 @@
     <%= link_to "#Thriller", thriller_path , remote: true , class: "editlink" %>
     <%= link_to "#War", war_path , remote: true , class: "editlink" %>
     
-    <span class="editlink">|</span>
-    
-    <%= link_to(notifications_path) do %>
-      <% if unchecked_notifications.any? %>
-        <div class="far fa-bell"></div> 
-        <div class="fas fa-circle"></div>
-      <% else %>
-        <div class="far fa-bell"></div> 
+    <% if user_signed_in? %>
+      <span class="editlink">|</span>
+      <%= link_to(notifications_path) do %>
+        <!--未確認の通知が存在するか-->
+        <% if unchecked_notifications.any? %>
+          <div class="far fa-bell"></div> 
+          <div class="fas fa-circle"></div>
+        <% else %>
+          <div class="far fa-bell"></div> 
+        <% end %>
       <% end %>
     <% end %>
   </div>
