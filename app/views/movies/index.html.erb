@@ -7,25 +7,43 @@
     <% submit_tag '検索' %>
   <% end %>
   
+  
+  
+  
   <div class="genre_wrapper">
-    <%= link_to "#Action", "/?utf8=%E2%9C%93&genre=28&commit=%E6%A4%9C%E7%B4%A2"      ,class: "editlink" %>
-    <%= link_to "#Adventure", "/?utf8=%E2%9C%93&genre=12&commit=%E6%A4%9C%E7%B4%A2"  ,class: "editlink" %>
-    <%= link_to "#Anime", "/?utf8=%E2%9C%93&genre=16&commit=%E6%A4%9C%E7%B4%A2"          ,class: "editlink" %>
-    <%= link_to "#Family", "/?utf8=%E2%9C%93&genre=10751&commit=%E6%A4%9C%E7%B4%A2"   ,class: "editlink" %>
-    <%= link_to "#Horror", "/?utf8=%E2%9C%93&genre=27&commit=%E6%A4%9C%E7%B4%A2"          ,class: "editlink" %>
-    <%= link_to "#Romance", "/?utf8=%E2%9C%93&genre=10749&commit=%E6%A4%9C%E7%B4%A2"     ,class: "editlink" %>
-    <%= link_to "#Thriller", "/?utf8=%E2%9C%93&genre=53&commit=%E6%A4%9C%E7%B4%A2"      ,class: "editlink" %>
-    <%= link_to "#War", "/?utf8=%E2%9C%93&genre=10752&commit=%E6%A4%9C%E7%B4%A2"         ,class: "editlink" %>
+    <%= link_to "#Action", action_path , remote: true , class: "editlink" %>
+    <%= link_to "#Adventure", adventure_path, remote: true , class: "editlink" %>
+    <%= link_to "#Anime", anime_path, remote: true , class: "editlink" %>
+    <%= link_to "#Family", family_path , remote: true ,class: "editlink" %>
+    <%= link_to "#Horror", horror_path , remote: true , class: "editlink" %>
+    <%= link_to "#Romance", romance_path , remote: true , class: "editlink" %>
+    <%= link_to "#Thriller", thriller_path , remote: true , class: "editlink" %>
+    <%= link_to "#War", war_path , remote: true , class: "editlink" %>
+    
+    <% if user_signed_in? %>
+      <span class="editlink">|</span>
+      <%= link_to(notifications_path) do %>
+        <!--未確認の通知が存在するか-->
+        <% if unchecked_notifications.any? %>
+          <div class="far fa-bell"></div> 
+          <div class="fas fa-circle"></div>
+        <% else %>
+          <div class="far fa-bell"></div> 
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
   
-  <%if params[:genre].present? %>
-    <!--ジャンル検索結果-->
-    <%= render "genre_movie" %>
-  <% elsif params[:looking_for].present? %>
-    <!--検索結果-->
-    <%= render "looking_for_movie" %>
-  <% else %>
-    <!--人気映画20件取得-->
-    <%= render "movies/popular_movie" %>
-  <% end %>
+  <div class="genre">
+    <%if params[:genre].present? %>
+      <!--ジャンル検索結果-->
+      
+    <% elsif params[:looking_for].present? %>
+      <!--検索結果-->
+      <%= render "looking_for_movie" %>
+    <% else %>
+      <!--人気映画20件取得-->
+      <%= render "movies/popular_movie" %>
+    <% end %>
+  </div>
 </div>

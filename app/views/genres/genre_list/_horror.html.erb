@@ -1,0 +1,33 @@
+<div class="genre">
+<!--ジャンル検索結果をjson形式で取得-->
+<% movieinfo = JSON.parse(Tmdb::Genre.movies(27, page: 1).to_json) %>
+ <h2 class="top">Horror</h2>
+  <div class="container">
+    <div class="row">
+      <% i = 0 %>
+      <% while i < movieinfo['table']['results'].count %>
+        <div class="col-3">
+          <div class="hover_darken">
+            <!--ポスターがあるなら表示-->
+            <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
+              <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "movie_image"),detail_path(movieinfo['table']['results'][i]['table']['id']) %>
+            <%end%>
+          </div>
+          <div class="movie_title">
+            <!--タイトルがあるなら表示-->
+            <%if movieinfo['table']['results'][i]['table']['title'].present?%>
+              <%= movieinfo['table']['results'][i]['table']['title'] %>
+            <%end%>
+          </div>
+          <div class="release_date">
+            <!--リリース日があるなら表示-->
+            <%if movieinfo['table']['results'][i]['table']['release_date'].present?%>
+              <%= movieinfo['table']['results'][i]['table']['release_date'] %>
+            <%end%>
+          </div>
+        </div>
+      <% i += 1%>
+      <%end%>
+    </div>
+  </div>
+ </div>
