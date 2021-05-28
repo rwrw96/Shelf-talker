@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   end
   
   resources :casts, only: [:show]
+  resources :notifications, only: :index
   
   post 'like/:id'         =>  'likes#create',     as: 'create_like'
   delete 'like/:id'       =>  'likes#destroy',    as: 'destroy_like'
@@ -50,8 +51,6 @@ Rails.application.routes.draw do
   get "homes/about"       =>  "homes#about"
   get "homes/welcome"     =>  "homes#welcome"
   post "homes/welcome"    =>  "homes#welcome"
-  
-  
   
   # ルーティングエラー時ページ遷移
   get '*path', to: 'movies#index'
