@@ -68,7 +68,7 @@ RSpec.describe Review, "モデルに関するテスト", type: :model do
     
     context "レビューの保存" do
       it "保存しますか？を押した時レビューが保存される" do
-        expect { click_on '保存しますか？' }.to change(review.likes, :count).by(1)
+        expect { click_on '保存しますか？' }.to change(review.notifications, :count).by(1)
       end
     end
 
