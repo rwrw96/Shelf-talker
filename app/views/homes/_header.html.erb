@@ -30,6 +30,7 @@
             <li><%= link_to "REVIEWS" , reviews_path, class: "editlink" %></li>
             <li><%= link_to "USERS", users_path, class: "editlink" %></li>
             <li><%= link_to "MYPAGE" , user_path(current_user.id), class: "editlink" %></li>
+            <li><%= link_to "NOTIFICATION" ,  notifications_path, class: "editlink" %></li>
             <li><%= link_to "LOGOUT" ,  destroy_user_session_path, method: :delete, class: "editlink" %></li>
           </ul>
         <% end %>

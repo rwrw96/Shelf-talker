@@ -8,6 +8,15 @@
   margin-bottom: 80px; 
 }
 
+// 通知がある場合
+.notification_image { 
+  text-align: left;
+  img {
+  height: 100px;
+  width: 90px;
+  }
+}
+
 // 通知アイコン
 .genre_wrapper {
   .fa-circle {
