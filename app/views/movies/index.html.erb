@@ -7,6 +7,9 @@
     <% submit_tag '検索' %>
   <% end %>
   
+  
+  
+  
   <div class="genre_wrapper">
     <%= link_to "#Action", action_path , remote: true , class: "editlink" %>
     <%= link_to "#Adventure", adventure_path, remote: true , class: "editlink" %>
@@ -16,6 +19,17 @@
     <%= link_to "#Romance", romance_path , remote: true , class: "editlink" %>
     <%= link_to "#Thriller", thriller_path , remote: true , class: "editlink" %>
     <%= link_to "#War", war_path , remote: true , class: "editlink" %>
+    
+    <span class="editlink">|</span>
+    
+    <%= link_to(notifications_path) do %>
+      <% if unchecked_notifications.any? %>
+        <div class="far fa-bell"></div> 
+        <div class="fas fa-circle"></div>
+      <% else %>
+        <div class="far fa-bell"></div> 
+      <% end %>
+    <% end %>
   </div>
   
   <div class="genre">

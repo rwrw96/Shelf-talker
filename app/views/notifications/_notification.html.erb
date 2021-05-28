@@ -1,0 +1,31 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="offset-2 col-8">
+  <span>
+    <!--いいねの通知の時、映画ポスターが存在すれば表示-->
+    <% if notification.action == "like" && notification.review.poster_path %>
+      <div class="notification_image">
+        <%= link_to image_tag("https://image.tmdb.org/t/p/w1280" + notification.review.poster_path), notification.review %>
+      </div>
+    <% end %>
+    
+    <%= link_to user_path(visitor) do %>
+      <strong><%= visitor.name %></strong>
+    <% end %>が
+    <!--フォロー通知の時-->
+    <% case notification.action %>
+      <% when 'follow' then %>
+        <strong><%= link_to "あなた", user_path(visited) %></strong>
+        <%= "をフォローしました" %>
+      <!--保存通知の時-->
+      <% when 'like' then %>
+        <strong><%= link_to 'あなたの投稿', notification.review %></strong>
+        <%= "を保存しました" %>
+      <% end %>
+      <!--通知の日時表示-->
+      <div class="small text-muted text-right">
+        <%= time_ago_in_words(notification.created_at).upcase %>前
+      </div>
+      <hr></hr>
+    </span>
+  </div>
