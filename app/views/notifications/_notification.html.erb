@@ -1,0 +1,18 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div>
+  <div>
+    <span>
+      <%= link_to user_path(visitor) do %>
+      <strong><%= visitor.name %></strong><%= "が" %>
+        <% case notification.action %>
+          <% when 'follow' then %>
+            <%= "あなたをフォローしました" %>
+            <div class="small text-muted text-right">
+              <%= time_ago_in_words(notification.created_at).upcase %>
+            </div>
+          <% end %>
+        <% end %>
+    </span>
+  </div>
+</div>
