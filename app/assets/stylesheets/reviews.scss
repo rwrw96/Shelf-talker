@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // reviews/index↓
+.movie_title_search {
+  text-align: right;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+
 .reviews_image {
   height: 170px;
   width: 150px;
@@ -361,6 +367,11 @@
   left: -120px;
   bottom: 0;
   right: 0;
+}
+
+.movie_title_search {
+  text-align: center;
+  margin-right: 0px;
 }
 
 .review_list {
