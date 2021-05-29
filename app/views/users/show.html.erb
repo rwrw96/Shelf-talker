@@ -49,7 +49,11 @@
           <% if @user.reviews.exists? %>
           
             <!--レビュー一覧を表示-->
+            <!--評価順にソート-->
             <div id="my_review_lists">
+              <div class="offset-1">
+                <%= sort_link(@q, :rate, "評価") %>
+              </div>
               <%= render 'users/my_review_list' %>
             </div>
             <div class="more">

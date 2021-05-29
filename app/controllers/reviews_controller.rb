@@ -4,7 +4,10 @@ class ReviewsController < ApplicationController
   
   def index
     # 1ページで10件ごと取得
-    @reviews = Review.page(params[:page]).per(10)
+    @reviews = Review
+    # ソート機能
+    @q = Review.ransack(params[:q])
+    @reviews = @q.result(distinct: true).page(params[:page]).per(5)
   end
   
   def show
