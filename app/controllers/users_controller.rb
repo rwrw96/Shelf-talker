@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     # ゲストユーザーを取得
     @guest_user = User.find_by(email: "guest@example.com")
     # 1ページで4件ごと取得
-    @my_reviews = @user.reviews.page(params[:page]).per(4)
+    # @my_reviews = @user.reviews.page(params[:page]).per(4)
+    @q = Review.ransack(params[:q])
+    @my_reviews = @q.result(distinct: true).page(params[:page]).per(4)
   end
   
   def edit
