@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @admin_user = User.find_by(admin: true)
+    # 検索機能
+    @q = User.ransack(params[:q])
+    @users = @q.result
   end
   
   def show
@@ -12,9 +15,8 @@ class UsersController < ApplicationController
     # ゲストユーザーを取得
     @guest_user = User.find_by(email: "guest@example.com")
     # 1ページで4件ごと取得
-    # @my_reviews = @user.reviews.page(params[:page]).per(4)
     @q = Review.ransack(params[:q])
-    @my_reviews = @q.result(distinct: true).page(params[:page]).per(4)
+    @my_reviews = @q.result.page(params[:page]).per(4)
   end
   
   def edit

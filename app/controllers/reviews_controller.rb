@@ -3,11 +3,10 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit, :index]
   
   def index
-    # 1ページで10件ごと取得
-    @reviews = Review
+    # 1ページで8件ごと取得
     # ソート機能
     @q = Review.ransack(params[:q])
-    @reviews = @q.result(distinct: true).page(params[:page]).per(5)
+    @reviews = @q.result.page(params[:page]).per(8)
   end
   
   def show

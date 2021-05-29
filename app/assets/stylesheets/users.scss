@@ -42,8 +42,6 @@ table {
 
 .my_reviews_empty {
   text-align: center;
-  // margin-top: 30px;
-  // margin-bottom: 60px;
 }
 
 .my_review_image {
@@ -129,6 +127,11 @@ table {
   }
 }
 
+.user_search {
+  text-align: right;
+  margin-bottom: 40px;
+}
+
 @media screen and (max-width: 425px) {
   h2 {
     font-size: 20px;
@@ -177,5 +180,8 @@ table {
   }
   #edit_introduction {
     padding: 0px;
+  }
+  .user_search {
+  text-align: center;
   }
 }
