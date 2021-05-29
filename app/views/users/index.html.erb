@@ -1,1 +1,40 @@
-<%= render "index" %>
+<div class="container">
+  <div class="users">
+    <h2 class="top">Users</h2>
+    <!--ユーザー名を部分一致で検索、表示-->
+    <div class="user_search">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :name_cont, placeholder: 'User Name' %>
+        <% f.submit "検索" %>
+      <% end %>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <th class="th1">user_name</th>
+        <th class="th2">review</th>
+        <th>introduction</th>
+        <% if current_user == User.find_by(admin: true) %>
+          <th></th>
+        <% end %> 
+      </thead>
+      <% @users.each do |user| %>
+        <!--管理者以外のユーザーを全て表示する-->
+        <!--管理者の場合、削除ボタンを表示させる-->
+        <% if user != @admin_user %>
+          <tbody>
+            <td><%= link_to user.name, user_path(user.id) %></td>
+            <td><%= "レビュー数: #{user.reviews.count}" %></td>
+            <td><%= user.introduction %></td>
+            <% if current_user == User.find_by(admin: true) %>
+              <% if user != User.find_by(admin: true) %>
+                <td><%= link_to "削除", admin_user_path(user), method: :delete, data: { confirm: '削除しますか？' },class: "btn btn-danger" %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+            <% end %>
+          </tbody>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>
