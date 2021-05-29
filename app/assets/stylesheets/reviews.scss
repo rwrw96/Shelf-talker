@@ -41,6 +41,10 @@
   text-align: center;
   margin: 60px 0px;
 }
+
+.reviews_sort {
+  text-align: center;
+}
 // ここまで
 
 // movies/index↓
@@ -273,6 +277,10 @@
         width: 6px;
       }
     }
+  }
+  .reviews_sort {
+    text-align: center;
+    font-size: 10px;
   }
   .review_show_wrapper {
     .review_overview {
