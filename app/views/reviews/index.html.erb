@@ -14,8 +14,13 @@
         <div class="offset-5 col-7">
           <div class="row">
             <div class="offset-4 col-3">
-              <div class="reviews_sort">
-                <%= sort_link(@q, :rate, "評価") %>
+              <div class="reviews_rate_sort">
+                <%= sort_link(@q, :rate, "評価順") %>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="reviews_update_sort">
+                <%= sort_link(@q, :updated_at, "投稿日時") %>
               </div>
             </div>
           </div>
