@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @reviews = Review
     # ソート機能
     @q = Review.ransack(params[:q])
-    @reviews = @q.result(distinct: true).page(params[:page]).per(10)
+    @reviews = @q.result(distinct: true).page(params[:page]).per(5)
   end
   
   def show

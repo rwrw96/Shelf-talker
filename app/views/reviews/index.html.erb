@@ -3,6 +3,17 @@
   <div class="reviews_wrapper">
     <div id="review_lists">
       <!--レビュー一覧表示-->
+      <div class="row">
+        <div class="offset-5 col-7">
+          <div class="row">
+            <div class="offset-4 col-4">
+              <div class="reviews_sort">
+                <%= sort_link(@q, :rate, "評価") %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <%= render 'review_list' %>
     </div>
     <div class="more">
