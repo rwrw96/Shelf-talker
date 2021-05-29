@@ -1,8 +1,31 @@
 <div class="container">
   <h2 class="top">Reviews</h2>
+  <!--映画タイトルでレビューを検索-->
+  <div class="movie_title_search">
+  <%= search_form_for @q do |f| %>
+    <%= f.search_field :movie_title_cont, placeholder: 'Movie Title' %>
+    <% f.submit "検索" %>
+  <% end %>
+  </div>
   <div class="reviews_wrapper">
     <div id="review_lists">
       <!--レビュー一覧表示-->
+      <div class="row">
+        <div class="offset-5 col-7">
+          <div class="row">
+            <div class="offset-4 col-3">
+              <div class="reviews_rate_sort">
+                <%= sort_link(@q, :rate, "評価順") %>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="reviews_update_sort">
+                <%= sort_link(@q, :updated_at, "投稿日時") %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <%= render 'reviews/review_list' %>
     </div>
     <div class="more">
