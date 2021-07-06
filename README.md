@@ -5,9 +5,7 @@
 <img width="80%" alt="ShelfTalker_gif" src="https://github.com/rwrw96/Shelf-talker/blob/readme/app/assets/images/ShelfTalker_gif6.gif">  
 TMDbのAPIを使用して映画、キャスト情報を取得。  
 ユーザーは気に入ったレビューを保存することで作品をブックマークすることが可能。  
-マイページにお気に入りの映画を陳列することができます。  
-    
-**まさにShelfTalker**(棚と商品の間に敷いて使用するPOPの意)
+マイページにお気に入りの映画を陳列することができます。
 
 
 ### サイトテーマ
@@ -55,7 +53,7 @@ TMDbのAPIを使用して映画、キャスト情報を取得。
 
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux2(CentOS)
 - 言語：HTML,CSS
   - JavaScript
   - Ruby 2.6.3
