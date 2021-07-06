@@ -5,7 +5,10 @@
   <div class="slider">
     <% i = 0 %>
     <% while i < popular_movie['table']['results'].count %>
-      <%= link_to image_tag("https://image.tmdb.org/t/p/w1280" + popular_movie['table']['results'][i]['table']['poster_path']), detail_path(popular_movie['table']['results'][i]['table']['id']) %>
+      <!--ポスターがあるなら表示-->
+      <% if popular_movie['table']['results'][i]['table']['poster_path'].present? %>
+        <%= link_to image_tag("https://image.tmdb.org/t/p/w1280" + popular_movie['table']['results'][i]['table']['poster_path']), detail_path(popular_movie['table']['results'][i]['table']['id']) %>
+      <% end %>
     <% i += 1 %>
     <%end%>
   </div>

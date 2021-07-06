@@ -1,2 +1,2 @@
 $('#review_lists').append("<%= escape_javascript(render 'review_list', object: @reviews) %>");
-$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@reviews, 'もっと見る', remote: true, id: 'view_more')) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@reviews, 'see more', remote: true, id: 'view_more')) %>");

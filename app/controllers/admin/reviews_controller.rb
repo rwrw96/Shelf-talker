@@ -4,8 +4,8 @@ class Admin::ReviewsController < ApplicationController
   before_action :if_not_admin
 
   def index
-    @reviews = Review.all
-    @reviews = Review.page(params[:page]).per(10)
+    @q = Review.ransack(params[:q])
+    @reviews = @q.result.page(params[:page]).per(8)
   end
 
   def destroy

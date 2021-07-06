@@ -1,6 +1,13 @@
 <div class="container">
   <div class="users">
     <h2 class="top">Users</h2>
+    <!--ユーザー名を部分一致で検索、表示-->
+    <div class="user_search">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :name_cont, placeholder: 'User Name' %>
+        <% f.submit "検索" %>
+      <% end %>
+    </div>
     <table class="table table-hover">
       <thead>
         <th class="th1">user_name</th>

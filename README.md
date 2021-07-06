@@ -1,4 +1,11 @@
-# <ShelfTalker>
+# ShelfTalker
+
+## 概要
+#### ShelfTalkerとは...  本アプリはCRUD処理を基盤とした映画レビューサイト  
+<img width="80%" alt="ShelfTalker_gif" src="https://github.com/rwrw96/Shelf-talker/blob/readme/app/assets/images/ShelfTalker_gif6.gif">  
+TMDbのAPIを使用して映画、キャスト情報を取得。  
+ユーザーは気に入ったレビューを保存することで作品をブックマークすることが可能。  
+マイページにお気に入りの映画を陳列することができます。
 
 ## サイト概要
 <映画のレビューを書き込んで自分の”好き”を他ユーザーと共有し合うアプリです。ユーザーはレビューを見て面白そうだと感じたらそのレビューを保存することができます。映画の情報についてはTMDbのAPIを使用しています。> </br>
@@ -33,9 +40,12 @@
 
 
 ## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- OS：Linux2(CentOS)
+- 言語：HTML,CSS
+  - JavaScript
+  - Ruby 2.6.3
+  - SQL
+- フレームワーク：Ruby on Rails 5.2.5
 - JSライブラリ：jQuery
 - IDE：Cloud9
 

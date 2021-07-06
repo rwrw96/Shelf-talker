@@ -28,9 +28,22 @@
       </div>
       
       <div class="offset-1 col-7">
+        <!--映画上映情報を取得-->
+        <% video_detail = JSON.parse((Tmdb::Movie.videos(params[:id])).to_json) %>
+        <!--データが存在すれば動画を埋め込む-->
+        <% if video_detail[0] != nil %>
+          <div class="movie_notice">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=video_detail[0]['table']['key']%>"
+                                             title="YouTube video player"
+                                             frameborder="1"
+                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                             allowfullscreen></iframe>
+          </div>                                  
+        <% end %>
+        
         <!--あらすじがあれば表示-->
         <%if detail['table']['overview'].present?%>
-          <lable>あらすじ</lable>
+          <div>あらすじ</div>
           <div class= "overview border rounded">
             <%= detail['table']['overview'] %>
           </div>
