@@ -1,13 +1,10 @@
-<!--人気映画20件取得-->
-<!--15ページの中からランダムで表示-->
-<% popular_movie = JSON.parse((Tmdb::Movie.popular(page: rand(1..15))).to_json) %>
 <!--人気映画をslickで表示-->
   <div class="slider">
     <% i = 0 %>
-    <% while i < popular_movie['table']['results'].count %>
+    <% while i < @popular_movie['table']['results'].count %>
       <!--ポスターがあるなら表示-->
-      <% if popular_movie['table']['results'][i]['table']['poster_path'].present? %>
-        <%= link_to image_tag("https://image.tmdb.org/t/p/w1280" + popular_movie['table']['results'][i]['table']['poster_path']), detail_path(popular_movie['table']['results'][i]['table']['id']) %>
+      <% if @popular_movie['table']['results'][i]['table']['poster_path'].present? %>
+        <%= link_to image_tag("https://image.tmdb.org/t/p/w1280" + @popular_movie['table']['results'][i]['table']['poster_path']), detail_path(@popular_movie['table']['results'][i]['table']['id']) %>
       <% end %>
     <% i += 1 %>
     <%end%>
@@ -63,24 +60,24 @@
 <div class="container">
   <div class="row">
     <% i = 0 %>
-    <% while i < popular_movie['table']['results'].count %>
+    <% while i < @popular_movie['table']['results'].count %>
       <div class="col-3">
         <div class="hover_darken">
           <!--ポスターがあるなら表示-->
-          <% if popular_movie['table']['results'][i]['table']['poster_path'].present? %>
-            <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + popular_movie['table']['results'][i]['table']['poster_path'], class: "movie_image"), detail_path(popular_movie['table']['results'][i]['table']['id']) %>
+          <% if @popular_movie['table']['results'][i]['table']['poster_path'].present? %>
+            <%= link_to image_tag('https://image.tmdb.org/t/p/w1280' + @popular_movie['table']['results'][i]['table']['poster_path'], class: "movie_image"), detail_path(@popular_movie['table']['results'][i]['table']['id']) %>
           <%end%>
         </div>
         <div class="movie_title">
           <!--タイトルがあるなら表示-->
-          <%if popular_movie['table']['results'][i]['table']['title'].present?%>
-            <%= link_to popular_movie['table']['results'][i]['table']['title'], detail_path(popular_movie['table']['results'][i]['table']['id']), class: "editlink" %>
+          <%if @popular_movie['table']['results'][i]['table']['title'].present?%>
+            <%= link_to @popular_movie['table']['results'][i]['table']['title'], detail_path(@popular_movie['table']['results'][i]['table']['id']), class: "editlink" %>
           <% end %>  
         </div>
         <div class="release_date">
           <!--リリース日があるなら表示-->
-          <%if popular_movie['table']['results'][i]['table']['release_date'].present?%>
-            <%= popular_movie['table']['results'][i]['table']['release_date'] %>
+          <%if @popular_movie['table']['results'][i]['table']['release_date'].present?%>
+            <%= @popular_movie['table']['results'][i]['table']['release_date'] %>
           <%end%>
         </div>
       </div>
