@@ -6,7 +6,7 @@ class Review < ApplicationRecord
   has_many :notifications, dependent: :destroy
   
   def create_notification_like!(current_user)
-    # likeした時の通知のデータが存在するか
+    # likeした時の通知のデータが存在するか(プレースホルダ)
     # なければ作成
     temp = Notification.where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ? ", current_user.id, current_user.likes.last.review.user_id, current_user.likes.last.review_id, 'like'])
     
