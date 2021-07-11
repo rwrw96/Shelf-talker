@@ -1,23 +1,20 @@
-<!--idに該当するmovieデータをjson形式で取得-->
-<% detail = JSON.parse((Tmdb::Movie.detail(params[:id])).to_json) %>
-
 <div class="movie_show">
   <div class="container">
     <div class="row">
       <div class="col-4">
         <!--ポスターがあれば表示-->
-        <% if detail['table']['poster_path'].present? %>
-          <%= image_tag 'https://image.tmdb.org/t/p/w1280' + detail['table']['poster_path'], class: "movie_image" %>
+        <% if @detail['table']['poster_path'].present? %>
+          <%= image_tag 'https://image.tmdb.org/t/p/w1280' + @detail['table']['poster_path'], class: "movie_image" %>
         <% end %>
         <!--タイトルがあれば表示-->
-        <% if detail['table']['title'].present? %>
-          <div class="movie_title"><%= detail['table']['title'] %></div>
+        <% if @detail['table']['title'].present? %>
+          <div class="movie_title"><%= @detail['table']['title'] %></div>
         <% end %>
         <!--空の配列を用意-->
-        <!--@review.tmdbと@movieinfo["table"]["id"]が同じ、レビューの評価(rate)を空の配列に代入-->
+        <!--@review.tmdbと@detail["table"]["id"]が同じ、レビューの評価(rate)を空の配列に代入-->
         <% array = [] %>
         <% @reviews.each do |review| %>
-          <% if review.tmdb == @movieinfo["table"]["id"] %>
+          <% if review.tmdb == @detail["table"]["id"] %>
             <% array << review.rate %>
           <% end %>
         <% end %>
@@ -42,10 +39,10 @@
         <% end %>
         
         <!--あらすじがあれば表示-->
-        <%if detail['table']['overview'].present?%>
+        <%if @detail['table']['overview'].present?%>
           <div>あらすじ</div>
           <div class= "overview border rounded">
-            <%= detail['table']['overview'] %>
+            <%= @detail['table']['overview'] %>
           </div>
         <%end%>
         
@@ -85,11 +82,11 @@
               }); 
             </script>
             <!--映画のタイトル、リリース日、あらすじ、ポスター、id(tmdb)のデータを送信      -->
-            <%= f.hidden_field :movie_title, :value => detail["table"]["title"], id: "movie_title" %>
-            <%= f.hidden_field :release_date, :value => detail["table"]["release_date"], id: "release_date" %>
-            <%= f.hidden_field :overview, :value => detail["table"]["overview"], id: "overview" %>
-            <%= f.hidden_field :poster_path, :value => detail["table"]["poster_path"], id: "poster_path" %>
-            <%= f.hidden_field :tmdb, :value => detail["table"]["id"], id: "tmdb" %>
+            <%= f.hidden_field :movie_title, :value => @detail["table"]["title"], id: "movie_title" %>
+            <%= f.hidden_field :release_date, :value => @detail["table"]["release_date"], id: "release_date" %>
+            <%= f.hidden_field :overview, :value => @detail["table"]["overview"], id: "overview" %>
+            <%= f.hidden_field :poster_path, :value => @detail["table"]["poster_path"], id: "poster_path" %>
+            <%= f.hidden_field :tmdb, :value => @detail["table"]["id"], id: "tmdb" %>
           </div>
         </div>
           
@@ -169,12 +166,12 @@
         <div class="col-12">
           <h2 class="top">Reviews</h2>
           <div class="my_reviews_empty">
-            <% unless Review.find_by(tmdb: @movieinfo["table"]["id"]) %>
+            <% unless Review.find_by(tmdb: @detail["table"]["id"]) %>
               <h5>現在この映画のレビューは存在しません</h5>
             <% end %>
           </div>
           <% Review.all.each do |review| %>
-            <% if review.tmdb == @movieinfo["table"]["id"] %>
+            <% if review.tmdb == @detail["table"]["id"] %>
               <div class="review_container border">
                 <!--レビューした人の名前を表示-->
                 <%= review.user.name %>

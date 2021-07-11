@@ -8,8 +8,6 @@
   <% end %>
   
   
-  
-  
   <div class="genre_wrapper">
     <%= link_to "#Action", action_path , remote: true , class: "editlink" %>
     <%= link_to "#Adventure", adventure_path, remote: true , class: "editlink" %>
@@ -37,7 +35,6 @@
   <div class="genre">
     <%if params[:genre].present? %>
       <!--ジャンル検索結果-->
-      
     <% elsif params[:looking_for].present? %>
       <!--検索結果-->
       <%= render "looking_for_movie" %>
