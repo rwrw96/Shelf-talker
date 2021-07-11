@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError, with: :render_404
   # 値が存在しない場合
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  # TMDbのデータにないIDを検索しようとした場合
+  rescue_from Tmdb::Error, with: :render_404
 
   def render_404(e = nil)
       Tmdb::Api.key(ENV['API_KEY'])
@@ -23,7 +25,6 @@ class ApplicationController < ActionController::Base
       @top_reviews = top_review.order(rand).limit(1)
       
       # loggor.info内のe.messageがnilならばレンダリング
-      logger.info "Rendering 404 with exception: #{e.message}" if e
       redirect_to "/"
   end
 end
