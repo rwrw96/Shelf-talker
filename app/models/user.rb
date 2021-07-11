@@ -9,14 +9,17 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  #フォローする側から見た中間テーブル
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower
+  #フォローされる側から見た中間テーブル
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
   
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   
+  # ログイン時にis_validカラムがtrueである必要がある
   def active_for_authentication?
     super && is_valid == true
   end
@@ -40,7 +43,7 @@ class User < ApplicationRecord
   
   # フォロー時の通知機能
   def create_notification_follow!(current_user)
-    # followした通知のデータが存在するか
+    # followした通知のデータが存在するか（プレースホルダ）
     # なければ作成する
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, current_user.following_ids.last, 'follow'])
     if temp.blank?

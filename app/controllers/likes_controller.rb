@@ -4,6 +4,7 @@ class LikesController < ApplicationController
     Like.create(user_id: current_user.id, review_id: @review.id)
     
     review = Review.find_by(params[:review_id])
+    #reviewモデルのメソッド
     review.create_notification_like!(current_user)
   end
 
