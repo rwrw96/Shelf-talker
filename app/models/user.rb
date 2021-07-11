@@ -40,7 +40,7 @@ class User < ApplicationRecord
   
   # フォロー時の通知機能
   def create_notification_follow!(current_user)
-    # followした通知のデータが存在するか
+    # followした通知のデータが存在するか（プレースホルダ）
     # なければ作成する
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, current_user.following_ids.last, 'follow'])
     if temp.blank?
