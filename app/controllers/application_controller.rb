@@ -11,8 +11,6 @@ class ApplicationController < ActionController::Base
     new_user_registration_path
   end
   
-  # ルーティングエラーの場合
-  rescue_from ActionController::RoutingError, with: :render_404
   # 値が存在しない場合
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   # TMDbのデータにないIDを検索しようとした場合

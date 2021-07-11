@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
-
+  #pathも構成ファイルにも追記したい場合
   namespace :admin do
     get 'users/index'
     get 'users/destroy'
   end
+  #deviseのコントローラーを変更したい場合
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :passwords => "users/passwords",
   }
-
+  #deviseにルーティングを追加したい場合
   devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
   end
 
   root "movies#index"
@@ -19,12 +20,13 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :reviews, only: [:index, :destroy]
   end
+  #on: :memberでid付きのURLにできる
   resources :users do
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
     get :followers, on: :member
   end
-
+  #as: で任意のPrefix名に変更
   patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
 
   namespace :admin do
