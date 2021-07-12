@@ -2,6 +2,7 @@ name: Rails CI/CD
 
 on:
   push:
+    #mainブランチをpushする時に動作する
     branches: [main]
 
 jobs:
